@@ -1,0 +1,676 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>9.2 Moral and Ethical Issues</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-opaquegray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="6aee10f1-219f-42af-b821-7ebd2680f352" class="page sans"><header><h1 class="page-title">9.2 Moral and Ethical Issues</h1><table class="properties"><tbody><tr class="property-row property-row-multi_select"><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesMultipleSelect"><path d="M1.91602 4.83789C2.44238 4.83789 2.87305 4.40723 2.87305 3.87402C2.87305 3.34766 2.44238 2.91699 1.91602 2.91699C1.38281 2.91699 0.952148 3.34766 0.952148 3.87402C0.952148 4.40723 1.38281 4.83789 1.91602 4.83789ZM5.1084 4.52344H14.3984C14.7607 4.52344 15.0479 4.23633 15.0479 3.87402C15.0479 3.51172 14.7607 3.22461 14.3984 3.22461H5.1084C4.74609 3.22461 4.45898 3.51172 4.45898 3.87402C4.45898 4.23633 4.74609 4.52344 5.1084 4.52344ZM1.91602 9.03516C2.44238 9.03516 2.87305 8.60449 2.87305 8.07129C2.87305 7.54492 2.44238 7.11426 1.91602 7.11426C1.38281 7.11426 0.952148 7.54492 0.952148 8.07129C0.952148 8.60449 1.38281 9.03516 1.91602 9.03516ZM5.1084 8.7207H14.3984C14.7607 8.7207 15.0479 8.43359 15.0479 8.07129C15.0479 7.70898 14.7607 7.42188 14.3984 7.42188H5.1084C4.74609 7.42188 4.45898 7.70898 4.45898 8.07129C4.45898 8.43359 4.74609 8.7207 5.1084 8.7207ZM1.91602 13.2324C2.44238 13.2324 2.87305 12.8018 2.87305 12.2686C2.87305 11.7422 2.44238 11.3115 1.91602 11.3115C1.38281 11.3115 0.952148 11.7422 0.952148 12.2686C0.952148 12.8018 1.38281 13.2324 1.91602 13.2324ZM5.1084 12.918H14.3984C14.7607 12.918 15.0479 12.6309 15.0479 12.2686C15.0479 11.9062 14.7607 11.6191 14.3984 11.6191H5.1084C4.74609 11.6191 4.45898 11.9062 4.45898 12.2686C4.45898 12.6309 4.74609 12.918 5.1084 12.918Z"></path></svg></span>Tags</th><td><span class="selected-value select-value-color-green">9 Legal moral and ethic</span></td></tr><tr class="property-row property-row-select"><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesSelect"><path d="M8 15.126C11.8623 15.126 15.0615 11.9336 15.0615 8.06445C15.0615 4.20215 11.8623 1.00293 7.99316 1.00293C4.13086 1.00293 0.938477 4.20215 0.938477 8.06445C0.938477 11.9336 4.1377 15.126 8 15.126ZM8 13.7383C4.85547 13.7383 2.33301 11.209 2.33301 8.06445C2.33301 4.91992 4.84863 2.39746 7.99316 2.39746C11.1377 2.39746 13.6738 4.91992 13.6738 8.06445C13.6738 11.209 11.1445 13.7383 8 13.7383ZM7.62402 10.6348C7.79492 10.915 8.20508 10.9287 8.37598 10.6348L10.666 6.73145C10.8574 6.41016 10.7002 6.04102 10.3652 6.04102H5.62793C5.29297 6.04102 5.14941 6.43066 5.32031 6.73145L7.62402 10.6348Z"></path></svg></span>Difficulty</th><td></td></tr><tr class="property-row property-row-checkbox"><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesCheckbox"><path d="M3.85742 14.4561H12.1357C13.6123 14.4561 14.3779 13.6904 14.3779 12.2344V3.91504C14.3779 2.45215 13.6123 1.69336 12.1357 1.69336H3.85742C2.38086 1.69336 1.61523 2.45215 1.61523 3.91504V12.2344C1.61523 13.6973 2.38086 14.4561 3.85742 14.4561ZM3.93945 13.1162C3.30371 13.1162 2.95508 12.7812 2.95508 12.1182V4.02441C2.95508 3.36133 3.30371 3.0332 3.93945 3.0332H12.0537C12.6826 3.0332 13.0381 3.36133 13.0381 4.02441V12.1182C13.0381 12.7812 12.6826 13.1162 12.0537 13.1162H3.93945ZM7.26855 11.3115C7.51465 11.3115 7.72656 11.1885 7.87012 10.9697L10.9258 6.19141C11.0146 6.04785 11.0967 5.88379 11.0967 5.72656C11.0967 5.3916 10.7959 5.16602 10.4746 5.16602C10.2695 5.16602 10.085 5.27539 9.94141 5.50781L7.24121 9.8418L5.96973 8.22168C5.80566 8.00977 5.6416 7.93457 5.43652 7.93457C5.10156 7.93457 4.8418 8.20117 4.8418 8.54297C4.8418 8.70703 4.90332 8.85742 5.01953 9.00098L6.63281 10.9697C6.81738 11.209 7.01562 11.3115 7.26855 11.3115Z"></path></svg></span>Finished Notes</th><td><div class="checkbox checkbox-on"></div></td></tr><tr class="property-row property-row-checkbox"><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesCheckbox"><path d="M3.85742 14.4561H12.1357C13.6123 14.4561 14.3779 13.6904 14.3779 12.2344V3.91504C14.3779 2.45215 13.6123 1.69336 12.1357 1.69336H3.85742C2.38086 1.69336 1.61523 2.45215 1.61523 3.91504V12.2344C1.61523 13.6973 2.38086 14.4561 3.85742 14.4561ZM3.93945 13.1162C3.30371 13.1162 2.95508 12.7812 2.95508 12.1182V4.02441C2.95508 3.36133 3.30371 3.0332 3.93945 3.0332H12.0537C12.6826 3.0332 13.0381 3.36133 13.0381 4.02441V12.1182C13.0381 12.7812 12.6826 13.1162 12.0537 13.1162H3.93945ZM7.26855 11.3115C7.51465 11.3115 7.72656 11.1885 7.87012 10.9697L10.9258 6.19141C11.0146 6.04785 11.0967 5.88379 11.0967 5.72656C11.0967 5.3916 10.7959 5.16602 10.4746 5.16602C10.2695 5.16602 10.085 5.27539 9.94141 5.50781L7.24121 9.8418L5.96973 8.22168C5.80566 8.00977 5.6416 7.93457 5.43652 7.93457C5.10156 7.93457 4.8418 8.20117 4.8418 8.54297C4.8418 8.70703 4.90332 8.85742 5.01953 9.00098L6.63281 10.9697C6.81738 11.209 7.01562 11.3115 7.26855 11.3115Z"></path></svg></span>Progress</th><td><div class="checkbox checkbox-off"></div></td></tr><tr class="property-row property-row-checkbox"><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesCheckbox"><path d="M3.85742 14.4561H12.1357C13.6123 14.4561 14.3779 13.6904 14.3779 12.2344V3.91504C14.3779 2.45215 13.6123 1.69336 12.1357 1.69336H3.85742C2.38086 1.69336 1.61523 2.45215 1.61523 3.91504V12.2344C1.61523 13.6973 2.38086 14.4561 3.85742 14.4561ZM3.93945 13.1162C3.30371 13.1162 2.95508 12.7812 2.95508 12.1182V4.02441C2.95508 3.36133 3.30371 3.0332 3.93945 3.0332H12.0537C12.6826 3.0332 13.0381 3.36133 13.0381 4.02441V12.1182C13.0381 12.7812 12.6826 13.1162 12.0537 13.1162H3.93945ZM7.26855 11.3115C7.51465 11.3115 7.72656 11.1885 7.87012 10.9697L10.9258 6.19141C11.0146 6.04785 11.0967 5.88379 11.0967 5.72656C11.0967 5.3916 10.7959 5.16602 10.4746 5.16602C10.2695 5.16602 10.085 5.27539 9.94141 5.50781L7.24121 9.8418L5.96973 8.22168C5.80566 8.00977 5.6416 7.93457 5.43652 7.93457C5.10156 7.93457 4.8418 8.20117 4.8418 8.54297C4.8418 8.70703 4.90332 8.85742 5.01953 9.00098L6.63281 10.9697C6.81738 11.209 7.01562 11.3115 7.26855 11.3115Z"></path></svg></span>Y12EOYE</th><td><div class="checkbox checkbox-on"></div></td></tr></tbody></table></header><div class="page-body"><ul id="32cf6035-1230-4c9e-a39b-c1b8f8fb0cb8" class="toggle"><li><details open=""><summary>Definitions</summary><h3 id="8ef22a38-02a2-4e5f-a1ae-51cf534bd478" class="">Artificial Intelligence</h3><p id="cc183f33-b7f1-405e-8638-745d55f2aeca" class="">The capability of a machine to perceive its environment and take the appropriate steps to maximise the success of its programmed goals</p><h3 id="cf057b38-ff08-4702-8666-4c0082143949" class="">Internet Censorship</h3><p id="f75efda3-7530-4e52-8d82-3ba44fd0d4fb" class="">The suppression or control of content that can be accessed, view and published on the internet</p><h3 id="f71e86a6-9102-46c6-9778-8b55ee9286c5" class="">Piracy</h3><p id="5b0cbfaa-048e-47fe-98d0-494ea211111b" class="">The illegal access or use of copyrighted work without the permission of the copyright holder.</p></details></li></ul><h2 id="6d614cf5-1f54-46aa-8eed-700d4ae9516a" class="">Ethics</h2><p id="7cb02d42-3ad7-47b0-a210-449ca4012b9b" class="">Ethics are concerned with our <mark class="highlight-orange">values as a community</mark> and how these will impact <mark class="highlight-orange">different groups of people in society</mark>.</p><h2 id="3c1053aa-3737-482f-842e-fd4265c10274" class="">Morals</h2><p id="15bb789a-4e44-4069-b1af-6520b0b72e68" class="">Morals are to do with our<mark class="highlight-orange"> personal code of conduct</mark> and encompass <mark class="highlight-orange">how we choose to behave</mark>, including the decisions we make at the expense of others</p><p id="531507cd-9b6d-43aa-bd74-244dcb7c2607" class="">
+</p><p id="49b1148a-8914-466a-9d26-ccc461824ac9" class="">Need to consider the moral, ethical, environmental, social and cultural implications of modern technological changes</p><p id="191de4db-4494-4b3c-9022-d24ab8453ab9" class=""><strong>Aspects:</strong></p><ul id="cac9a083-7b7e-4c43-b7bc-bf7ffa2d4e82" class="bulleted-list"><li style="list-style-type:disc">Computers in workforce</li></ul><ul id="65dc50e9-bc12-419a-93d3-1cfdec9c193b" class="bulleted-list"><li style="list-style-type:disc">Automated decision making</li></ul><ul id="2f42f3b6-eb6c-45a0-9564-01fb1010f9a2" class="bulleted-list"><li style="list-style-type:disc">Artificial intelligence</li></ul><ul id="a81c2162-1324-491b-8837-f5fd33d946b6" class="bulleted-list"><li style="list-style-type:disc">Environmental effects</li></ul><ul id="3892369a-aec7-404e-8f34-2cad2e4fdad6" class="bulleted-list"><li style="list-style-type:disc">Censorship and the Internet</li></ul><ul id="602e01e5-f133-42e4-8af8-1482865c4314" class="bulleted-list"><li style="list-style-type:disc">Monitor behaviours</li></ul><ul id="4156e5b2-b88a-4740-a2d4-516cfd3b16c7" class="bulleted-list"><li style="list-style-type:disc">Analyse personal information</li></ul><ul id="1aafe72a-9650-49fe-a00b-4fa7ab183e3b" class="bulleted-list"><li style="list-style-type:disc">Piracy and offensive communication</li></ul><ul id="e140ebeb-ab8f-4a4e-8eaf-fd432dd0b3ab" class="bulleted-list"><li style="list-style-type:disc">Layout, colour paradigms and character sets</li></ul><p id="d4c05912-4120-44b4-8faa-cb8624ccb48f" class="">
+</p><h2 id="fe452e35-5868-4d59-bf47-25b3cf838a5c" class="">Computer in the Workforce</h2><ul id="5464665a-76e6-46b1-b81f-dc4236b91684" class="toggle"><li><details open=""><summary>Advantages of computer in workforce</summary><ul id="93148f6f-e787-4fb8-a002-9b00ea784e79" class="bulleted-list"><li style="list-style-type:disc">Improve efficiency<ul id="07991fe8-cfa8-4f0f-a09e-b514e65f09d1" class="bulleted-list"><li style="list-style-type:circle">Reduce delivery time</li></ul><ul id="4ca098ca-9321-4758-b547-8a1c2253d063" class="bulleted-list"><li style="list-style-type:circle">Speed up manufacturing process</li></ul></li></ul><ul id="d7a1d57e-339f-4e2c-a78c-c0854a9156d9" class="bulleted-list"><li style="list-style-type:disc">Reduce unit labour cost<ul id="f4dac2c4-c64a-4174-a01a-fa32468c2db3" class="bulleted-list"><li style="list-style-type:circle">Lower product price</li></ul></li></ul><ul id="31734274-79f8-4ae0-a01b-4f2f903a26e3" class="bulleted-list"><li style="list-style-type:disc">Improve customer satisfaction (because of above advantages)</li></ul><ul id="ae8f36a1-496e-4d29-bd5f-91d9d44e40f8" class="bulleted-list"><li style="list-style-type:disc">Reduce strain on workers</li></ul><ul id="0586c1c2-674f-408f-94d8-9ddc8f085826" class="bulleted-list"><li style="list-style-type:disc">Reduce the need to work in repetitive and tedious environment </li></ul></details></li></ul><ul id="f5013216-2ffe-4bb7-98cd-bafd9880983f" class="toggle"><li><details open=""><summary>Disadvantages</summary><ul id="33fc095b-76f6-46f9-bb28-5b7e962c5538" class="bulleted-list"><li style="list-style-type:disc">Reduce job opportunities<ul id="c0f95928-e1c4-41b4-a3d7-3cb58045b770" class="bulleted-list"><li style="list-style-type:circle">Structural unemployment</li></ul><ul id="c0d2abb5-f79b-4a63-8a99-31bd8cc5bd9c" class="bulleted-list"><li style="list-style-type:circle">But will create employment in other sections of the business</li></ul></li></ul><ul id="e33b6992-4385-4c3f-9e60-189f509863a7" class="bulleted-list"><li style="list-style-type:disc">May develop high dependence on them<ul id="b04a8b41-c468-4611-81fb-6aded2a4a8fc" class="bulleted-list"><li style="list-style-type:circle">If computer goes wrong, there will a major loss of output</li></ul></li></ul><p id="13b1d8d6-04bd-44e4-84d7-5f41d6d40c1e" class="">
+</p><ul id="4c9c26f6-f81e-435f-b0f7-bacac8daddd1" class="bulleted-list"><li style="list-style-type:disc">How to resolve?<ul id="a77d4bc3-956b-42b2-8606-f4e29c3bf225" class="bulleted-list"><li style="list-style-type:circle">Provide retraining programmes<ul id="62823e13-b496-4ad1-aa02-9b418f0cba5f" class="bulleted-list"><li style="list-style-type:square">To let people change occupation</li></ul></li></ul></li></ul></details></li></ul><ul id="670f270d-0d93-4507-9b34-e7bcdf21a525" class="toggle"><li><details open=""><summary>Results</summary><ul id="52dc5727-9320-4cf7-8cdd-267969329004" class="bulleted-list"><li style="list-style-type:disc">Middle income shift towards low-income services as their jobs are replaced by computers</li></ul><ul id="5daec3a4-99b5-4ce4-8bb7-d0dbfcbdf745" class="bulleted-list"><li style="list-style-type:disc">Increase demand for people in computing-related occupations</li></ul><ul id="1b400f17-e1a0-4b03-a954-54cd4c7ea5d7" class="bulleted-list"><li style="list-style-type:disc">Services be offered exclusively online<ul id="b0e4a1ea-9e5c-4de2-8fe9-f5bfa2e9baba" class="bulleted-list"><li style="list-style-type:circle">Reduced cost of renting</li></ul></li></ul></details></li></ul><p id="a6f52bd7-413a-4e3e-9ec0-f7cce5eac6db" class="">
+</p><h2 id="2b65b0b6-f6f2-40e7-a057-f760b544b919" class="">Automated Decision Making</h2><ul id="8a2e2a3c-ee53-42da-944a-ae3b31eec836" class="bulleted-list"><li style="list-style-type:disc">What to display on social media feeds of different users<ul id="f191ced9-a0ff-42ba-8a18-61633274fef5" class="bulleted-list"><li style="list-style-type:circle">Based on:<ul id="5bab8e83-6764-49c7-9e99-76e6cf0e395f" class="bulleted-list"><li style="list-style-type:square">users’ interactions</li></ul><ul id="6cadfdf6-4222-4eef-8a33-a3375adc2e78" class="bulleted-list"><li style="list-style-type:square">inferences of their interests</li></ul></li></ul><ul id="b364a46b-c2db-4ea4-a22f-5dd5b9ed11f5" class="bulleted-list"><li style="list-style-type:circle">Solely reinforcing peoples’ interests creates a <mark class="highlight-orange">dangerous bubble</mark> (<mark class="highlight-orange">echo chamber</mark>), leading to closed minded society</li></ul></li></ul><ul id="2128d198-8292-4a95-bdd2-ffbcee3e9bf6" class="bulleted-list"><li style="list-style-type:disc">Access the likelihood of criminals committing another crime</li></ul><ul id="6c7077ec-b1e6-4142-8d6d-0f3a94e9d37f" class="bulleted-list"><li style="list-style-type:disc">Application of mortgages, loans, jobs<ul id="7a3fedfd-a4ac-4aff-8092-1efbbbd06d24" class="bulleted-list"><li style="list-style-type:circle">Determine their sustainability</li></ul></li></ul><ul id="f2d86a19-f3a1-4bba-b8cb-b709719f9439" class="bulleted-list"><li style="list-style-type:disc">Trading in stock market<ul id="71e3f73d-cae1-423b-9c60-b31845b474cb" class="bulleted-list"><li style="list-style-type:circle">Use past trend to model future changes</li></ul></li></ul><ul id="a0895afb-a2a4-4fcc-bb35-3c1e0ed394aa" class="bulleted-list"><li style="list-style-type:disc">Plant automation systems + power distribution system<ul id="4c45f212-4443-4e8d-92d6-eb9ae7002d35" class="bulleted-list"><li style="list-style-type:circle">Can response instantly to changes</li></ul></li></ul><p id="f92e8354-6673-47f6-b391-c31146229dee" class="">
+</p><ul id="7b43bca8-beca-49f9-81f2-f86e15c3fc66" class="bulleted-list"><li style="list-style-type:disc">Need to be test thoroughly<ul id="0839bf29-6179-450c-a90c-85a50e9a2339" class="bulleted-list"><li style="list-style-type:circle">for free of bias</li></ul></li></ul><p id="b0c39d2b-4d98-4083-a272-c61907d41f30" class="">
+</p><ul id="dfa4f7f8-a67c-4f69-a57e-55bcf86f3e4c" class="toggle"><li><details open=""><summary>Effects</summary><ul id="26f36c12-4aac-4861-befe-ddc2e9071d64" class="bulleted-list"><li style="list-style-type:disc">If solely rely on algorithms might result in people treated unfairly</li></ul><ul id="ffd836c3-1c54-48fa-b220-a908d886c152" class="bulleted-list"><li style="list-style-type:disc">Cannot consider contextual factors that human can provide</li></ul><ul id="d3c4c5e3-fb1f-4fc5-b3c9-beb4e6e8d488" class="bulleted-list"><li style="list-style-type:disc">Raise the questions about who should be responsible on the consequence done by the algorithm</li></ul></details></li></ul><ul id="8ab3c31e-4f7b-4f75-ad6a-63887bee0126" class="toggle"><li><details open=""><summary>Advantages</summary><ul id="d7ce9149-e8cf-460d-8a7d-d89dc2954412" class="bulleted-list"><li style="list-style-type:disc">Improve productivity<ul id="d1ca0863-c70b-4fc3-81a2-edf423a139fc" class="bulleted-list"><li style="list-style-type:circle">Don’t need to rest</li></ul></li></ul><ul id="75cb2b62-3aba-4767-9e42-73a46e519243" class="bulleted-list"><li style="list-style-type:disc">More convenient</li></ul><ul id="c66154b8-39af-4379-b5aa-c0ce1b3dd9b8" class="bulleted-list"><li style="list-style-type:disc">Hire worker faster<ul id="46d1cf02-1901-48b6-8bde-ddc196423040" class="bulleted-list"><li style="list-style-type:circle">Filtering candidates before interview stage</li></ul></li></ul><ul id="f76bef91-ec81-4bae-a905-6d17e3483958" class="bulleted-list"><li style="list-style-type:disc">Faster reaction<ul id="3593842b-5d3f-4b77-8941-010fd44a4ef7" class="bulleted-list"><li style="list-style-type:circle">Faster and better immediate decision</li></ul><ul id="68ab1ea1-c1a9-44aa-9a82-6acb94ac3baa" class="bulleted-list"><li style="list-style-type:circle">Self-driving car</li></ul></li></ul></details></li></ul><p id="bcf23d36-e8e0-4ebe-970f-57be8ec07e8a" class="">
+</p><h2 id="32a2a8c1-860f-4076-89f9-bb25a4c44400" class="">Monitor Behavior</h2><ul id="b55d0805-d2db-42b4-b018-aedd93acba17" class="bulleted-list"><li style="list-style-type:disc">Detect crime (security)</li></ul><ul id="b3153714-aa88-4921-bad3-5bcd937b0baf" class="bulleted-list"><li style="list-style-type:disc">Ankle monitor (monitor location)</li></ul></div></article></body></html>

@@ -1,0 +1,686 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Data structures</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-opaquegray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="89137b4d-e8fa-468a-912b-8167fe07b0a7" class="page sans"><header><h1 class="page-title">Data structures</h1></header><div class="page-body"><p id="77a9fec3-a3ec-441a-8f8a-2868e14c7482" class="">class map<div class="indented"><p id="afce4aaa-5763-421a-b72c-a4786dd62662" class="">new(file,image=None, havImg = False)<div class="indented"><p id="78f878b6-2106-4887-8c8f-4445e165007c" class="">coordinates = getCoor(file)</p><p id="a5fafe62-75f8-4782-b96c-18ae97fbf85d" class="">this.platBlocks = emptylist</p><p id="37879efc-f86e-4a27-8a99-c0a474856966" class="">this.Ground</p><p id="cea18c5c-f9d5-4498-9377-0c6fd34cbfa3" class="">for coordinate in coordinates;<div class="indented"><p id="42d0623f-4bfa-481a-a772-0e7610fc2cb0" class="">tempBlock = platformBlock((width,height),coordinate)</p><p id="458e5596-88db-4e77-a51f-e2d20da85778" class="">add tempBlock into platform list</p><p id="49b03b01-a627-43e6-ae7b-1b6bae6163fa" class="">if coordinate[2] == lower limit then<div class="indented"><p id="55a0ddb5-3cce-41d4-aac4-cfc0447f4aac" class="">add tempBlock to this.Ground</p></div></p><p id="3ccd1fa4-55e9-4604-9fbe-d317af0f785c" class="">endif</p></div></p><p id="61c9a500-c100-4f7e-ab11-37ab3c7ddf64" class="">next</p><p id="653e7233-84df-4f79-8a20-3027d0a5b375" class="">if havImg:<div class="indented"><p id="c9f04ad6-6c4d-4ebf-8633-07ca1827194a" class="">resize image to screen size</p><p id="d945182f-a66b-4e57-8110-50537171ebe8" class="">draw image on screen</p></div></p><p id="8ce3bb31-ab06-4582-b723-13f6f34addf6" class="">else:<div class="indented"><p id="0d6cc835-5a49-4741-ac15-ae8288a31f6c" class="">draw background as light blue</p></div></p></div></p><p id="03c44045-e107-4307-86b0-d93e7757cbae" class="">endfunc<div class="indented"><p id="0aae1c21-d963-42c1-bd1e-ebf39946f113" class="">
+</p></div></p><p id="ca8a7e3f-f0a0-4f6a-be14-f8fdcad8f619" class="">Draw()<div class="indented"><p id="24e81891-289d-46ae-b171-e166dc90902c" class="">for block in this.platBlocks<div class="indented"><p id="1b6d43c3-89a3-4478-9637-c0f1f022318c" class="">block.draw()</p></div></p></div></p><p id="f73aa36b-757c-4549-ae81-581ed5e87353" class="">endfunc<div class="indented"><p id="08550a48-96c7-4a89-88ef-b80a4c86405a" class="">
+</p></div></p></div></p><p id="bc4f2521-4243-4f7f-b382-1aea6d39c9f5" class="">function getCoor(file)<div class="indented"><p id="217f6ef3-a092-468f-9c62-f6019fa4fe94" class="">read csv file<div class="indented"><p id="a47b4fb0-1502-4630-bb1c-104fa0386005" class="">coordinate in csv * block size  =  coordinate</p></div></p><p id="fa7e8e8c-2a49-4eb5-9984-1f33d239e983" class="">return list of coordinate</p></div></p><p id="67ac9e9b-6218-43fa-aa1a-af6708e3788f" class="">
+</p><p id="0127c4ae-8dfa-47d0-b103-4053f5886973" class="">class platformBlock()<div class="indented"><p id="4ca59c8a-b2ae-45c0-b30d-b9c23b938b6c" class="">new(size, coordinate)<div class="indented"><p id="cd99ac61-eca2-43b1-9344-311fb57183af" class="">this.size = size</p><p id="68fb0739-45c4-4c5c-8488-3e93fa72dff7" class="">this.x = coordinate[0]</p><p id="bed874a2-587b-441b-be37-066b0b027574" class="">this.y = coordinate[1]</p></div></p><p id="d0672492-66cb-457e-a89d-74cb80d4283b" class="">draw(screen)<div class="indented"><p id="2d51f5f0-073b-4dd5-b89a-b1526c3f1e58" class="">this.draw(screen)</p><p id="f7784893-942b-4ba5-8082-7f7abd28e8a6" class="">
+</p></div></p></div></p><p id="8384e31b-6413-4731-9652-e2b8e5969128" class="">class Channel()<div class="indented"><p id="af89d55f-beea-4684-b65a-3da72c938795" class="">new()<div class="indented"><p id="81b8ad43-abbc-4d85-ab73-bf4826548f3a" class="">Channel = list</p></div></p><p id="af28372b-7487-40eb-baa5-69b7546c3deb" class="">broadcast(event)<div class="indented"><p id="782f346b-c99d-47ea-8768-e234400d90c6" class="">channel.append(event)</p></div></p><p id="e6f2938b-d4a2-4548-9f92-f583b028e076" class="">removeBroacast(event)<div class="indented"><p id="10d783da-cd0a-42ee-bd7b-2ba2e38a5620" class="">channel.remove(find(event))</p></div></p></div></p><p id="4863620d-27bb-4485-9972-316f7088636f" class="">
+</p><p id="d60fb43b-b98d-49fe-9a38-0b8789f772cf" class="">class enemies()</p><p id="58019523-5a4f-4aaf-a33a-d835737a2a01" class=""><div class="indented"><p id="cad32aa2-cf0b-4bf9-ac5b-5db323cbd752" class="">new(file)<div class="indented"><p id="302b98ce-a326-4676-842d-6db96c46ae8d" class="">enemyList = []</p><p id="e8e6992f-a421-4cbc-acd3-834a27fa76df" class="">loaded = []</p><p id="637c57fd-9ad0-4b5a-bf49-0b0b0786a2ef" class="">for x,y,type in file:<div class="indented"><p id="a010b7da-a233-48e9-89f2-2b6e625720d8" class="">enemyList.append((x,y,type))</p></div></p></div></p><p id="455c2727-dff6-434e-a47c-4be8ecc44e9f" class="">
+</p><p id="c00fa934-3831-4865-bbe7-9c6f470e8971" class="">methodCheckLoad(pX): (player X coordinate)<div class="indented"><p id="97ed53e4-d962-4285-b99b-cc9bc4aaf695" class="">for enemy in enemyList:<div class="indented"><p id="9f5f094c-0058-490b-8374-b34a01d84d7f" class="">if enemy[0] to pX = constant:<div class="indented"><p id="e8665d40-2f8a-4cac-976d-a4072f953c91" class="">create class object with enemy[2] //create a class object of their type</p><p id="7506b577-b2fa-475d-aa18-48b2f8417a80" class="">remove enemy in enemyList</p><p id="e4864474-9a33-4f73-94bd-ed09e55d9851" class="">loaded.append(enemy)</p><p id="05b65613-e18c-4bde-9d82-f75aa9850621" class="">
+</p></div></p></div></p></div></p></div></p><p id="ae0de0c9-14ac-4c0e-9681-f6c569e256da" class="">class enemyOne()<div class="indented"><p id="c32dfed6-c83f-4011-a9d5-16deabeeef8d" class="">
+</p><p id="2cd14c47-56e2-4652-bb6e-615fbc84eec3" class="">new(coordinate):<div class="indented"><p id="10fb4404-e2b4-4bfe-992c-69b958923169" class="">this.image = load image</p><p id="a0e43332-3c36-43a9-8d41-7c5572dc4835" class="">this.coordinate = coordinate</p><p id="e87b217c-c2db-4291-8e00-f78639c7c949" class="">this.size = get rect from this.image</p><p id="e66da812-090b-48ce-be1e-30f7c1d4e96f" class="">this.gun = Gun(this)</p><p id="24641e53-2593-49e9-9c3e-bf1765b1da7f" class="">
+</p></div></p></div></p><p id="b2cdbf7b-c31d-41f0-b9ec-bdfd057f6964" class="">class Player()<div class="indented"><p id="dcfa733d-ae8f-4f07-bdf8-6796dcf0f88a" class="">
+</p><p id="5b0d7d5e-4f65-4779-a6a2-5e4d0e6d3a6a" class="">new(name, x, y, health, gun, ):<div class="indented"><p id="7e9f94db-9744-4d55-aa34-e26c32a0963c" class="">this.name = name</p><p id="84c4c624-473a-483c-a88f-3a750366e161" class="">this.x = x</p><p id="33e0ec92-2014-49b1-ba74-36b2c8ba77fb" class="">this.y = y</p><p id="4c3d7703-3892-4bae-a190-6b534bf00187" class="">this.health = health</p><p id="2aa30f2d-917e-4b04-8f46-bc665623fa0f" class="">this.gun = Gun()</p></div></p></div></p><p id="f6c312cc-49d9-4de6-80cd-87b9ff15d7ee" class="">
+</p><p id="f484b768-dc65-4341-b341-c6f96d9f9ffd" class="">class Gun</p><p id="032cad82-7678-4e7b-97cb-d30505d78bec" class=""><div class="indented"><p id="74b05f71-130e-4f8d-8cda-453da254b6f3" class="">new(gunHolder, user=False):<div class="indented"><p id="62b8b981-f78f-4d12-b1ef-fb0da18c3b98" class="">this.gunHolder = gunHolder</p><p id="dd6802e3-fcfe-4a5d-8b4c-18f529830ad5" class="">this.playerGun = user</p><p id="f81e7a99-26fe-45a3-a6cf-a5406aa290af" class="">if user:<div class="indented"><p id="62da465d-14f7-443a-b075-c529d51a8193" class="">this.period = 15 //frame per bullet</p></div></p><p id="a14f9679-c4da-4541-afd0-2d20432afe4b" class="">else:<div class="indented"><p id="97bfdc51-d6f3-4d43-b305-de8dbc2e28ab" class="">this.period = 60 // frame per bullet</p></div></p><p id="9023bf01-cce4-4cab-9bbb-62f7cd01621d" class="">this.coordinate = gunHolder central coordinate</p><p id="b1e1f561-9ed6-4091-b395-90586db685b3" class="">this.size = size //predetermine size</p><p id="b32bb064-ec83-42db-84d1-afe31ea750f3" class="">this.shootingCoordinate = // get the coordinate where bullet will produce by the coordinate and size. Set the gun as innitially pointing horizontal to the left</p><p id="2b418bbc-b6da-4274-87b0-7ec5a8f3f135" class="">this.bulletTime = -1</p><p id="bcf6555d-848e-42d8-b49a-cdae787bca05" class="">
+</p></div></p><p id="bcb9685f-a00b-41aa-8c1b-6dbda458cce0" class="">update(player)<div class="indented"><p id="7d113387-8bc2-482f-a3bd-ff9894f7a0d2" class="">if playerGun:<div class="indented"><p id="a23e28f8-65eb-452c-9377-02a11dacc8d8" class="">x, y = get mouse position</p><p id="3d760483-cf92-4001-b08d-e1ce2701f57c" class="">point gun toward x,y //update gun coordinate and gun ending coordinate</p></div></p><p id="894544e3-3a79-4deb-a664-b90ca8db649d" class="">else:<div class="indented"><p id="c60ddce4-7a66-4ae9-b325-88a3e458d177" class="">x, y = get player position</p><p id="ef03d497-2fec-4441-b35e-01de153b9fc1" class="">point gun toward x,y // update gun coordinate and gun ending coodinate</p></div></p><p id="39c296ce-fb5f-46a0-86aa-e2e64bb3bb45" class="">if player.produceBullet:<div class="indented"><p id="d2f8e019-e6d6-49f2-b1c3-ebcbf87f957f" class="">this.bulletTime = get time from parent game object</p><p id="7b6cba7e-7f9d-4819-a7a7-ad290146c89b" class="">
+</p><p id="ca1848b2-2f36-4c47-847b-f56881cb2b73" class="">
+</p></div></p></div></p><p id="740db8c1-d0a4-4436-84cd-39781beda1da" class="">shoot(player):<div class="indented"><p id="a3c8791b-1d44-4a26-9834-73f256ff863b" class="">get unit vector between this.coordinate this.shootingCoordinate</p><p id="6e6e7300-b089-4ffa-8014-0c57bc30093c" class="">
+</p><p id="f4092d0b-3ba2-4364-9e1e-d16d525af432" class=""><div class="indented"><p id="a7b56abd-c8ef-4687-a78f-a4e3b0fedc22" class="">
+</p></div></p></div></p></div></p><p id="06b003ea-ba46-4790-8b33-7b2b8d8ddc86" class="">
+</p></div></article></body></html>

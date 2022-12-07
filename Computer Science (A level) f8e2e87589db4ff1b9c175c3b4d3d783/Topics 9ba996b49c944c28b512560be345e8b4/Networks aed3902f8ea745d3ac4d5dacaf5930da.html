@@ -1,0 +1,676 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Networks</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-opaquegray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="aed3902f-8ea7-45d3-ac4d-5dacaf5930da" class="page sans"><header><h1 class="page-title">Networks</h1><table class="properties"><tbody><tr class="property-row property-row-multi_select"><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesMultipleSelect"><path d="M1.91602 4.83789C2.44238 4.83789 2.87305 4.40723 2.87305 3.87402C2.87305 3.34766 2.44238 2.91699 1.91602 2.91699C1.38281 2.91699 0.952148 3.34766 0.952148 3.87402C0.952148 4.40723 1.38281 4.83789 1.91602 4.83789ZM5.1084 4.52344H14.3984C14.7607 4.52344 15.0479 4.23633 15.0479 3.87402C15.0479 3.51172 14.7607 3.22461 14.3984 3.22461H5.1084C4.74609 3.22461 4.45898 3.51172 4.45898 3.87402C4.45898 4.23633 4.74609 4.52344 5.1084 4.52344ZM1.91602 9.03516C2.44238 9.03516 2.87305 8.60449 2.87305 8.07129C2.87305 7.54492 2.44238 7.11426 1.91602 7.11426C1.38281 7.11426 0.952148 7.54492 0.952148 8.07129C0.952148 8.60449 1.38281 9.03516 1.91602 9.03516ZM5.1084 8.7207H14.3984C14.7607 8.7207 15.0479 8.43359 15.0479 8.07129C15.0479 7.70898 14.7607 7.42188 14.3984 7.42188H5.1084C4.74609 7.42188 4.45898 7.70898 4.45898 8.07129C4.45898 8.43359 4.74609 8.7207 5.1084 8.7207ZM1.91602 13.2324C2.44238 13.2324 2.87305 12.8018 2.87305 12.2686C2.87305 11.7422 2.44238 11.3115 1.91602 11.3115C1.38281 11.3115 0.952148 11.7422 0.952148 12.2686C0.952148 12.8018 1.38281 13.2324 1.91602 13.2324ZM5.1084 12.918H14.3984C14.7607 12.918 15.0479 12.6309 15.0479 12.2686C15.0479 11.9062 14.7607 11.6191 14.3984 11.6191H5.1084C4.74609 11.6191 4.45898 11.9062 4.45898 12.2686C4.45898 12.6309 4.74609 12.918 5.1084 12.918Z"></path></svg></span>Tags</th><td><span class="selected-value select-value-color-pink">5 Networks</span></td></tr><tr class="property-row property-row-select"><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesSelect"><path d="M8 15.126C11.8623 15.126 15.0615 11.9336 15.0615 8.06445C15.0615 4.20215 11.8623 1.00293 7.99316 1.00293C4.13086 1.00293 0.938477 4.20215 0.938477 8.06445C0.938477 11.9336 4.1377 15.126 8 15.126ZM8 13.7383C4.85547 13.7383 2.33301 11.209 2.33301 8.06445C2.33301 4.91992 4.84863 2.39746 7.99316 2.39746C11.1377 2.39746 13.6738 4.91992 13.6738 8.06445C13.6738 11.209 11.1445 13.7383 8 13.7383ZM7.62402 10.6348C7.79492 10.915 8.20508 10.9287 8.37598 10.6348L10.666 6.73145C10.8574 6.41016 10.7002 6.04102 10.3652 6.04102H5.62793C5.29297 6.04102 5.14941 6.43066 5.32031 6.73145L7.62402 10.6348Z"></path></svg></span>Difficulty</th><td><span class="selected-value select-value-color-default">⭐️⭐️⭐️⭐️</span></td></tr><tr class="property-row property-row-checkbox"><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesCheckbox"><path d="M3.85742 14.4561H12.1357C13.6123 14.4561 14.3779 13.6904 14.3779 12.2344V3.91504C14.3779 2.45215 13.6123 1.69336 12.1357 1.69336H3.85742C2.38086 1.69336 1.61523 2.45215 1.61523 3.91504V12.2344C1.61523 13.6973 2.38086 14.4561 3.85742 14.4561ZM3.93945 13.1162C3.30371 13.1162 2.95508 12.7812 2.95508 12.1182V4.02441C2.95508 3.36133 3.30371 3.0332 3.93945 3.0332H12.0537C12.6826 3.0332 13.0381 3.36133 13.0381 4.02441V12.1182C13.0381 12.7812 12.6826 13.1162 12.0537 13.1162H3.93945ZM7.26855 11.3115C7.51465 11.3115 7.72656 11.1885 7.87012 10.9697L10.9258 6.19141C11.0146 6.04785 11.0967 5.88379 11.0967 5.72656C11.0967 5.3916 10.7959 5.16602 10.4746 5.16602C10.2695 5.16602 10.085 5.27539 9.94141 5.50781L7.24121 9.8418L5.96973 8.22168C5.80566 8.00977 5.6416 7.93457 5.43652 7.93457C5.10156 7.93457 4.8418 8.20117 4.8418 8.54297C4.8418 8.70703 4.90332 8.85742 5.01953 9.00098L6.63281 10.9697C6.81738 11.209 7.01562 11.3115 7.26855 11.3115Z"></path></svg></span>Finished Notes</th><td><div class="checkbox checkbox-on"></div></td></tr><tr class="property-row property-row-checkbox"><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesCheckbox"><path d="M3.85742 14.4561H12.1357C13.6123 14.4561 14.3779 13.6904 14.3779 12.2344V3.91504C14.3779 2.45215 13.6123 1.69336 12.1357 1.69336H3.85742C2.38086 1.69336 1.61523 2.45215 1.61523 3.91504V12.2344C1.61523 13.6973 2.38086 14.4561 3.85742 14.4561ZM3.93945 13.1162C3.30371 13.1162 2.95508 12.7812 2.95508 12.1182V4.02441C2.95508 3.36133 3.30371 3.0332 3.93945 3.0332H12.0537C12.6826 3.0332 13.0381 3.36133 13.0381 4.02441V12.1182C13.0381 12.7812 12.6826 13.1162 12.0537 13.1162H3.93945ZM7.26855 11.3115C7.51465 11.3115 7.72656 11.1885 7.87012 10.9697L10.9258 6.19141C11.0146 6.04785 11.0967 5.88379 11.0967 5.72656C11.0967 5.3916 10.7959 5.16602 10.4746 5.16602C10.2695 5.16602 10.085 5.27539 9.94141 5.50781L7.24121 9.8418L5.96973 8.22168C5.80566 8.00977 5.6416 7.93457 5.43652 7.93457C5.10156 7.93457 4.8418 8.20117 4.8418 8.54297C4.8418 8.70703 4.90332 8.85742 5.01953 9.00098L6.63281 10.9697C6.81738 11.209 7.01562 11.3115 7.26855 11.3115Z"></path></svg></span>Progress</th><td><div class="checkbox checkbox-off"></div></td></tr><tr class="property-row property-row-checkbox"><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesCheckbox"><path d="M3.85742 14.4561H12.1357C13.6123 14.4561 14.3779 13.6904 14.3779 12.2344V3.91504C14.3779 2.45215 13.6123 1.69336 12.1357 1.69336H3.85742C2.38086 1.69336 1.61523 2.45215 1.61523 3.91504V12.2344C1.61523 13.6973 2.38086 14.4561 3.85742 14.4561ZM3.93945 13.1162C3.30371 13.1162 2.95508 12.7812 2.95508 12.1182V4.02441C2.95508 3.36133 3.30371 3.0332 3.93945 3.0332H12.0537C12.6826 3.0332 13.0381 3.36133 13.0381 4.02441V12.1182C13.0381 12.7812 12.6826 13.1162 12.0537 13.1162H3.93945ZM7.26855 11.3115C7.51465 11.3115 7.72656 11.1885 7.87012 10.9697L10.9258 6.19141C11.0146 6.04785 11.0967 5.88379 11.0967 5.72656C11.0967 5.3916 10.7959 5.16602 10.4746 5.16602C10.2695 5.16602 10.085 5.27539 9.94141 5.50781L7.24121 9.8418L5.96973 8.22168C5.80566 8.00977 5.6416 7.93457 5.43652 7.93457C5.10156 7.93457 4.8418 8.20117 4.8418 8.54297C4.8418 8.70703 4.90332 8.85742 5.01953 9.00098L6.63281 10.9697C6.81738 11.209 7.01562 11.3115 7.26855 11.3115Z"></path></svg></span>Y12EOYE</th><td><div class="checkbox checkbox-off"></div></td></tr></tbody></table></header><div class="page-body"><ul id="c8de552c-1acc-429d-a3fd-8c866d838c2a" class="toggle"><li><details open=""><summary>table of content</summary><nav id="33b2c0bc-e32f-4b35-a897-d5b235014672" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#3d572924-072e-4721-a92f-1dd8e4a022e6">Characteristics</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#bb725913-6127-4bfd-a4df-fcabeb2d0c0e">Topologies</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#3a3d55a4-4ff2-44d0-851d-db3bf0ffc69d">Bus Topology (Bus network)</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#1b27f36a-61b7-40e3-af25-b03020ca1912">Star Topology (Star Network)</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#23251f37-7cde-4192-8b1b-8071fc1e3e0a">Mesh Topology (Mesh Network)</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#660a894f-891a-464d-b0a1-e63fbc058466">Protocols</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#157109ab-b7ba-40b6-8415-7dd91498d9e1">The structure of the internet</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#f2c9206a-86a8-49da-9bf9-7a18bc59b0c4">Internet</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#fa1c4acb-c4e7-4070-9b80-3b7e602ceb33">TCP/IP Stack and protocol layering</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#04d295e3-5a9f-4af1-a018-2035df19f20e">Application layer</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#490c5ec4-0787-4e50-8ba6-2a6c335e1351">Transport layer</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#6c4c9815-9d47-4004-9c84-011ddc50542f">Network layer</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#3789b096-4d08-4e9b-921d-99d8abde8a29">Link layer</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#9490d9f6-1816-4cbc-b37f-d2881422519f">MAC address vs IP address</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#9dc8b763-2502-4d28-ad06-c34c6650b4c1">DNS (Domain Name System)</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#2638d2ae-5ed9-41cf-9fc2-880c02e8fce1">Structure</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#67e42a54-2162-491e-904c-62de0f18e4c0">URL (Uniform Resource Locator)</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#5a37eafb-7851-4bf0-9810-a5aba0732a49">Network Communication</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#bb4c109a-e1e9-4b3b-a836-69eed2853a9d">Data packets</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#629d9cc2-2ec4-4cca-8b16-f483ee9e0bfc">Circuit Switching and Packet Switching</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#e3a44243-9b8f-486d-a72d-b6c936cba10e">Packet Switching</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#9f0c5d18-686c-4359-8a8c-e03fba68f29e">Circuit Switching</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#8ef2c192-09e4-4a32-b602-55860709ba1d">Network Hardware</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#eed17fb6-aeab-414a-a2f7-562deaf3a517">Network Interface Cards (NIC)</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#a10f6b08-91ce-40c9-9352-273b184069f7">Switch</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#83b94d23-5eff-43b4-b0a1-46258b538e89">Wireless Access Point (WAP)</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#52731191-b41c-455a-8d19-447d815e78b3">Router</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#8517fc4f-fa71-4463-8f0e-552274490c82">Gateway</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#14d2271c-19ff-4d8b-b615-979b3bf8856b">Bridge</a></div></nav></details></li></ul><h2 id="3d572924-072e-4721-a92f-1dd8e4a022e6" class="">Characteristics</h2><p id="318880d0-bc3b-4770-a63b-6bfb4825d58b" class="">It is two or more computer connected together with the ability to transmit data between each other</p><ul id="b750cfbe-d71a-4808-bf80-2ab014d30cab" class="bulleted-list"><li style="list-style-type:disc">Types<h3 id="02668d94-ecdd-4a58-8879-386000760184" class="">Local Area Networks (LANs)</h3><ul id="a82e2663-6091-4679-8dc7-9c07809fdf7d" class="bulleted-list"><li style="list-style-type:circle">A group of computers connected (network) which is spread over a small geographical area or a single site</li></ul><ul id="85ce8563-727f-4110-b385-5c62910254a7" class="bulleted-list"><li style="list-style-type:circle">A LAN uses connections owned by organisation</li></ul><ul id="69614442-b3e6-4b4c-89a7-acb0605aed1c" class="bulleted-list"><li style="list-style-type:circle">More secure than WAN</li></ul><ul id="a2f46e84-6db3-417b-b66f-af34be09e0ca" class="bulleted-list"><li style="list-style-type:circle">Advantages (over standalone computers)<ul id="3d825628-fc56-40a8-ae3e-108839dee4fb" class="bulleted-list"><li style="list-style-type:square">Easier to maintain files and software</li></ul><ul id="bbef9d97-4c1c-42ff-a314-8ef8316ba6de" class="bulleted-list"><li style="list-style-type:square">Sharing of peripheral devices</li></ul><ul id="151f7c58-58b7-43b5-8857-8654f7783c43" class="bulleted-list"><li style="list-style-type:square">Monitoring of workers</li></ul><ul id="b7341e77-bffe-4d96-afee-f3e6389e7fd9" class="bulleted-list"><li style="list-style-type:square">Communication between machines</li></ul></li></ul><h3 id="691fd929-1676-495e-b17d-4843cc356ce8" class="">Wide Area Networks (WANs)</h3><ul id="c228e7dd-05c8-4d9a-ae22-7859c4c83710" class="bulleted-list"><li style="list-style-type:circle">A network which is spread over a large geographical area</li></ul><ul id="66d2ba30-8419-4569-887a-83669657bc33" class="bulleted-list"><li style="list-style-type:circle">A WAN often uses third party connection</li></ul><ul id="acf10422-6e7a-416a-a81b-da8108482f58" class="bulleted-list"><li style="list-style-type:circle">Less secure than LAN</li></ul></li></ul><ul id="587e8b36-633f-4224-aeba-9d14a2a329c9" class="bulleted-list"><li style="list-style-type:disc">Connect WAN to LAN<ul id="170a9cc3-0b17-406b-b123-d34700bdc2ff" class="bulleted-list"><li style="list-style-type:circle">A router, connect networks</li></ul></li></ul><h2 id="bb725913-6127-4bfd-a4df-fcabeb2d0c0e" class="">Topologies</h2><ul id="aa6a2c6d-fdc1-4f86-a894-a8a384298577" class="bulleted-list"><li style="list-style-type:disc">Physical topologies<ul id="67b942ff-2ea2-4f7c-bb38-b0f6f494f67b" class="bulleted-list"><li style="list-style-type:circle">The physical layout of the wires and components which form the network</li></ul><ul id="817903bb-f245-46a9-a257-114df7749ee5" class="bulleted-list"><li style="list-style-type:circle">Bus, star, mesh</li></ul></li></ul><ul id="55c731a3-3389-407e-80c9-047f3abb1bbd" class="bulleted-list"><li style="list-style-type:disc">Logical topologies<ul id="bc8399ab-f0b8-4f65-8730-042d59849009" class="bulleted-list"><li style="list-style-type:circle">The layout show how data flows</li></ul></li></ul><h3 id="3a3d55a4-4ff2-44d0-851d-db3bf0ffc69d" class="">Bus Topology (Bus network)</h3><p id="90b5a18a-2327-4f56-ba9d-2d50581e4bb3" class="">All devices are connected to a <mark class="highlight-orange">backbone </mark>cable, the ends of which are plugged into a terminator or a computer</p><ul id="274c2d23-bf0e-4cda-a2e3-b7c7c3bc3224" class="bulleted-list"><li style="list-style-type:disc">Data is sent one at a time</li></ul><ul id="e39d68ac-f367-4384-9ea0-0bcbe39a3cb3" class="bulleted-list"><li style="list-style-type:disc">One directional only</li></ul><ul id="a55e0476-ec65-4386-a1cb-c0ed4ae65533" class="bulleted-list"><li style="list-style-type:disc">Data collision<ul id="6ad5d85a-9912-49ae-8dab-16b538228ca2" class="bulleted-list"><li style="list-style-type:circle">More than one data is sent in the wire at the same time</li></ul></li></ul><ul id="cd4b89fa-35d3-487a-af77-747122c93b5a" class="bulleted-list"><li style="list-style-type:disc">Advantages<ul id="ff939391-ef5a-4c62-86a6-35bd3ac651e7" class="bulleted-list"><li style="list-style-type:circle">Relatively inexpensive to setup</li></ul><ul id="cb66c055-8cab-45fa-9366-231d06bda46b" class="bulleted-list"><li style="list-style-type:circle">Doesn’t require additional hardware</li></ul><ul id="08718ce2-fd4f-4850-96c2-648acfc163cd" class="bulleted-list"><li style="list-style-type:circle">Device can easily be added</li></ul></li></ul><ul id="0af788a2-32b8-422c-8e1a-82b54eb0e55e" class="bulleted-list"><li style="list-style-type:disc">Disadvantages<ul id="8c6b9b8c-6818-4174-b447-7f761719e622" class="bulleted-list"><li style="list-style-type:circle">Backbone is the point of failure (If it fails, the entire network fails)</li></ul><ul id="7917b8cb-da08-4aa4-8ca9-92dde8bbec46" class="bulleted-list"><li style="list-style-type:circle">As traffic increases, performance decreases (because of data collision)</li></ul><ul id="ce234cc0-0bee-49ce-92b2-788787049001" class="bulleted-list"><li style="list-style-type:circle">All computer can see the data transmission (Data is sent to every computer in the network)</li></ul></li></ul><h3 id="1b27f36a-61b7-40e3-af25-b03020ca1912" class="">Star Topology (Star Network)</h3><p id="0ae1722f-68c3-4b43-be03-4e815083dd1f" class="">All devices are connected to a central node, often a switch.</p><ul id="a0e94419-e915-471b-90c9-12eba4b02f5b" class="bulleted-list"><li style="list-style-type:disc">Media Access Control (MAC) addresses are used to identify each devices on the network</li></ul><ul id="f271942b-ff8b-4c54-8ba7-fb14800bbf13" class="bulleted-list"><li style="list-style-type:disc">The message is only sent to the computer it is specify for</li></ul><ul id="d5d97051-171b-417d-895b-d77fa6d6e3ec" class="bulleted-list"><li style="list-style-type:disc">Advantages<ul id="48c02344-0618-43f4-a90b-c9c152ea0f62" class="bulleted-list"><li style="list-style-type:circle">Performance is consistent even under heavy network traffic<ul id="6cd91919-1e9f-4920-aa52-66ec8b18f469" class="bulleted-list"><li style="list-style-type:square">No data collision</li></ul></li></ul><ul id="ad67d782-3504-4a9d-94fc-8cae40f74fed" class="bulleted-list"><li style="list-style-type:circle">If a cable fails, only that single device connection is affected</li></ul><ul id="33e48a6c-8aed-47a2-b250-a4d1c94661d0" class="bulleted-list"><li style="list-style-type:circle">Transmit data faster</li></ul><ul id="0f066f78-6150-4f3f-9717-f7c246ea4061" class="bulleted-list"><li style="list-style-type:circle">(Easy to add new device)</li></ul></li></ul><ul id="b205bb36-25a7-42d4-9227-06ca21a81b9a" class="bulleted-list"><li style="list-style-type:disc">Disadvantages<ul id="887849b8-c117-430c-88d2-12829912230f" class="bulleted-list"><li style="list-style-type:circle">Expensive due to the switch </li></ul><ul id="1cab611a-4c87-49be-b105-cb3aa43965fe" class="bulleted-list"><li style="list-style-type:circle">The central node is the point of failure (if the central node fail, the rest of the network fails)</li></ul></li></ul><h3 id="23251f37-7cde-4192-8b1b-8071fc1e3e0a" class="">Mesh Topology (Mesh Network)</h3><p id="d6613e61-9f75-44ff-b054-002cbc06e7c8" class="">All devices are connected to all other devices</p><ul id="4405eafa-bb7c-4854-a511-ea94cf56e4e5" class="bulleted-list"><li style="list-style-type:disc">Commonly use is wireless networks</li></ul><ul id="81f5f4f5-5435-4bb5-81e3-cecca0710939" class="bulleted-list"><li style="list-style-type:disc">Advantages<ul id="34242c00-745d-4f17-92ff-6471c024c919" class="bulleted-list"><li style="list-style-type:circle">As the number of devices increase, the reliability and speed increase</li></ul><ul id="97a6f42d-fc9d-4ce0-a465-6ed7b038c812" class="bulleted-list"><li style="list-style-type:circle">Nodes are automatically incorporated</li></ul><ul id="ca7010e7-9a29-4ace-b166-8b1c4bbada32" class="bulleted-list"><li style="list-style-type:circle">Node don’t go through central switch (speed increase)</li></ul></li></ul><ul id="e5374314-6f65-49ab-bd85-9260a5b0d815" class="bulleted-list"><li style="list-style-type:disc">Disadvantages<ul id="87720e29-8fbf-4f3c-9058-368c6a435ae7" class="bulleted-list"><li style="list-style-type:circle">If using wired network, large quantity of cable is needed</li></ul><ul id="c3a5bee9-ec92-4da4-8fbd-7e2f2c353559" class="bulleted-list"><li style="list-style-type:circle">Maintaining the network is difficult</li></ul></li></ul><ul id="ea579269-36be-4ba8-976f-95129bae28f5" class="toggle"><li><details open=""><summary>Diagram</summary><figure id="1f0545ab-ea46-4df9-bb67-c5367701cd1e" class="image"><a href="Networks%20aed3902f8ea745d3ac4d5dacaf5930da/Untitled.png"><img style="width:288px" src="Networks%20aed3902f8ea745d3ac4d5dacaf5930da/Untitled.png"/></a></figure></details></li></ul><h2 id="660a894f-891a-464d-b0a1-e63fbc058466" class="">Protocols</h2><p id="11620c23-53a8-4400-93e2-834fbb777438" class="">It is a set of <mark class="highlight-orange">rules </mark>defining how two computer <mark class="highlight-orange">communicate </mark>with each other / to govern data transmission.</p><ul id="75363d9d-ca2b-4920-b263-bfb90ab8efe5" class="toggle"><li><details open=""><summary>Uses:</summary><ul id="ca9df199-53ad-4864-85fb-a5f0a9517e04" class="bulleted-list"><li style="list-style-type:disc">Allowing computers to communicate</li></ul><ul id="e4d7db89-7781-40d3-b1a2-49aabcbfa4be" class="bulleted-list"><li style="list-style-type:disc">Ensure all device follow the same rule</li></ul><ul id="49d642cb-33c6-4c14-bfec-2c7f80d3664c" class="bulleted-list"><li style="list-style-type:disc">All device interpret the signal in the same way</li></ul></details></li></ul><p id="2b4d9d7f-e6fe-4766-9724-2d22de784732" class="">
+</p><ul id="07e55575-b831-449f-929d-63540d15ce32" class="toggle"><li><details open=""><summary>HTTP (Hypertext Transfer Protocol)</summary><ul id="787076cd-ac91-4634-a607-6823c461218e" class="bulleted-list"><li style="list-style-type:disc">Used for webpage rendering </li></ul><ul id="5249d540-b5d0-485c-affb-e800d1464162" class="bulleted-list"><li style="list-style-type:disc">HTTPS (Hypertext Transfer Protocol Secure)</li></ul></details></li></ul><ul id="200f5241-56b6-4dc4-ba9e-3845f22371bc" class="toggle"><li><details open=""><summary>TCP/IP (Transmission Control Protocol / Internet Protocol)</summary><ul id="18d59942-2303-4f4d-9b12-209844efd49a" class="bulleted-list"><li style="list-style-type:disc">Used in routing of packages through the network</li></ul></details></li></ul><ul id="ee7138ed-7ba9-437d-b4bc-01873c46d690" class="toggle"><li><details open=""><summary>IP address (Internet Protocol)t</summary><ul id="5aa21d20-f7de-449d-acb1-5ad60831432d" class="bulleted-list"><li style="list-style-type:disc">Set of four numbers <mark class="highlight-orange">identifying</mark> a resource on a network</li></ul></details></li></ul><ul id="92f76a68-ff84-4604-b890-75d75d604393" class="toggle"><li><details open=""><summary>POP3 (Post Office Protocol) + IMAP (Internet Message Access Protocol)</summary><ul id="e254f1a0-859c-45c6-a49b-00c2824f7c70" class="bulleted-list"><li style="list-style-type:disc">Mailing Protocols, used for email access<ul id="bfb406e4-b3bd-4be2-8b41-70f25f4c07a1" class="bulleted-list"><li style="list-style-type:circle">POP3 — downloads the message from a server to a single computer, the message is <mark class="highlight-orange">deleted </mark>from the server</li></ul><ul id="9d30d647-b397-4ff6-8b12-872e1781c579" class="bulleted-list"><li style="list-style-type:circle">IMAP — <mark class="highlight-orange">Stores </mark>the message on the server, synchronize the message across multiple devices</li></ul></li></ul></details></li></ul><ul id="7b5bfb78-dddd-4100-80b7-380cc6e90e63" class="toggle"><li><details open=""><summary>FTP (File Transfer Protocol)</summary><ul id="0c38450f-4393-4c19-860b-537b3efc86cc" class="bulleted-list"><li style="list-style-type:disc">Use for transmission of files over the network</li></ul></details></li></ul><h1 id="157109ab-b7ba-40b6-8415-7dd91498d9e1" class="">The structure of the internet</h1><h3 id="f2c9206a-86a8-49da-9bf9-7a18bc59b0c4" class="">Internet</h3><p id="4f0222b6-83b5-43c5-b380-28eb88146576" class="">It is a network of networks.</p><p id="b2a38d70-3afc-4720-b577-94c141831379" class="">A public <mark class="highlight-orange">interconnection </mark>of<mark class="highlight-orange"> computer networks</mark> allow data to be send globally to any connected device</p><p id="07fbc9a7-7d50-4971-8208-2f35220eb3b5" class="">Continents are connected to each other using large
+<mark class="highlight-orange">international backbone cables</mark>.</p><h2 id="fa1c4acb-c4e7-4070-9b80-3b7e602ceb33" class="">TCP/IP Stack and protocol layering</h2><p id="d99858d3-c8ae-455c-98a3-027df0ff6cab" class="">A stack of networking protocols that work together passing packets during communication </p><h3 id="04d295e3-5a9f-4af1-a018-2035df19f20e" class="">Application layer</h3><ul id="60cb4b7b-0637-4934-8fbf-43d5f5a2eafd" class="bulleted-list"><li style="list-style-type:disc">Top of the stack</li></ul><ul id="d0a75d64-e5be-4a17-8b92-1da796cc85aa" class="block-color-orange bulleted-list"><li style="list-style-type:disc">Specify what protocol is needed to be used in order to relate the application that is being sent</li></ul><ul id="fab12d36-7eef-4e77-bbc5-a442485b98a9" class="bulleted-list"><li style="list-style-type:disc">Specify what application the receiver should use</li></ul><ul id="0ebbc7dc-da06-482f-8af9-0a35557a2807" class="bulleted-list"><li style="list-style-type:disc">Example<ul id="c53beb8e-0236-421b-9057-7c0404bd129d" class="bulleted-list"><li style="list-style-type:circle">HTTP</li></ul><ul id="0ce1a74c-55d4-4d39-be74-313a8b1d3f9f" class="bulleted-list"><li style="list-style-type:circle">POP3</li></ul><ul id="1f8a3981-f65f-43d0-bc25-d049b5c16104" class="bulleted-list"><li style="list-style-type:circle">FTP</li></ul></li></ul><h3 id="490c5ec4-0787-4e50-8ba6-2a6c335e1351" class="">Transport layer</h3><ul id="5bab76a8-1cf3-43c8-a257-b33b36323107" class="bulleted-list"><li style="list-style-type:disc">Uses TCP to establish an end-to-end connection between the source and recipient computer</li></ul><ul id="a2eec837-1aed-4f7d-ab5a-266bc1c4a1dc" class="bulleted-list"><li style="list-style-type:disc">It splits data up into packets</li></ul><ul id="81a6c1fe-fb0e-4887-ae98-40bcbcb9efec" class="bulleted-list"><li style="list-style-type:disc">Labels with:<ul id="77ecbe8a-057f-41db-912d-f7e45550ba07" class="block-color-orange bulleted-list"><li style="list-style-type:circle">Their packet number</li></ul><ul id="3b45afca-c6e2-4ec4-aca7-644220740698" class="block-color-orange bulleted-list"><li style="list-style-type:circle">total number of packets</li></ul><ul id="197dff36-60a8-4a1a-83ed-6e2723e1d596" class="block-color-orange bulleted-list"><li style="list-style-type:circle">The port number being used for communication</li></ul></li></ul><ul id="ecde172d-c04c-45f3-acd2-9bda6e7c44f8" class="bulleted-list"><li style="list-style-type:disc">If packets is lost, the transport layer requests <mark class="highlight-orange">retransmissions </mark>of these lost packets (check sum to check for errors)</li></ul><h3 id="6c4c9815-9d47-4004-9c84-011ddc50542f" class="">Network layer</h3><ul id="201e8234-6479-4ff8-b25b-97355e5237df" class="bulleted-list"><li style="list-style-type:disc">Add the <mark class="highlight-orange">source </mark>and <mark class="highlight-orange">destination IP address</mark> (The combination of the IP address and port number is <mark class="highlight-orange">socket address</mark>)</li></ul><ul id="90aec4a9-f78b-455b-947e-e97869eb0a73" class="bulleted-list"><li style="list-style-type:disc">Routers operates on the network layer. It uses the IP address to forward the packets</li></ul><ul id="e5d00575-4e53-4d52-a41b-38277a307651" class="bulleted-list"><li style="list-style-type:disc">The sockets are then used to specify which device the packets must be sent to and the application being used on that device</li></ul><h3 id="3789b096-4d08-4e9b-921d-99d8abde8a29" class="">Link layer</h3><ul id="e7c31ca9-d547-4649-8174-b98b8e0d83d7" class="bulleted-list"><li style="list-style-type:disc">It is the connection between the network devices, it adds the MAC address identifying the Network Interface Cards of the source and the destination computer</li></ul><ul id="6180bb16-af88-4002-a7e2-ca1fd44eaec4" class="bulleted-list"><li style="list-style-type:disc">For devices in the same network, it will be the MAC address of the computer, otherwise, it will be the address of the router</li></ul><div id="0d87e430-3f33-48cd-890c-bf179531c0bc" class="column-list"><div id="146aa973-7505-4b86-8a27-726cc325ccf3" style="width:50%" class="column"><p id="b0055e13-e83c-481e-ba52-ed086f2b4cf2" class="">It’s important to realise that this is
+a stack. On the recipient’s computer these layers are looked at from bottom to top. </p><p id="01505c04-93af-4587-b76a-08db7f277cc2" class="">Once the destination has been reached, </p><ol type="1" id="e25aa262-c5ed-4b19-9bc4-00026500e3f0" class="numbered-list" start="1"><li>the <mark class="highlight-orange">MAC address</mark> is removed by the link layer, </li></ol><ol type="1" id="d26922ec-dd5e-4131-9d0b-259bf8e027ae" class="numbered-list" start="2"><li>then the<mark class="highlight-orange"> IP addresses</mark> are removed by the Network Layer, </li></ol><ol type="1" id="3f075737-07ed-4ae5-9327-13bb4fbc3f16" class="numbered-list" start="3"><li>then the transport layers remove the <mark class="highlight-orange">port number </mark>and<mark class="highlight-orange"> reassemble + reorder the packets</mark>. </li></ol><ol type="1" id="f09ae912-82b2-4ed4-8b11-8d7eaa2b0901" class="numbered-list" start="4"><li>Finally, the application layer <mark class="highlight-orange">presents the data</mark> to the recipient in the form it was requested in.</li></ol></div><div id="b18e12f4-af0c-41f8-bb73-039ebeb8218d" style="width:50%" class="column"><figure id="218b912b-35b8-4a7c-ab65-c1f9e907d5f9" class="image"><a href="Networks%20aed3902f8ea745d3ac4d5dacaf5930da/Untitled%201.png"><img style="width:583px" src="Networks%20aed3902f8ea745d3ac4d5dacaf5930da/Untitled%201.png"/></a></figure></div></div><ul id="f8caa82a-921f-4862-90dc-5f8b06d71ac3" class="toggle"><li><details open=""><summary>Example</summary><figure id="97c757b4-5f59-4137-9d20-1337de60bd04" class="image"><a href="Networks%20aed3902f8ea745d3ac4d5dacaf5930da/Untitled%202.png"><img style="width:1072px" src="Networks%20aed3902f8ea745d3ac4d5dacaf5930da/Untitled%202.png"/></a></figure></details></li></ul><h3 id="9490d9f6-1816-4cbc-b37f-d2881422519f" class="">MAC address vs IP address</h3><ul id="f027bf55-e0a3-47c1-957e-4ea9f5538118" class="bulleted-list"><li style="list-style-type:disc">MAC address (Physical address)<ul id="277e6d2c-0b94-40bb-8a21-f8885cb726fa" class="bulleted-list"><li style="list-style-type:circle">A address unique to the device</li></ul><ul id="c4c46560-9d7b-4ca7-a2a5-1c759d122629" class="bulleted-list"><li style="list-style-type:circle">Local identification</li></ul><ul id="6d70dfb5-99fa-4709-b84a-052e6a76ffbf" class="bulleted-list"><li style="list-style-type:circle">Operate within a LAN (Local Area Network)</li></ul><ul id="9a8abe77-4de9-4142-9c59-cf2717cfe49c" class="bulleted-list"><li style="list-style-type:circle">Hardcoded (Cannot be changed)</li></ul></li></ul><ul id="44df2e0e-a43d-4d82-9ec1-ec849ed1c71a" class="bulleted-list"><li style="list-style-type:disc">IP address<ul id="863db755-07bc-4176-a4ea-6ce2e61e36b4" class="bulleted-list"><li style="list-style-type:circle">A logical address</li></ul><ul id="21f5dfa8-90f0-4e79-9d13-ccc65d3ae889" class="bulleted-list"><li style="list-style-type:circle">Global Identification</li></ul><ul id="3a4c4c4b-5566-4548-ac53-93758ba459d2" class="bulleted-list"><li style="list-style-type:circle">Assign through software configuration </li></ul></li></ul><ul id="862605fd-cae9-4239-b8b3-ead2fce6e615" class="toggle"><li><details open=""><summary>Structure of MAC address and IP address</summary><figure id="c9c46e27-e088-4b79-999e-30ac3c4dc6a0" class="image"><a href="Networks%20aed3902f8ea745d3ac4d5dacaf5930da/Untitled%203.png"><img style="width:1190px" src="Networks%20aed3902f8ea745d3ac4d5dacaf5930da/Untitled%203.png"/></a></figure></details></li></ul><p id="d592dd6f-57ee-430b-babb-a9599df800d1" class="">
+</p><h2 id="9dc8b763-2502-4d28-ad06-c34c6650b4c1" class="">DNS (Domain Name System)</h2><p id="ba6b7e11-8585-4fa3-b2ef-41dac8d4a0ae" class="">It is the system used to name and organise internet resources.</p><p id="e415ce1e-8ac7-4366-a371-5561f18066c0" class="">Smaller domain is separated from the larger domain by a full stop</p><ul id="f2c9e3ed-0667-4a5c-9bcd-3ff67756d45c" class="bulleted-list"><li style="list-style-type:disc">Top Level Domain (TLD)</li></ul><ul id="8189899e-e9a4-4a2e-b2de-5b97a0a2c74f" class="bulleted-list"><li style="list-style-type:disc">Second Level Domain (2LD)</li></ul><h3 id="2638d2ae-5ed9-41cf-9fc2-880c02e8fce1" class="">Structure</h3><figure id="3132f905-badf-4532-9a79-e61a3bd94112" class="image"><a href="Structure%20of%20the%20Internet%2016bc32363ad1493eb27110b09cc24bd9/Untitled%202.png"><img style="width:598px" src="Structure%20of%20the%20Internet%2016bc32363ad1493eb27110b09cc24bd9/Untitled%202.png"/></a></figure><p id="36456979-4b5e-4f7b-8f6e-e45ff4f6b60f" class="">
+</p><p id="c053c6b5-25fb-409d-b436-7e9f2156b36f" class="">When the IP address of a given domain is not known, it is referred to a related domain server that may know</p><ul id="90fb68ef-2d0a-401c-9b0f-d6680aee98ef" class="toggle"><li><details open=""><summary>Resolving IP address</summary><figure id="3a4b8864-4f8f-4ea0-b976-5a2f9afb3ff7" class="image"><a href="Structure%20of%20the%20Internet%2016bc32363ad1493eb27110b09cc24bd9/Untitled%203.png"><img style="width:996px" src="Structure%20of%20the%20Internet%2016bc32363ad1493eb27110b09cc24bd9/Untitled%203.png"/></a></figure><ul id="8ef3adfb-6a66-4385-b72c-bef85266b543" class="bulleted-list"><li style="list-style-type:disc">Domain names used instead of IP address to reference a resource on a network</li></ul><ul id="ad56057f-eb61-4ca1-b582-61512cbe76e1" class="bulleted-list"><li style="list-style-type:disc">Local DNS serve contacted for IP address</li></ul><ul id="8f3b516f-38c2-41bc-b15b-bbbdbd49ebca" class="bulleted-list"><li style="list-style-type:disc">If cannot supply one, send a request to another authoritative DNS (root servers)</li></ul></details></li></ul><ul id="b2c2c5ea-8219-473b-994e-d29f284e066a" class="toggle"><li><details open=""><summary> How do local DNS servers know when new top-level domains are added</summary><ul id="2864aad3-8920-4ff8-b18f-5a109c1567f3" class="bulleted-list"><li style="list-style-type:disc">DNS names are hierarchical starting with the root servers</li></ul><ul id="b051e844-a429-4b30-b295-ec3acbdc6727" class="bulleted-list"><li style="list-style-type:disc">These root servers know the location of all top-level domains</li></ul><ul id="2919cfad-81fb-4bf2-bf3b-7adff51c9ca7" class="bulleted-list"><li style="list-style-type:disc">As top level domains are added, the root server are updated</li></ul><ul id="ded91017-93bb-45ed-a78f-fdbb17028c51" class="bulleted-list"><li style="list-style-type:disc">If local DNS server doesn’t have a record of an top-level domain, it contacts a root server, so it can be informed directly about any domain names in existence</li></ul></details></li></ul><h3 id="67e42a54-2162-491e-904c-62de0f18e4c0" class="">URL (Uniform Resource Locator)</h3><p id="238fe239-592a-478b-81d8-c41b3157b0f4" class="">The combination of the <mark class="highlight-orange">protocol </mark>and <mark class="highlight-orange">fully qualified domain name </mark>of a resource</p><p id="cc0463c2-54de-4fd8-b926-d82acecf6a3f" class="">Used to specified the means of accessing a resource across a network and its location</p><ul id="3e3d0b22-fe6c-4c9d-b3ca-99a175eeaefd" class="bulleted-list"><li style="list-style-type:disc">Structure</li></ul><figure id="f3d85288-e2db-49a5-8c52-2ed812e408a0" class="image"><a href="Structure%20of%20the%20Internet%2016bc32363ad1493eb27110b09cc24bd9/Untitled%201.png"><img style="width:780px" src="Structure%20of%20the%20Internet%2016bc32363ad1493eb27110b09cc24bd9/Untitled%201.png"/></a></figure><h1 id="5a37eafb-7851-4bf0-9810-a5aba0732a49" class="">Network Communication</h1><h2 id="bb4c109a-e1e9-4b3b-a836-69eed2853a9d" class="">Data packets</h2><p id="d18056cf-c64a-4fb6-8c02-28e09ef98bdd" class="">Packets are segment of data</p><ul id="57fa4629-9983-4159-b498-6537d75a2e27" class="bulleted-list"><li style="list-style-type:disc">Header<ul id="6ca18a88-4908-4b59-b973-d1645700de85" class="bulleted-list"><li style="list-style-type:circle">Sender and recipient IP address<ul id="7064ca4b-272f-47d0-8c54-f9522c99c561" class="bulleted-list"><li style="list-style-type:square">Allow the packet to be delivered to the correct destination and trace the origin</li></ul></li></ul><ul id="2ca8d21c-fc6c-4e0f-97c5-4ca9dfd9029d" class="bulleted-list"><li style="list-style-type:circle">Protocol being used<ul id="b805a707-5455-482e-a2db-52e85f8de9c9" class="bulleted-list"><li style="list-style-type:square">The protocol allow the recipient computer to know how to interpret the packets</li></ul></li></ul><ul id="02c60012-d88d-423e-8a0d-2dc362c5b655" class="bulleted-list"><li style="list-style-type:circle">Order of the packets + total number of packets<ul id="5c5cb89b-ee59-4efe-a60a-74bf3bac4a0c" class="bulleted-list"><li style="list-style-type:square">Allow the message to be reconstructed in the correct order</li></ul></li></ul><ul id="7e988a9d-cb9c-436d-88ca-6ecf2d5967db" class="bulleted-list"><li style="list-style-type:circle">Time To Live / Hop Limit<ul id="5cda15f9-90d1-4dae-85a6-0f2c262d59e8" class="bulleted-list"><li style="list-style-type:square">Tells the packets when to expire so that it doesn’t not travel forever</li></ul></li></ul></li></ul><ul id="67a08b56-5405-4124-a912-beec33383a26" class="bulleted-list"><li style="list-style-type:disc">Payload<ul id="2e1d92e2-fb0e-41f4-ad94-7113a8256392" class="bulleted-list"><li style="list-style-type:circle">Raw data to be transmitted</li></ul></li></ul><ul id="651b2559-817d-4bb4-9daf-a4a47097b2a3" class="bulleted-list"><li style="list-style-type:disc">Trailer<ul id="491eb983-e814-4794-85c6-6e9619bb1e7c" class="bulleted-list"><li style="list-style-type:circle">Checksum / cyclic redundancy check<ul id="19f9ecdc-ec2b-4df8-98b7-331dec32ae38" class="bulleted-list"><li style="list-style-type:square">The trailer contains a code used to detect whether any errors have occurred during transmission.</li></ul></li></ul><ul id="4c8ce672-df40-4f8a-a277-61ed377c7142" class="bulleted-list"><li style="list-style-type:circle">End of packet flag</li></ul></li></ul><h2 id="629d9cc2-2ec4-4cca-8b16-f483ee9e0bfc" class="">Circuit Switching and Packet Switching</h2><h3 id="e3a44243-9b8f-486d-a72d-b6c936cba10e" class="">Packet Switching</h3><p id="d3f48c2b-eba8-45d1-9243-5b72be3a9361" class="">Data is sent using packets across the network</p><ul id="65b41777-0b74-4b26-b86a-09406976b429" class="bulleted-list"><li style="list-style-type:disc">Packets are sent through the most efficient route individually</li></ul><ol type="1" id="7bef13e7-9836-4829-92b7-4316d5451003" class="numbered-list" start="1"><li>Data is split into equal size packets</li></ol><ol type="1" id="f819f58e-09d9-4974-a08b-59c45a80ba27" class="numbered-list" start="2"><li>Each packet has a header of information<ul id="352b7484-3390-4b38-805f-81f94ddb79b5" class="bulleted-list"><li style="list-style-type:disc">Destination and source addresses and order of the packet in the whole message</li></ul></li></ol><ol type="1" id="dac23b4f-4841-4579-8928-cf1f311a16fc" class="numbered-list" start="3"><li>Each packet is dispatched to the internet through a router or gateway</li></ol><ol type="1" id="3dc9703e-f987-4c1f-9ddd-18ec6e03c20e" class="numbered-list" start="4"><li>Packet are sent independently and may have different path<ul id="b9d89642-5ebc-4bec-9f33-52d0838d19aa" class="bulleted-list"><li style="list-style-type:disc">Router forward packets towards the destination code</li></ul></li></ol><ol type="1" id="88ea2cc6-fcd9-4c6b-9cad-472ad48eaee6" class="numbered-list" start="5"><li>Packets need to be reordered and reassembled at the destination</li></ol><p id="7cb5f0c1-c2ad-48ce-8d93-37b8067b601d" class="">
+</p><ul id="b2fb484c-69c7-4152-a3c7-cb24111d347a" class="bulleted-list"><li style="list-style-type:disc">Advantages<ul id="a1a998f1-05c1-4be5-8f9d-d9b333180b85" class="bulleted-list"><li style="list-style-type:circle">Multiple route can be used between devices, ensure the packet can be sent</li></ul><ul id="761f459a-5030-48cc-8810-c371f057a278" class="bulleted-list"><li style="list-style-type:circle">Faster and more efficient data transfer</li></ul><ul id="6e4a8c25-299b-43f9-afb1-66afce56a8ad" class="bulleted-list"><li style="list-style-type:circle">Safer from interception<ul id="9ec47026-7873-4d47-b62c-e53ea72377df" class="bulleted-list"><li style="list-style-type:square">As the packets uses different route, which makes it hard to intercept all the packets</li></ul></li></ul><ul id="38212ab5-b950-40a2-a166-270db98c449f" class="bulleted-list"><li style="list-style-type:circle">Efficient use of the network as each channel is only used for a short time</li></ul><ul id="b63f8c80-652f-47ef-897a-e21aaddfdd8d" class="bulleted-list"><li style="list-style-type:circle">If there is an error then only a packet is effected, only one packet is needed to retransmitted</li></ul></li></ul><ul id="014433c2-ae1f-418f-83c5-51201cca0e19" class="bulleted-list"><li style="list-style-type:disc">Disadvantages<ul id="0a0967a6-70df-416a-9920-733d92cbfefe" class="bulleted-list"><li style="list-style-type:circle">Time is spent deconstructing and reconstructing the packets</li></ul><ul id="3b56c415-c0ff-4f7f-85cb-0c2d6ba2d0d4" class="bulleted-list"><li style="list-style-type:circle">Must wait for all packets to arrive</li></ul></li></ul><h3 id="9f0c5d18-686c-4359-8a8c-e03fba68f29e" class="">Circuit Switching</h3><p id="a1d58724-20cd-434e-952b-5a5418dc5834" class="">A direct link is created between two devices</p><ul id="eb1de919-f221-47ce-b832-0352177fca68" class="bulleted-list"><li style="list-style-type:disc">The link is maintained for the duration of the entire conversation</li></ul><ul id="8509a6e4-5b3e-4818-bf00-9e32592ad953" class="bulleted-list"><li style="list-style-type:disc">Advantages<ul id="a924f6aa-1a13-4415-8ec5-8875551e90c9" class="bulleted-list"><li style="list-style-type:circle">Data arrive in logical order, which allow faster reconstruction</li></ul><ul id="a3d8bc92-b8d7-49b7-a8f5-b2ce4f88ef17" class="bulleted-list"><li style="list-style-type:circle">Enables two user to hold the conversation without delay</li></ul></li></ul><ul id="86915ab9-53a2-41b2-9f9c-b049f7d1769e" class="bulleted-list"><li style="list-style-type:disc">Disadvantages<ul id="3915fee9-d0af-4534-ac56-846ff92b6904" class="bulleted-list"><li style="list-style-type:circle">Bandwidth is waste during period of time where no message is sent<ul id="deaf126f-d266-4041-a457-8ce7ef185b7e" class="bulleted-list"><li style="list-style-type:square">The section of the network cannot be used by others until the full transmission is completed</li></ul></li></ul><ul id="f7f57461-befa-4d56-bdb3-8edfb78f75b4" class="bulleted-list"><li style="list-style-type:circle">Devices must transfer and receive data at the same rate</li></ul></li></ul><h1 id="8ef2c192-09e4-4a32-b602-55860709ba1d" class="">Network Hardware</h1><h2 id="eed17fb6-aeab-414a-a2f7-562deaf3a517" class="">Network Interface Cards (NIC)</h2><p id="aefc093a-6ba9-4474-930f-344fbe04175c" class="">It is required to connect a device to a network</p><p id="e50ed0a1-023a-4ea2-b72a-ee6326bc59c8" class="">The MAC address is tied to the NIC</p><h2 id="a10f6b08-91ce-40c9-9352-273b184069f7" class="">Switch</h2><p id="10ab88d6-ca45-424e-8ccb-a3217892ed20" class="">It is a device to direct the flow of data across the network.</p><p id="b022f29a-62d4-49e3-9a60-e69e44a386ee" class="">Connect LAN</p><h2 id="83b94d23-5eff-43b4-b0a1-46258b538e89" class="">Wireless Access Point (WAP)</h2><p id="b98c1ec2-531f-4535-93c3-074fcb0716ce" class="">It is a device which allows a device to connect to the network</p><h2 id="52731191-b41c-455a-8d19-447d815e78b3" class="">Router</h2><p id="6133c4e1-e255-4257-babb-d44066d35974" class="">It is used to connect two or more networks together.</p><p id="2f95ae37-dace-4201-93a7-e62c67d71d0c" class="">It forwards packets from one network to another</p><h2 id="8517fc4f-fa71-4463-8f0e-552274490c82" class="">Gateway</h2><p id="65fe6e6a-e40b-4c91-9d0a-c0f54a27749c" class="">Provide linkage between dissimilar networks</p><p id="1bdb46e9-8718-4dc7-b47e-9d443f549017" class="">It is used when the protocol is different between networks. It translate the protocol so that networks can communicate with each other</p><ul id="0d33ac5c-5878-45c4-b9f8-16b2dd5b4858" class="bulleted-list"><li style="list-style-type:disc">It remove the header from packets and reapplied using the new protocol</li></ul><h2 id="14d2271c-19ff-4d8b-b615-979b3bf8856b" class="">Bridge</h2><ul id="d1cc9b9c-38bd-41a5-8045-30578482d5b0" class="bulleted-list"><li style="list-style-type:disc">Provides a link between local area networks</li></ul><p id="031c6194-a0fb-44b1-b734-e55e1af10f62" class="">
+</p></div></article></body></html>

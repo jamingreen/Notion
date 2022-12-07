@@ -1,0 +1,669 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>A level project</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-opaquegray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="d6ce6fdf-9970-49b6-8062-2b3a41225d54" class="page sans"><header><h1 class="page-title">A level project</h1></header><div class="page-body"><figure id="e25f5947-86f9-47d5-87bd-52f35eb6879a" class="link-to-page"><a href="A%20level%20project%20d6ce6fdf997049b680622b3a41225d54/Project%20Analysis%20e25f594786f947d587bd52f35eb6879a.html">Project Analysis</a></figure><figure id="a464a05b-5107-4339-bb0d-b3ff5715b065" class="link-to-page"><a href="A%20level%20project%20d6ce6fdf997049b680622b3a41225d54/Flow%20chart%20a464a05b51074339bb0db3ff5715b065.html">Flow chart</a></figure><figure id="c441d6a7-ec20-4d6a-a65a-49017ad4d054" class="link-to-page"><a href="A%20level%20project%20d6ce6fdf997049b680622b3a41225d54/Requirement%20c441d6a7ec204d6aa65a49017ad4d054.html">Requirement</a></figure><figure id="89137b4d-e8fa-468a-912b-8167fe07b0a7" class="link-to-page"><a href="A%20level%20project%20d6ce6fdf997049b680622b3a41225d54/Data%20structures%2089137b4de8fa468a912b8167fe07b0a7.html">Data structures</a></figure><ol type="1" id="dbe86620-1671-4c3e-a33e-dc4cf9daf0eb" class="numbered-list" start="1"><li>3 map file that contain the information of the maps (tiles, enemies) (cvd)</li></ol><ol type="1" id="c77a780f-190b-41dc-979e-8a7f6e3aba1d" class="numbered-list" start="2"><li>python file that take in map file and generate draw the map (input screen --&gt; draw) (py)</li></ol><ol type="1" id="dae5b8da-6aca-4cd7-a821-653dbbfef086" class="numbered-list" start="3"><li>Generate Boss fight (py)</li></ol><ol type="1" id="9f1838b1-6e0b-41aa-ad36-0c185597122e" class="numbered-list" start="4"><li>File contain player object, enemy, tiles, health</li></ol><h2 id="c7d5c271-7678-4081-8397-7a89023bfd74" class="">Must have</h2><ol type="1" id="d79755e1-3996-4d5e-b487-9eda1f1f29ac" class="numbered-list" start="1"><li>Screen</li></ol><ol type="1" id="e8b8b586-05f0-4fda-adf1-fc6511639ec8" class="numbered-list" start="2"><li>Player object<ol type="a" id="a674d6d0-8e3a-45b4-8e89-1c239dd7228b" class="numbered-list" start="1"><li>Attributes<ol type="i" id="c249f8d2-240f-4164-b323-e01ba1d1912e" class="numbered-list" start="1"><li>Color: red / image</li></ol><ol type="i" id="c51c37b7-ab98-4272-bba0-64379aa0f23f" class="numbered-list" start="2"><li>Size: 100px * 20px</li></ol><ol type="i" id="f61ba22e-24ec-4db3-894a-4e19275cf399" class="numbered-list" start="3"><li>Bullet group</li></ol><ol type="i" id="2f2ae129-5800-476d-91aa-c5ee4916f7eb" class="numbered-list" start="4"><li>health</li></ol><ol type="i" id="01dafb28-dd26-406f-9042-52f787bdc396" class="numbered-list" start="5"><li>facing direction</li></ol></li></ol><ol type="a" id="c8322345-9f77-4f21-94e9-e227e77a7784" class="numbered-list" start="2"><li>Get position</li></ol><ol type="a" id="7c1b4742-82a2-43a9-99c4-9c5e43cc82e3" class="numbered-list" start="3"><li>get health</li></ol><ol type="a" id="1788a6b4-64c3-4a0d-879a-caa711942766" class="numbered-list" start="4"><li>Movement<ol type="i" id="e7d54a15-c729-4b5c-8651-a4aa97ef059b" class="numbered-list" start="1"><li>Always move down if no input</li></ol><ol type="i" id="ba32aff3-cc97-4ce6-9ae2-0d86f2814cf0" class="numbered-list" start="2"><li>Jump</li></ol><ol type="i" id="666e1ece-ab7b-4e2d-b731-7563c3160e38" class="numbered-list" start="3"><li>Move left / right</li></ol></li></ol><ol type="a" id="9afce663-fe9c-45cc-8bd5-f071c68eabc6" class="numbered-list" start="5"><li>Shoot</li></ol><ol type="a" id="9bcb57cf-86de-4cd7-933a-71f734c0965f" class="numbered-list" start="6"><li>draw</li></ol><ol type="a" id="cd5da437-ce2a-4aea-8da9-0d14206e107e" class="numbered-list" start="7"><li>spin</li></ol></li></ol><ol type="1" id="642a1915-8206-4b81-baa0-51731a94b8ff" class="numbered-list" start="3"><li>Bullet object<ol type="a" id="f1800a5d-9174-4a33-a8e2-311177c6a6f1" class="numbered-list" start="1"><li>attribute<ol type="i" id="932e66e8-8d6e-4dae-afe7-f115d0d5371b" class="numbered-list" start="1"><li>Damage</li></ol><ol type="i" id="788eb4b6-dd4a-4db4-a0aa-e749e94547b3" class="numbered-list" start="2"><li>speed</li></ol><ol type="i" id="a7ce116c-fcb4-4263-aa42-bcbf67d20d42" class="numbered-list" start="3"><li>direction</li></ol></li></ol><ol type="a" id="f01ff054-b7f1-4aa1-bfce-787df2015a7b" class="numbered-list" start="2"><li>update</li></ol><ol type="a" id="3a4c8e7b-f983-4a1a-bb1d-73b6efcb9229" class="numbered-list" start="3"><li>remove</li></ol><ol type="a" id="bc506eaf-336e-4928-818f-4f2038ca6163" class="numbered-list" start="4"><li>draw</li></ol></li></ol><ol type="1" id="56f183e5-3929-417d-b800-345bd62d3860" class="numbered-list" start="4"><li>Gun object<ol type="a" id="a4bff4af-8c17-4fca-bb02-9112fd08ede4" class="numbered-list" start="1"><li>attribute<ol type="i" id="11a4e273-9caa-43d9-91fd-c7859506c384" class="numbered-list" start="1"><li>image</li></ol><ol type="i" id="b3d57ce0-7b3a-4539-b567-1fa546b63680" class="numbered-list" start="2"><li>magazine size</li></ol><ol type="i" id="5fd7b139-034e-4ad4-8f44-8719e8544cf8" class="numbered-list" start="3"><li>number of bullet remain</li></ol></li></ol><ol type="a" id="e9dba7a2-bcfc-4495-95e4-23e15ec9c5e9" class="numbered-list" start="2"><li>Rotate</li></ol><ol type="a" id="f99b72a5-5d4b-4559-937e-dc7eec2c924a" class="numbered-list" start="3"><li>move</li></ol><ol type="a" id="ac0a24af-f608-4e56-8943-3260761f6261" class="numbered-list" start="4"><li>shoot</li></ol></li></ol><ol type="1" id="c7deb3ee-db48-4849-bdb3-a163b8e0564c" class="numbered-list" start="5"><li>Enemy object<ol type="a" id="2d69780c-a9e6-44e4-b7cc-7fdd41b5af8a" class="numbered-list" start="1"><li>attribute<ol type="i" id="22949203-d69d-4945-a0c8-3932091bd45c" class="numbered-list" start="1"><li>Movement type (In different kind of child)</li></ol><ol type="i" id="355d536f-6da2-42c3-9c04-1f9263fd8a04" class="numbered-list" start="2"><li>Health</li></ol></li></ol><ol type="a" id="52bef0a9-ec8c-40ee-aebb-90b8bcca1640" class="numbered-list" start="2"><li>Movement routine</li></ol><ol type="a" id="408167f1-6bcf-415d-a5bf-8c7623bba167" class="numbered-list" start="3"><li>shoot routine</li></ol><ol type="a" id="9cde6f05-a776-4547-a4ba-d781854e8332" class="numbered-list" start="4"><li>get health</li></ol><ol type="a" id="85983f96-0448-4838-b027-2f4108e1b508" class="numbered-list" start="5"><li>draw</li></ol></li></ol><ol type="1" id="36cfdf49-c1d9-4917-8915-ce993aace3e6" class="numbered-list" start="6"><li>Boss object (child of enemy object)<ol type="a" id="a3cfea16-a97c-4418-bd13-28e2cd98c2c2" class="numbered-list" start="1"><li>Attribute<ol type="i" id="fcddf4e0-fc01-492a-90b5-d2eb125f20f9" class="numbered-list" start="1"><li>Size</li></ol><ol type="i" id="67e029d9-d40d-49d5-a9bd-ad7baa93bb85" class="numbered-list" start="2"><li>Damage</li></ol><ol type="i" id="cf2d69df-7ff5-4bc3-822f-cf1fb3eb6de8" class="numbered-list" start="3"><li>Health</li></ol></li></ol><ol type="a" id="0a7e51fb-6cf8-4ef5-98bc-50f903486074" class="numbered-list" start="2"><li>Movement routine</li></ol><ol type="a" id="a73395fb-82d4-40e6-8120-3c4fa2082fdc" class="numbered-list" start="3"><li>shoot routine</li></ol><ol type="a" id="68d765c7-ed22-41dc-bcd6-941e3739b571" class="numbered-list" start="4"><li>attack routine</li></ol><ol type="a" id="589a8d61-87b9-4918-834f-798fe6f64910" class="numbered-list" start="5"><li>draw</li></ol></li></ol><ol type="1" id="cb09a3f7-2157-4740-a277-cfc414e6429d" class="numbered-list" start="7"><li>Scoreboard object<ol type="a" id="857f02ed-5422-4aa4-a493-3881b2b101db" class="numbered-list" start="1"><li>attribute<ol type="i" id="a6dac030-7017-4f95-a4fa-4b07703299da" class="numbered-list" start="1"><li>Score</li></ol><ol type="i" id="2f1997e6-e8e1-43be-a7f6-ff7011682de8" class="numbered-list" start="2"><li>time</li></ol><ol type="i" id="4b7ce308-018a-43ef-a2e1-e889962a4b4e" class="numbered-list" start="3"><li>health</li></ol></li></ol><ol type="a" id="f28759b4-9e29-4872-98a0-2eef6f10dba9" class="numbered-list" start="2"><li>draw</li></ol></li></ol><ol type="1" id="29233417-1dc3-47c5-93cc-550dbbee5406" class="numbered-list" start="8"><li>Menu button<ol type="a" id="fde12c84-b50f-42b0-942a-7bd3b1ebe9ab" class="numbered-list" start="1"><li>Quit button<ol type="i" id="796bebbb-3e94-4916-9db4-a6c391175a4b" class="numbered-list" start="1"><li>Allow user to quit to the main screen</li></ol></li></ol><ol type="a" id="0d3e85f6-cf21-4711-9253-e69f2255131a" class="numbered-list" start="2"><li>Resume button<ol type="i" id="bc819c67-68fa-4571-b5bd-5c904d2feccf" class="numbered-list" start="1"><li>Allow user to resume the game</li></ol></li></ol><ol type="a" id="20cf76ad-1c7e-4727-b584-3ffa63e63277" class="numbered-list" start="3"><li>Instruction button<ol type="i" id="95564175-04b1-49fc-a101-7b119043394a" class="numbered-list" start="1"><li>Allow user to read instructions</li></ol></li></ol></li></ol><ol type="1" id="98eeb8e4-8983-4626-9a13-811832753c42" class="numbered-list" start="9"><li>Menu screen<ol type="a" id="1f97e77d-506a-46f8-90aa-ae98decf1df8" class="numbered-list" start="1"><li>Level button object (In the menu screen that allow player to click to start different level of the game)</li></ol><ol type="a" id="4bf53d18-ae28-4a36-999d-c8a064671cd7" class="numbered-list" start="2"><li>setting button<ol type="i" id="a395e90e-a10a-44cb-b099-25838bed4dc6" class="numbered-list" start="1"><li>Quit</li></ol><ol type="i" id="87ef2e73-a7d1-4742-812e-0ab346e4b332" class="numbered-list" start="2"><li>Dashboard</li></ol></li></ol></li></ol><ol type="1" id="e564c22c-962a-46a1-818f-c7d515a728d0" class="numbered-list" start="10"><li>Floor block object<ol type="a" id="419a8ac4-c9f9-4360-96ba-b372415ba228" class="numbered-list" start="1"><li>number and position import from a csv file</li></ol><ol type="a" id="0849fd45-4539-44b0-b394-75525eeae9fb" class="numbered-list" start="2"><li>draw</li></ol></li></ol><ol type="1" id="f4eca02d-99af-478a-b637-c4ed507110a3" class="numbered-list" start="11"><li>Background object<ol type="a" id="fc79f937-19bd-4271-914c-c107473daec1" class="numbered-list" start="1"><li>Change color / image</li></ol></li></ol><ol type="1" id="8da9e89a-c2ff-44cb-890b-a3fd856c09b1" class="numbered-list" start="12"><li>Neutral object<ol type="a" id="7d93141c-451d-4a01-be2b-3054cc334ead" class="numbered-list" start="1"><li>Health block</li></ol></li></ol><h2 id="835af4a9-48ce-4903-a92f-0479e82ebe90" class="">should have</h2><ol type="1" id="389640d1-9fc6-4eb9-a872-5f27f897171d" class="numbered-list" start="13"><li>Dash board object (Using SQL Database)<ol type="a" id="82c5ac3b-c7da-4a34-b48c-c2077939b7b2" class="numbered-list" start="1"><li>score</li></ol><ol type="a" id="2be52b08-559b-4abe-a4c3-3cdc57f581c2" class="numbered-list" start="2"><li>time</li></ol></li></ol><ol type="1" id="73f681d2-bc1d-4e92-a38a-0735f8feb6d6" class="numbered-list" start="14"><li>Quit button </li></ol><ol type="1" id="7c02eff9-9265-4444-89bb-ded55ba799d4" class="numbered-list" start="15"><li>Character choosing</li></ol><h2 id="ab99926f-ace4-4441-a22d-6db118669649" class="">Could have</h2><ol type="1" id="a660c79b-ae40-422e-9eed-18d5bd93d939" class="numbered-list" start="16"><li>Different Character<ol type="a" id="1960b9be-37a0-46fb-a259-941fd4b80d5d" class="numbered-list" start="1"><li>Different health</li></ol><ol type="a" id="5f3a2e5a-8820-4e24-9000-7c5bec9f1dd0" class="numbered-list" start="2"><li>different color / image</li></ol></li></ol><ol type="1" id="9cf3b43a-1b61-4238-9f91-c436001d75da" class="numbered-list" start="17"><li>Different Guns</li></ol><ol type="1" id="ce6b8716-cb57-4c2d-ba52-d02e3fab7c4c" class="numbered-list" start="18"><li>Allow user to choose different hardness on each level</li></ol><ol type="1" id="f4bc748c-2d1e-412a-a3bf-c389d3ba3669" class="numbered-list" start="19"><li>A AI boss for one of the stage</li></ol><ol type="1" id="8078cdf0-7ca2-4893-a740-f889efe1e312" class="numbered-list" start="20"><li>Sound effects</li></ol><ol type="1" id="b6633b41-6399-450f-81ae-7d688a32e9f1" class="numbered-list" start="21"><li>Droid that drop guns randomly</li></ol><h2 id="bf7b0ae1-094b-4b3c-b780-c406a1571fab" class="">Won’t have</h2><ol type="1" id="c4ce7900-ddec-4087-aee5-6ae61954426b" class="numbered-list" start="1"><li></li></ol></div></article></body></html>

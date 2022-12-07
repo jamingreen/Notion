@@ -1,0 +1,698 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Questions (1 Components)</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-opaquegray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="221e0878-137e-4548-a9a1-64adae0888e6" class="page sans"><header><h1 class="page-title">Questions (1 Components)</h1><table class="properties"><tbody><tr class="property-row property-row-multi_select"><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesMultipleSelect"><path d="M1.91602 4.83789C2.44238 4.83789 2.87305 4.40723 2.87305 3.87402C2.87305 3.34766 2.44238 2.91699 1.91602 2.91699C1.38281 2.91699 0.952148 3.34766 0.952148 3.87402C0.952148 4.40723 1.38281 4.83789 1.91602 4.83789ZM5.1084 4.52344H14.3984C14.7607 4.52344 15.0479 4.23633 15.0479 3.87402C15.0479 3.51172 14.7607 3.22461 14.3984 3.22461H5.1084C4.74609 3.22461 4.45898 3.51172 4.45898 3.87402C4.45898 4.23633 4.74609 4.52344 5.1084 4.52344ZM1.91602 9.03516C2.44238 9.03516 2.87305 8.60449 2.87305 8.07129C2.87305 7.54492 2.44238 7.11426 1.91602 7.11426C1.38281 7.11426 0.952148 7.54492 0.952148 8.07129C0.952148 8.60449 1.38281 9.03516 1.91602 9.03516ZM5.1084 8.7207H14.3984C14.7607 8.7207 15.0479 8.43359 15.0479 8.07129C15.0479 7.70898 14.7607 7.42188 14.3984 7.42188H5.1084C4.74609 7.42188 4.45898 7.70898 4.45898 8.07129C4.45898 8.43359 4.74609 8.7207 5.1084 8.7207ZM1.91602 13.2324C2.44238 13.2324 2.87305 12.8018 2.87305 12.2686C2.87305 11.7422 2.44238 11.3115 1.91602 11.3115C1.38281 11.3115 0.952148 11.7422 0.952148 12.2686C0.952148 12.8018 1.38281 13.2324 1.91602 13.2324ZM5.1084 12.918H14.3984C14.7607 12.918 15.0479 12.6309 15.0479 12.2686C15.0479 11.9062 14.7607 11.6191 14.3984 11.6191H5.1084C4.74609 11.6191 4.45898 11.9062 4.45898 12.2686C4.45898 12.6309 4.74609 12.918 5.1084 12.918Z"></path></svg></span>Tags</th><td><span class="selected-value select-value-color-blue">1 Components</span></td></tr><tr class="property-row property-row-select"><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesSelect"><path d="M8 15.126C11.8623 15.126 15.0615 11.9336 15.0615 8.06445C15.0615 4.20215 11.8623 1.00293 7.99316 1.00293C4.13086 1.00293 0.938477 4.20215 0.938477 8.06445C0.938477 11.9336 4.1377 15.126 8 15.126ZM8 13.7383C4.85547 13.7383 2.33301 11.209 2.33301 8.06445C2.33301 4.91992 4.84863 2.39746 7.99316 2.39746C11.1377 2.39746 13.6738 4.91992 13.6738 8.06445C13.6738 11.209 11.1445 13.7383 8 13.7383ZM7.62402 10.6348C7.79492 10.915 8.20508 10.9287 8.37598 10.6348L10.666 6.73145C10.8574 6.41016 10.7002 6.04102 10.3652 6.04102H5.62793C5.29297 6.04102 5.14941 6.43066 5.32031 6.73145L7.62402 10.6348Z"></path></svg></span>Difficulty</th><td></td></tr><tr class="property-row property-row-checkbox"><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesCheckbox"><path d="M3.85742 14.4561H12.1357C13.6123 14.4561 14.3779 13.6904 14.3779 12.2344V3.91504C14.3779 2.45215 13.6123 1.69336 12.1357 1.69336H3.85742C2.38086 1.69336 1.61523 2.45215 1.61523 3.91504V12.2344C1.61523 13.6973 2.38086 14.4561 3.85742 14.4561ZM3.93945 13.1162C3.30371 13.1162 2.95508 12.7812 2.95508 12.1182V4.02441C2.95508 3.36133 3.30371 3.0332 3.93945 3.0332H12.0537C12.6826 3.0332 13.0381 3.36133 13.0381 4.02441V12.1182C13.0381 12.7812 12.6826 13.1162 12.0537 13.1162H3.93945ZM7.26855 11.3115C7.51465 11.3115 7.72656 11.1885 7.87012 10.9697L10.9258 6.19141C11.0146 6.04785 11.0967 5.88379 11.0967 5.72656C11.0967 5.3916 10.7959 5.16602 10.4746 5.16602C10.2695 5.16602 10.085 5.27539 9.94141 5.50781L7.24121 9.8418L5.96973 8.22168C5.80566 8.00977 5.6416 7.93457 5.43652 7.93457C5.10156 7.93457 4.8418 8.20117 4.8418 8.54297C4.8418 8.70703 4.90332 8.85742 5.01953 9.00098L6.63281 10.9697C6.81738 11.209 7.01562 11.3115 7.26855 11.3115Z"></path></svg></span>Finished Notes</th><td><div class="checkbox checkbox-on"></div></td></tr><tr class="property-row property-row-checkbox"><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesCheckbox"><path d="M3.85742 14.4561H12.1357C13.6123 14.4561 14.3779 13.6904 14.3779 12.2344V3.91504C14.3779 2.45215 13.6123 1.69336 12.1357 1.69336H3.85742C2.38086 1.69336 1.61523 2.45215 1.61523 3.91504V12.2344C1.61523 13.6973 2.38086 14.4561 3.85742 14.4561ZM3.93945 13.1162C3.30371 13.1162 2.95508 12.7812 2.95508 12.1182V4.02441C2.95508 3.36133 3.30371 3.0332 3.93945 3.0332H12.0537C12.6826 3.0332 13.0381 3.36133 13.0381 4.02441V12.1182C13.0381 12.7812 12.6826 13.1162 12.0537 13.1162H3.93945ZM7.26855 11.3115C7.51465 11.3115 7.72656 11.1885 7.87012 10.9697L10.9258 6.19141C11.0146 6.04785 11.0967 5.88379 11.0967 5.72656C11.0967 5.3916 10.7959 5.16602 10.4746 5.16602C10.2695 5.16602 10.085 5.27539 9.94141 5.50781L7.24121 9.8418L5.96973 8.22168C5.80566 8.00977 5.6416 7.93457 5.43652 7.93457C5.10156 7.93457 4.8418 8.20117 4.8418 8.54297C4.8418 8.70703 4.90332 8.85742 5.01953 9.00098L6.63281 10.9697C6.81738 11.209 7.01562 11.3115 7.26855 11.3115Z"></path></svg></span>Progress</th><td><div class="checkbox checkbox-off"></div></td></tr><tr class="property-row property-row-checkbox"><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesCheckbox"><path d="M3.85742 14.4561H12.1357C13.6123 14.4561 14.3779 13.6904 14.3779 12.2344V3.91504C14.3779 2.45215 13.6123 1.69336 12.1357 1.69336H3.85742C2.38086 1.69336 1.61523 2.45215 1.61523 3.91504V12.2344C1.61523 13.6973 2.38086 14.4561 3.85742 14.4561ZM3.93945 13.1162C3.30371 13.1162 2.95508 12.7812 2.95508 12.1182V4.02441C2.95508 3.36133 3.30371 3.0332 3.93945 3.0332H12.0537C12.6826 3.0332 13.0381 3.36133 13.0381 4.02441V12.1182C13.0381 12.7812 12.6826 13.1162 12.0537 13.1162H3.93945ZM7.26855 11.3115C7.51465 11.3115 7.72656 11.1885 7.87012 10.9697L10.9258 6.19141C11.0146 6.04785 11.0967 5.88379 11.0967 5.72656C11.0967 5.3916 10.7959 5.16602 10.4746 5.16602C10.2695 5.16602 10.085 5.27539 9.94141 5.50781L7.24121 9.8418L5.96973 8.22168C5.80566 8.00977 5.6416 7.93457 5.43652 7.93457C5.10156 7.93457 4.8418 8.20117 4.8418 8.54297C4.8418 8.70703 4.90332 8.85742 5.01953 9.00098L6.63281 10.9697C6.81738 11.209 7.01562 11.3115 7.26855 11.3115Z"></path></svg></span>Y12EOYE</th><td><div class="checkbox checkbox-on"></div></td></tr></tbody></table></header><div class="page-body"><p id="ce42a5df-0b25-46e8-bea4-ef7319d6e0a5" class="">
+</p><ul id="81484e29-60a3-4ab1-9772-be4c1679f0b1" class="toggle"><li><details open=""><summary>Discuss the different approaches that can be taken to provide increasingly larger amount of <mark class="highlight-orange">computer power </mark>and the types of problem they are suited</summary><ul id="4df4e75d-4810-4bd0-a728-bb429fb8b4f8" class="bulleted-list"><li style="list-style-type:disc">Knowledge<ul id="cb124425-30c9-4bb5-b27a-a22a06cc6786" class="bulleted-list"><li style="list-style-type:circle">Parallel processor (multiple core)<ul id="7ae31110-0034-43e4-aff6-c394d57a717c" class="bulleted-list"><li style="list-style-type:square">Parallel processing</li></ul></li></ul><ul id="933ab158-3923-44fc-b361-07b5a84f8b45" class="bulleted-list"><li style="list-style-type:circle">Co-processors<ul id="304c28d7-13b9-4655-bf48-a01ecbdbc80f" class="bulleted-list"><li style="list-style-type:square">For specific purpose</li></ul><ul id="131c8ec9-2144-402c-862f-596d96e5126e" class="bulleted-list"><li style="list-style-type:square">GPU</li></ul></li></ul><ul id="e6ab80f1-b6a2-40ae-a7f3-17a8440797a0" class="bulleted-list"><li style="list-style-type:circle">Faster clock speed (overclocking)<ul id="e5f64caa-f116-4ad1-8c2a-1d2259ab16a7" class="bulleted-list"><li style="list-style-type:square">More tasks executed per second increase</li></ul></li></ul><ul id="bf495264-35ff-4af0-89ea-f2f994d6bd22" class="bulleted-list"><li style="list-style-type:circle">Increase the cache memory (increase speed)</li></ul><ul id="13840a99-d0e6-4811-8067-489742e4a005" class="bulleted-list"><li style="list-style-type:circle">Problem can be distributed to numbers of computers</li></ul></li></ul><ul id="840a0fae-47d4-4775-ba86-fb7c2158417b" class="bulleted-list"><li style="list-style-type:disc">Application<ul id="e2cb289d-56c5-4cc6-bac8-9da44ba7508a" class="bulleted-list"><li style="list-style-type:circle">Divide problem into smaller problem for parallel processing</li></ul><ul id="38f1b837-8f5b-464f-b3de-7ec275bd0e12" class="bulleted-list"><li style="list-style-type:circle">The division of problem takes time</li></ul><ul id="2439d31c-8bec-4e4b-959b-45eb98f02895" class="bulleted-list"><li style="list-style-type:circle">Having multiple cores can speed up
+smaller problems but this will not be
+enough for larger problems.</li></ul><ul id="c5b7dda5-cf1b-4f29-bd79-1e7385220e4b" class="bulleted-list"><li style="list-style-type:circle">Supercomputers are prohibitively
+exceptionally expensive to buy and run for
+all but large organisations.</li></ul><ul id="4b95e534-c379-4959-abab-9a7df63bd02d" class="bulleted-list"><li style="list-style-type:circle">GPUs are becoming a cost efficient way of
+tackling problems. GPUs tend to have
+large number of cores so can run on highly
+parallelisable problems but only
+where the same instruction is being applied
+to multiple pieces of data (SIMD)</li></ul></li></ul><p id="bc95673d-cf54-4624-a738-6fa960ead8fa" class="">
+</p><ul id="462e3a4c-3de5-4013-a5f8-18804ca21526" class="bulleted-list"><li style="list-style-type:disc">Evaluation<ul id="00ec4e54-d598-4689-9450-5e35a0031488" class="bulleted-list"><li style="list-style-type:circle">Increased clock speed is limited to smaller
+problems. Even doubling the clock speed
+would only halve the time taken.</li></ul><ul id="d11bd5be-f091-4145-8730-b4038266612f" class="bulleted-list"><li style="list-style-type:circle">Parallel processing isn’t suited to all
+problems. Most problems are only partially
+parallelisable. Writing algorithms for
+parallel processing is more challenging
+</li></ul><ul id="f23bbdda-3d02-4da6-9f92-ae3f4ba6a531" class="bulleted-list"><li style="list-style-type:circle">GPUs suited to a subset of science/
+engineering problems where the same
+calculation is repeated on multiple data
+sets.</li></ul></li></ul></details></li></ul><p id="236bf979-f7f1-4dc8-997e-c04e929d2604" class="">
+</p><ul id="7e667d89-a4c8-4414-b5f8-be9b21585971" class="toggle"><li><details open=""><summary>State three different <mark class="highlight-orange">storage devices</mark> that the finance manager would use and describe what each device would be used for.</summary><figure id="44b850f2-e91a-469d-b60e-56edd6ad159e" class="image"><a href="../Long%20Questions%202e30b8c10e6e49ad916f1bd9ddf0c4a9/Untitled.png"><img style="width:926px" src="../Long%20Questions%202e30b8c10e6e49ad916f1bd9ddf0c4a9/Untitled.png"/></a></figure></details></li></ul><p id="58e0c88c-9b77-4aa6-9fdb-359ff58c8d9c" class="">
+</p><ul id="2df74d73-3796-4686-a4e9-d48466ae1cf8" class="toggle"><li><details open=""><summary>Explain with the example how can <mark class="highlight-orange">pipelining </mark>in a<mark class="highlight-orange"> CPU</mark> could speed up the execution of this program</summary><ul id="30f95812-349f-4019-bd86-a48545afa625" class="bulleted-list"><li style="list-style-type:disc">An instruction can be fetched while the previous one is being decoded</li></ul><ul id="64eddf59-0c16-49ea-a975-748a7dbd7304" class="bulleted-list"><li style="list-style-type:disc">and the one before being executed</li></ul><ul id="9f3aa830-b5e9-4803-9b5f-c0d059cd25a8" class="bulleted-list"><li style="list-style-type:disc">Example</li></ul><p id="6999464c-4ae0-41ff-bada-91643b6fa7e6" class="">
+</p></details></li></ul><p id="9b58469e-f8af-414a-9472-d4db8677117d" class="">
+</p><ul id="68ccfbfa-976c-4fce-b145-753ca9063971" class="toggle"><li><details open=""><summary>A student, Dan, on a limited budget finds his computer is running slowly. He uses his computer for university work and internet browsing.
+Discuss what measures can be taken to improve Dan’s computer’s performance. You should explain what these measures are, why they <mark class="highlight-orange">improve the performance</mark> and justify whether you would recommend them.</summary><ul id="8ecdffcf-90d9-40a4-8d7d-82e7d242a7ba" class="bulleted-list"><li style="list-style-type:disc">Knowledge (Methods of improving performance)<ul id="d5423413-358a-4749-bb21-1533f8ecc11a" class="bulleted-list"><li style="list-style-type:circle">Replace CPU with faster CPU</li></ul><ul id="3898d1d9-3117-4e2d-8f75-2e920404ea18" class="bulleted-list"><li style="list-style-type:circle">Add more/Faster RAM</li></ul><ul id="6906306a-fbcd-457f-85c2-edf6c308533e" class="bulleted-list"><li style="list-style-type:circle">Add a graphics card</li></ul><ul id="c95116ce-7251-4c50-b231-b356ddf55073" class="bulleted-list"><li style="list-style-type:circle">Upgrade to faster secondary storage</li></ul><ul id="75e7d556-3266-4b3c-9611-4c0921c8a0cb" class="bulleted-list"><li style="list-style-type:circle">Update OS</li></ul><ul id="7a093d58-e9c9-4d88-95f2-c77a84e10748" class="bulleted-list"><li style="list-style-type:circle">Install a lighter weight OS</li></ul><ul id="b8b84b0f-5ef9-4d1c-9a66-60a83a3f69c0" class="bulleted-list"><li style="list-style-type:circle">Defragment the hard disk</li></ul><ul id="88c6dbb4-d17f-4612-810c-facebcea14a6" class="bulleted-list"><li style="list-style-type:circle">Check for viruses and spyware.</li></ul></li></ul><ul id="d9339b0a-1ecc-433d-815c-eac8a037bc49" class="bulleted-list"><li style="list-style-type:disc">Application<ul id="057a44e5-2206-4696-9f53-527b5836f962" class="bulleted-list"><li style="list-style-type:circle">More RAM means more programs can be open simultaneously without the need to use much slower virtual memory.</li></ul><ul id="2f12b27d-d2dd-4017-8ace-f9519fb595c1" class="bulleted-list"><li style="list-style-type:circle">Adding a graphics card will speed up the rendering of 3D graphics as GPU has specialist instructions and can apply the same instruction to multiple pieces of data simultaneously.</li></ul><ul id="264e747d-608f-46d5-8a7c-e589b6109a01" class="bulleted-list"><li style="list-style-type:circle">The slower the secondary storage the longer it takes to load files/program/data. A faster secondary storage device can improve this. May choose to use flash memory (i.e. SSD)</li></ul><ul id="340be2ac-d77e-45c6-93c1-b070ef4fe59e" class="bulleted-list"><li style="list-style-type:circle">OS makers often release updates and some of these will improve performance.</li></ul><ul id="fdcf90c9-d340-44c0-9314-1d6e8dff293b" class="bulleted-list"><li style="list-style-type:circle">Some lighter weight operating systems use fewer system resources allowing the system to devote more to running the user’s applications.</li></ul><ul id="635c6524-7cbb-44ea-b47a-1e7f7c2a06de" class="bulleted-list"><li style="list-style-type:circle">A fragmented HDD runs slowly as time is spent finding parts of the files. This is reduced by defragmenting and storing the parts of the file contiguously.</li></ul><ul id="e91c0711-5acf-4a3a-974c-e54a17664c61" class="bulleted-list"><li style="list-style-type:circle">Malware can slow down a computer. Removing it will improve performance</li></ul></li></ul><ul id="cc7721ee-c9ac-415a-b52b-7443a2152d14" class="bulleted-list"><li style="list-style-type:disc">Evaluate on the effectiveness and feasibility of using above methods</li></ul></details></li></ul><p id="3a10a108-7273-4dbf-ac67-455de2f9777e" class="">
+</p><ul id="6963edb9-0f75-4bad-8622-b7a22ed96959" class="toggle"><li><details open=""><summary>Discuss the need for <mark class="highlight-orange">concurrent processing</mark> in OCR-Ticket’s system and the benefits and
+drawbacks of using this.</summary><ul id="4d69718f-96d4-438d-89b3-acac3f7e641f" class="bulleted-list"><li style="list-style-type:disc">Knowledge<ul id="51abb825-b61c-4bbe-9a19-87d8e754f81e" class="bulleted-list"><li style="list-style-type:circle">Processes are happening at the same time/at overlapping times</li></ul><ul id="71a92a69-0136-41ab-875b-155df562faf8" class="bulleted-list"><li style="list-style-type:circle">One process may need to start before a second has finished</li></ul><ul id="ce7c41a2-e6d6-4978-9c02-2d601932e55a" class="bulleted-list"><li style="list-style-type:circle">Individual processes are threads, each thread has a life line</li></ul><ul id="b799603f-993a-462e-9918-9d9201387c91" class="bulleted-list"><li style="list-style-type:circle">One request will be sent to the server, this will have a thread</li></ul></li></ul><ul id="b649ae29-5834-487f-9f25-00b69a04b936" class="bulleted-list"><li style="list-style-type:disc">Application<ul id="99d8849d-2a4a-42e8-a6ad-d5744a857b82" class="bulleted-list"><li style="list-style-type:circle">Multiple requests to the server can be made at the same time </li></ul><ul id="834e7d65-c2e1-4d9f-8ac5-9a5eeb0e916e" class="bulleted-list"><li style="list-style-type:circle">Programming on server will need to allow multiple threads to manipulate a list of requests</li></ul><ul id="30d51910-009d-4ca5-a181-31e94913871b" class="bulleted-list"><li style="list-style-type:circle">Programming will need to restrict access to the database of seats/sales etc.</li></ul><ul id="34c62db5-a822-42e7-8f33-35a64966b747" class="bulleted-list"><li style="list-style-type:circle">Will allow those reading and writing to manipulate at the same time</li></ul><ul id="ab38fcfb-c8be-451c-9a1b-8fa453ccf6a0" class="bulleted-list"><li style="list-style-type:circle">Record locking will need implementing – more complex programming</li></ul><ul id="15b312f2-9f1f-4b9c-983d-32f310b4f764" class="bulleted-list"><li style="list-style-type:circle">May be selling alongside other systems, therefore needs to communicate with external systems that will also use record locking to avoid two different external companies accessing and selling the same tickets.</li></ul></li></ul><ul id="123aced6-9b2a-44e6-b859-95763a6c3e6a" class="bulleted-list"><li style="list-style-type:disc">Evaluation<ul id="e26afb93-f642-4369-89b7-e69af082a19d" class="bulleted-list"><li style="list-style-type:circle">Will allow for multiple access to the website at the same time by different customers – as it would happen in real life</li></ul><ul id="0eb353f0-b3ff-4f31-ad4b-0df08f1dee4a" class="bulleted-list"><li style="list-style-type:circle">Will allow for multiple ticket sales for the same event without selling the same seat twice</li></ul></li></ul></details></li></ul><p id="0be5e001-70b3-48df-bd24-52b5cb11ee12" class="">
+</p><ul id="a5e555ec-e616-4782-a678-ab4579f919a8" class="toggle"><li><details open=""><summary>Define multicore processor</summary><ul id="c9ba4c60-cbe6-4ecf-a4ea-26c6ea90fc33" class="bulleted-list"><li style="list-style-type:disc">More than one processing unit in a single processor</li></ul><ul id="470ed978-dcd6-4f03-b273-b4e06d7a5de1" class="bulleted-list"><li style="list-style-type:disc">Which can independently process instruction at the same time</li></ul></details></li></ul><p id="c7d4afe9-824c-4056-b842-8a2af51f3795" class="">
+</p><ul id="33fbf03e-7607-4ff8-abcf-5c22064511b6" class="toggle"><li><details open=""><summary>What does ten DAT 10 do?</summary><ul id="001e11c4-b3c9-4ff0-9d76-343554da562f" class="bulleted-list"><li style="list-style-type:disc">Stores the value 10</li></ul><ul id="9f1f1929-f104-45d7-934c-fb5866abdda0" class="bulleted-list"><li style="list-style-type:disc">In a memory location</li></ul><ul id="2974ca2b-46e0-4b1c-ac0b-2a1a9f0a1907" class="bulleted-list"><li style="list-style-type:disc">With the label ten</li></ul></details></li></ul></div></article></body></html>

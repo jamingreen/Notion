@@ -1,0 +1,759 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>C2 Long Question</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-opaquegray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="c95bef78-1d1c-4b55-a5a8-ce759f79cf04" class="page sans"><header><h1 class="page-title">C2 Long Question</h1></header><div class="page-body"><ul id="21205445-dd8e-4f22-8363-c70db4b6cec2" class="toggle"><li><details open=""><summary>Compare the use of merge sort, quick sort and insertion sort on an array with a small number
+of elements, and on an array with a very large number of elements.
+
+You should make reference to the time complexities of each algorithm using the Big O
+notation in your answer.</summary><ul id="8cc1cd96-9886-4903-8d0e-f5fb95c736a3" class="bulleted-list"><li style="list-style-type:disc">AO1: Knowledge and Understanding<ul id="c4c565ec-052d-4783-ad21-25ef12d03384" class="bulleted-list"><li style="list-style-type:circle">O(1)<ul id="998b0048-4572-4423-a2be-ed1c5492bcda" class="bulleted-list"><li style="list-style-type:square">Constant space, does not change</li></ul></li></ul><ul id="fabbc638-3fbf-4160-ad3b-4b468d2d0f7d" class="bulleted-list"><li style="list-style-type:circle">O(n)<ul id="1552a0f0-18e8-4d5c-b86b-33c143667c41" class="bulleted-list"><li style="list-style-type:square">Linear</li></ul><ul id="5e616503-b9bf-48bb-a273-8d5d15714183" class="bulleted-list"><li style="list-style-type:square">Same as number of elements</li></ul><ul id="a326b176-6d04-4392-96f9-f155e272273b" class="bulleted-list"><li style="list-style-type:square">As number of elements increases so
+does the time/space</li></ul></li></ul><ul id="b3eaf520-59f5-4230-a2f2-7d56f62de835" class="bulleted-list"><li style="list-style-type:circle">O(n2)<ul id="408f9ef0-05f0-48f5-b1f2-85790ae69961" class="bulleted-list"><li style="list-style-type:square">polynomial</li></ul><ul id="00ff94cf-5388-48a5-9d58-514787a9f689" class="bulleted-list"><li style="list-style-type:square">As number of elements increases,
+time/space increases by *n</li></ul></li></ul><ul id="3c316995-aee4-419f-bbc1-e8db5f05753f" class="bulleted-list"><li style="list-style-type:circle">O(n log(n))<ul id="b59f71a5-50ff-4639-ac69-3e830683f8f7" class="bulleted-list"><li style="list-style-type:square">Linearithmic</li></ul></li></ul></li></ul><ul id="fbf6e1d3-bc0c-4ad9-980d-086733657418" class="bulleted-list"><li style="list-style-type:disc">AO2: Application<ul id="0ee19f29-475e-4886-b8e7-973ac302c8c5" class="bulleted-list"><li style="list-style-type:circle">Space: Merge sort will require more
+memory usage as the number of
+elements increases. O(n) Insertion will not
+require any more space than original. O(1)
+Quick will increase but not as much as
+merge. O(logn)</li></ul><ul id="2808c9e7-8a4d-4884-a672-7343cd201a41" class="bulleted-list"><li style="list-style-type:circle">Best time: Insertion increases at the
+same rate as the number of elements. O(n)
+Quick and merge increase at greater
+rate O(nlogn)</li></ul><ul id="1316d9d9-3227-4c90-a5da-c1a7a3a2d952" class="bulleted-list"><li style="list-style-type:circle">Worst time: insertion and quick increase
+significantly by n for each additional
+item. O(n^2) Merge sort increases less per
+element. O(nlogn)</li></ul><ul id="d8783075-d404-4c3e-80f8-b55fe6ebcfeb" class="bulleted-list"><li style="list-style-type:circle">Log more appropriate for large number
+of elements</li></ul></li></ul><ul id="ee67cc25-3970-4906-b7bc-c40f0c15ed0d" class="bulleted-list"><li style="list-style-type:disc">AO3: Evaluation<ul id="9d48b342-94bd-4464-bc64-0147a6eeefc9" class="bulleted-list"><li style="list-style-type:circle">Small array – space is not important.
+Few number of elements. Look for
+consistency.</li></ul><ul id="93208e17-75ae-436c-b5f5-32c277d3d868" class="bulleted-list"><li style="list-style-type:circle">Large array therefore memory important
+– could remove merge as inappropriate.
+Logarithmic more efficient.</li></ul></li></ul></details></li></ul><p id="4130ba3f-7d8f-45c1-839b-539713753363" class="">
+</p><ul id="e97e18fd-3b22-4d9e-9c1a-5a3b651a2c41" class="toggle"><li><details open=""><summary>Compare the performance of Dijkstra’s algorithm and A* search algorithm, making reference to heuristics, to find the shortest path to the problem</summary><ul id="68e2ec5e-5553-4451-9f3a-526e80b58a92" class="bulleted-list"><li style="list-style-type:disc">Knowledge<ul id="965b53e5-3ff6-4461-8cc0-d5f1f552f9ef" class="bulleted-list"><li style="list-style-type:circle"><mark class="highlight-orange">Heuristics </mark>helps produce a solution in a <mark class="highlight-orange">faster </mark>time</li></ul><ul id="fe5a0b2e-6a2c-4d44-a301-da66b1330857" class="bulleted-list"><li style="list-style-type:circle">A* uses estimated distance from the final node</li></ul><ul id="ad03fa94-938e-491c-835a-25b34e51cd0e" class="bulleted-list"><li style="list-style-type:circle">A* choose base on the sum of <mark class="highlight-orange">estimated distance</mark> and <mark class="highlight-orange">distance from start to that node</mark></li></ul><ul id="c80c4c9e-5a84-4d23-ba2c-58850df26ee6" class="bulleted-list"><li style="list-style-type:circle">Dijkstra’s uses weight distance to that node</li></ul><ul id="305beea1-28bc-4efd-a20f-eb62420e3e54" class="bulleted-list"><li style="list-style-type:circle">Dijkstra’s choose base on what is <mark class="highlight-orange">shortest node from the start</mark></li></ul></li></ul><ul id="76278310-27a3-4fb2-91a2-b0f05668ac98" class="bulleted-list"><li style="list-style-type:disc">Application<ul id="06b196b0-b021-4005-9703-1480bd534dd5" class="bulleted-list"><li style="list-style-type:circle">Description of how A* will differ from Dijkstra, <mark class="highlight-orange">e.g</mark>.
+taking the shorter route A-B-E-I before exploring
+nodes from D and E</li></ul><ul id="c78de1c7-aa52-44e7-9e53-e6b6c19d8bdc" class="bulleted-list"><li style="list-style-type:circle">Description of the <mark class="highlight-orange">different number of comparisons</mark>
+that would be needed in this problem</li></ul><ul id="27adbe5b-3182-44ce-9ba4-93a09392d148" class="bulleted-list"><li style="list-style-type:circle">A* <mark class="highlight-orange">doesn’t </mark>need to find <mark class="highlight-orange">all possible solutions</mark> (saves
+time)</li></ul><ul id="7c70612d-6514-441e-a793-6bc58231c8f4" class="bulleted-list"><li style="list-style-type:circle">Dijkstra’s always find shortest path while A* doesn’t</li></ul></li></ul><ul id="b94e24b0-334a-4916-982e-991eecbcba3e" class="bulleted-list"><li style="list-style-type:disc">Evaluation<ul id="d33d93f8-70ea-467f-95e9-b479fba50893" class="bulleted-list"><li style="list-style-type:circle">Small-scale problem</li></ul><ul id="0d333f66-5732-4e2e-825b-1b88c41b2682" class="bulleted-list"><li style="list-style-type:circle"><mark class="highlight-orange">Quick to find a solution</mark> using either method</li></ul><ul id="dfd74511-b174-43d0-8408-58d6f0bc40b6" class="bulleted-list"><li style="list-style-type:circle">Difference in <mark class="highlight-orange">programming complexity </mark>is minimal</li></ul><ul id="49c89ad3-fe17-4edd-89be-b1c9ddbbc0c3" class="bulleted-list"><li style="list-style-type:circle">Don’t know if this problem needs to scale</li></ul><ul id="7ea15809-f461-4d71-bb54-35b11ab7d237" class="bulleted-list"><li style="list-style-type:circle">Most <mark class="highlight-orange">efficient </mark>route needed → Dijkstra’s</li></ul></li></ul></details></li></ul><p id="b2f65258-3154-45ef-968f-a80714c43c07" class="">
+</p><ul id="706aa864-f4bb-4931-97a2-de266d945153" class="toggle"><li><details open=""><summary>Parameters can be used to reduce the use of global variables
+Compare the use of parameters to global variables in recursive functions</summary><ul id="9f932a46-c3c2-4c19-9caf-45b84d2ceb35" class="bulleted-list"><li style="list-style-type:disc">AO1: Knowledge and Understanding<ul id="4cdd06ea-5a52-4de6-acf2-437c320c1d83" class="bulleted-list"><li style="list-style-type:circle"><mark class="highlight-orange">Parameter </mark>allows a value to be sent to a subprogram</li></ul><ul id="88144619-b362-4957-9b4f-3c7f9fa2ef09" class="bulleted-list"><li style="list-style-type:circle"><mark class="highlight-orange">Global variables</mark> can be accessed throughout the
+scope of the program</li></ul><ul id="fdd6bb1e-a4cb-45ca-aed7-97d55ca6c319" class="bulleted-list"><li style="list-style-type:circle"><mark class="highlight-orange">Local variables</mark> can only be accessed within the
+scope of the sub-program it&#x27;s defined within – a
+parameter becomes a local variable in the function</li></ul></li></ul><ul id="5e161878-a8e0-4cff-a83a-88a396ea9797" class="bulleted-list"><li style="list-style-type:disc">AO2: Application<ul id="87130c7d-d031-445b-9b45-82969132ab8d" class="bulleted-list"><li style="list-style-type:circle">If <mark class="highlight-orange">global</mark>, equivalent of by reference — value would be
+<mark class="highlight-orange">over-ridden</mark></li></ul><ul id="eab2bc09-6161-4573-bd44-f6e0700a7912" class="bulleted-list"><li style="list-style-type:circle">Global variable <mark class="highlight-orange">takes more memory</mark> than a local
+variable/parameter</li></ul><ul id="574897f5-efb7-426d-b448-ebefd1582458" class="bulleted-list"><li style="list-style-type:circle">In recursion, each call<mark class="highlight-orange"> produces a new local
+variable</mark> for num1</li></ul></li></ul><ul id="8af247e7-328e-47a4-b339-15dfbb50ad6f" class="bulleted-list"><li style="list-style-type:disc">AO3: Evaluation<ul id="c9082543-662d-461e-b24f-c6885f4b7f7b" class="bulleted-list"><li style="list-style-type:circle">Global would require altering the algorithm as the
+<mark class="highlight-orange">value would be over-ridden on each call</mark></li></ul><ul id="38bc3d68-c04a-4e7e-903b-60b66b8e0f16" class="bulleted-list"><li style="list-style-type:circle">Global would mean that <mark class="highlight-orange">memory space is kept</mark>
+throughout the running of the program, not just the
+sub-program</li></ul><ul id="75081b0f-18b7-419d-846f-e4e19bfe6a05" class="bulleted-list"><li style="list-style-type:circle">Parameter <mark class="highlight-orange">enables memory to be reallocated</mark></li></ul><ul id="c1ed3f3b-4de0-430b-82e4-7f31e8032fae" class="bulleted-list"><li style="list-style-type:circle"><mark class="highlight-orange">Many more memory spaces needed for parameter </mark>in recursion 1 for each call</li></ul></li></ul><p id="57df42a7-4431-47ca-83f6-3e656789f414" class="">
+</p><p id="5f48d8c1-67da-4436-998f-1b0226a3d9d1" class="">
+</p></details></li></ul><p id="9d94f57a-8aeb-4217-b16d-b59c951558ec" class="">
+</p><p id="70da08cb-c02f-4c8f-9db0-d2fccf90a996" class="">
+</p><ul id="1703913b-1de0-4781-b857-768c3a74b453" class="toggle"><li><details open=""><summary>Kamran wants to expand the program to allow it to handle up to 100,000,000 items and to
+allow him to search for data about items. Kamran is worried that the increase in the number
+of items will cause a decrease in the performance of the program. He decides to investigate
+the benefits of caching and concurrent processing.
+
+Evaluate the use of caching and concurrent processing in this scenario and make a
+recommendation to Kamran.</summary><ul id="f5ce3f3f-ad00-4aeb-9faf-023f8202f563" class="bulleted-list"><li style="list-style-type:disc">AO1: Knowledge and Understanding<ul id="4f42914e-99d9-4913-8e16-6799b1c42469" class="bulleted-list"><li style="list-style-type:circle">Caching<ul id="b060ce93-169d-492f-b432-63a36f4ed290" class="bulleted-list"><li style="list-style-type:square"><mark class="highlight-orange">Previously used data</mark> is stored in a location</li></ul><ul id="8eed161d-4f39-419e-a4c3-74532ef2fd45" class="bulleted-list"><li style="list-style-type:square">that can be <mark class="highlight-orange">quickly accessed</mark></li></ul><ul id="81f6d0dd-14df-44d3-8eaa-3d6ab8d59ded" class="bulleted-list"><li style="list-style-type:square">to <mark class="highlight-orange">speed up retrieval</mark> if needed in future</li></ul></li></ul><ul id="696d1f47-8c10-410c-8cd0-aeca9d47247b" class="bulleted-list"><li style="list-style-type:circle">Concurrent Processing<ul id="a9d82329-e95d-4b8a-b7a6-c1466629f5f8" class="bulleted-list"><li style="list-style-type:square"><mark class="highlight-orange">several processes</mark> work <mark class="highlight-orange">simultaneously</mark> to solve a
+problem</li></ul></li></ul></li></ul><ul id="ebfd7315-ff1f-4295-b829-da3a36e40819" class="bulleted-list"><li style="list-style-type:disc">AO2: Application<ul id="e665c0d4-b255-4d52-86d0-febb278439af" class="bulleted-list"><li style="list-style-type:circle">Caching<ul id="06693fc4-55d6-45b7-97c6-c8884bbe441e" class="bulleted-list"><li style="list-style-type:square">search for <mark class="highlight-orange">previously searched</mark> for data items in a
+<mark class="highlight-orange">faster </mark>secondary storage device/RAM</li></ul><ul id="bf60d045-a023-4a00-b1a8-8ee609663a8b" class="bulleted-list"><li style="list-style-type:square"><mark class="highlight-orange">Speed up access</mark> for that item</li></ul><ul id="1bc11757-1f8a-4301-ba41-10eed3c230a7" class="bulleted-list"><li style="list-style-type:square"><mark class="highlight-orange">Relies on same item being searched for multiple
+times</mark></li></ul><ul id="89777ec7-e772-45df-84a2-3ab2b5264dbb" class="bulleted-list"><li style="list-style-type:square">Kamran needs to decide how <mark class="highlight-orange">feasible </mark>this is
+based on <mark class="highlight-orange">the number of item</mark></li></ul></li></ul><ul id="4749af8a-e83c-4462-bb85-4a6f064e5aa8" class="bulleted-list"><li style="list-style-type:circle">Concurrent<ul id="a718fbaf-fd71-47ed-92e2-1e39dc49cfbc" class="bulleted-list"><li style="list-style-type:square">Computer would have <mark class="highlight-orange">multiple processors</mark></li></ul><ul id="d69b8af2-227f-4970-9b98-d01a912cb30b" class="bulleted-list"><li style="list-style-type:square">Each searching <mark class="highlight-orange">part of the data</mark> structure at one
+time</li></ul><ul id="d834a6c1-8587-4a8f-83b2-f3b7c4fe5c6f" class="bulleted-list"><li style="list-style-type:square">This would be limited by bottlenecks such as
+accessing the storage device</li></ul><ul id="7688d522-531d-4df9-b5c8-ecc55efe0bee" class="bulleted-list"><li style="list-style-type:square">The n processors could potentially mean an
+increase of up to<mark class="highlight-orange"> 1/n</mark> of time…realistically speed
+increase is likely to be less than that</li></ul><ul id="44ff54d0-8f80-462c-9c12-3383e45d5f8e" class="bulleted-list"><li style="list-style-type:square">Only useful if using<mark class="highlight-orange"> linear search </mark>as binary search
+cannot be performed concurrently</li></ul></li></ul><ul id="0de57d63-7385-4225-82ec-d05940a797c3" class="bulleted-list"><li style="list-style-type:circle">AO3: Evaluation<ul id="ff01aaa4-1f52-479b-ba12-0bdb3406a942" class="bulleted-list"><li style="list-style-type:square">Candidates will need to evaluate the benefits and
+drawbacks of caching and concurrent processing
+Allow any point of view (caching / concurrent / both) as
+long as argument is presented suitably.</li></ul></li></ul></li></ul></details></li></ul><p id="e6550169-a18d-41cf-957e-329794a108bc" class="">
+</p><ul id="0523ca30-bcdf-4412-9010-c28747be18c2" class="toggle"><li><details open=""><summary>Discuss the benefits of using IDE rather than a text editor</summary><ul id="3691cffc-0e73-42d3-acd0-a61cdec1b45d" class="bulleted-list"><li style="list-style-type:disc">Knowledge<ul id="6bc092c1-fbcf-4cfe-803f-ff4bf44c10ea" class="bulleted-list"><li style="list-style-type:circle">IDE<ul id="b7410a5b-27fe-49a6-809d-f4a3107b7394" class="bulleted-list"><li style="list-style-type:square">It is a software that includes an editor, compiler and a debugger that used to develop program</li></ul></li></ul><ul id="ab7a8c64-f5fe-49a7-be2d-b731273c0ea1" class="bulleted-list"><li style="list-style-type:circle">Benefits<ul id="f188a0b4-052f-492c-b10d-a977427745b6" class="bulleted-list"><li style="list-style-type:square">It can auto correction and completion of keywords</li></ul><ul id="96c474ec-6be7-455d-aa4e-05709aab4e03" class="bulleted-list"><li style="list-style-type:square">Debug<ul id="e2540957-2790-4828-9930-eeaacf1d9da9" class="bulleted-list"><li style="list-style-type:disc">Break point</li></ul><ul id="c898f3ee-62f8-4925-acce-5f0bd7f041b3" class="bulleted-list"><li style="list-style-type:disc">Stepping through</li></ul><ul id="5af7aa86-f636-41d1-aacd-24483cb64018" class="bulleted-list"><li style="list-style-type:disc">Variable window</li></ul></li></ul></li></ul></li></ul><ul id="85c3a2d4-d799-401e-a897-8a39d09e091c" class="bulleted-list"><li style="list-style-type:disc">Application<ul id="ac84382f-a4e3-489a-922d-5575ac0c5853" class="bulleted-list"><li style="list-style-type:circle">Show syntax error with underline</li></ul><ul id="564e6c72-9977-45e8-b90a-8fba713c7b22" class="bulleted-list"><li style="list-style-type:circle">Allow to run code</li></ul><ul id="3ef7e1c7-0913-4276-a16b-294d016c3dbc" class="bulleted-list"><li style="list-style-type:circle">Correct keywords</li></ul><ul id="2c0986fe-544f-4f22-95f6-2ce67365e760" class="bulleted-list"><li style="list-style-type:circle">Debug<ul id="19f31297-5750-4de2-b854-6348de38be26" class="bulleted-list"><li style="list-style-type:square">Trace program by stepping through</li></ul></li></ul></li></ul><ul id="270201f4-9915-4682-93a6-568455b7ce8a" class="bulleted-list"><li style="list-style-type:disc">Evaluation<ul id="2382b0aa-998f-458b-8df0-ba5cdd2b96eb" class="bulleted-list"><li style="list-style-type:circle">Reduce typing error</li></ul><ul id="910a76ad-4b6b-4018-841f-8cc8e2b1fdcb" class="bulleted-list"><li style="list-style-type:circle">Quicker to code with auto-filling and autocompletion</li></ul><ul id="810ab564-004a-4940-9541-849a2605dbb3" class="bulleted-list"><li style="list-style-type:circle">Write and test in one environment so more convenient</li></ul></li></ul></details></li></ul><p id="8e5c2195-04c3-43a7-bd7d-03ae658850bc" class="">
+</p><ul id="2c832732-8347-493c-be40-8006fec3a10b" class="toggle"><li><details open=""><summary>Juan passed the two arrays as parameters, but he did consider making them globally
+accessible.
+Compare the use of global and local variables and data structures in this program. Include
+the use of parameters and program efficiency in your answer.</summary><ul id="8806e38a-e473-474a-8ead-810a585192e5" class="bulleted-list"><li style="list-style-type:disc">AO1: Knowledge and Understanding<ul id="7605955b-323d-49d2-ac40-0a898917eda9" class="bulleted-list"><li style="list-style-type:circle">Local variables:<ul id="f0ac7ce9-95b9-4b37-95a5-69e21cd385eb" class="bulleted-list"><li style="list-style-type:square"><mark class="highlight-orange">Scope </mark>within the module defined
+within</li></ul><ul id="c36bc123-c031-4145-9964-88b592446f76" class="bulleted-list"><li style="list-style-type:square"><mark class="highlight-orange">Cannot access externally </mark>unless
+passed as parameter, or returned
+from function</li></ul><ul id="9440eef2-4bd4-4f9e-bf57-63c8fc3c31d0" class="bulleted-list"><li style="list-style-type:square"><mark class="highlight-orange">When module is exited, memory of
+variable is freed</mark></li></ul></li></ul><ul id="a8cc816e-f228-46fc-9448-b3c4b7ccbd12" class="bulleted-list"><li style="list-style-type:circle">Global variables:<ul id="d36a4aee-de41-445c-8360-bc9285ed0227" class="bulleted-list"><li style="list-style-type:square"><mark class="highlight-orange">Scope </mark>within the entire program</li></ul><ul id="67aa6924-2ffd-42ca-aa8c-b649b500c7d9" class="bulleted-list"><li style="list-style-type:square"><mark class="highlight-orange">Can access from anywhere</mark></li></ul><ul id="7244ea60-8f02-4138-be14-8251474e9281" class="bulleted-list"><li style="list-style-type:square"><mark class="highlight-orange">Retained in memory permanently</mark></li></ul><ul id="ef6b34a0-4e7f-4ef0-8819-e4b3b8212b6b" class="bulleted-list"><li style="list-style-type:square">So program will make a local copy of the global variable when you use it in a subroutine</li></ul></li></ul><ul id="e0a06127-ecef-4262-8573-31acbc72506f" class="bulleted-list"><li style="list-style-type:circle"><mark class="highlight-orange">ByRef </mark>Points to location of variable
+<mark class="highlight-orange">ByVal </mark>Sends the value</li></ul></li></ul><ul id="1cc9cd07-ca15-4c53-9381-de3b03758d94" class="bulleted-list"><li style="list-style-type:disc">AO2: Application<ul id="c791e213-65d5-4cac-86bb-70dc2805000e" class="bulleted-list"><li style="list-style-type:circle">If global, the arrays <mark class="highlight-orange">can be accessed
+from all modules by direct reference</mark></li></ul><ul id="34086fdb-4549-45ec-8b03-e4023140f647" class="bulleted-list"><li style="list-style-type:circle">If local to the main, the arrays will
+need to be <mark class="highlight-orange">passed as parameters
+byreference</mark></li></ul><ul id="93aa95c7-bc0b-45da-ab2f-436bbed47a9d" class="bulleted-list"><li style="list-style-type:circle">Can send ByVal – but not always
+possible with arrays in some
+languages</li></ul><ul id="5aca1203-8a68-47a5-8174-e12d64837167" class="bulleted-list"><li style="list-style-type:circle">Modules are <mark class="highlight-orange">self contained</mark> and then
+can be reused in other programs he
+wants to create <mark class="highlight-orange">without needing to
+take the global variables</mark> with them</li></ul></li></ul><ul id="91c6131b-9d22-471d-a7f7-17394aa9d30e" class="bulleted-list"><li style="list-style-type:disc">AO3: Evaluation<ul id="0dfac75c-064f-4ca5-95a3-4671f94f4741" class="bulleted-list"><li style="list-style-type:circle">+ve Local = <mark class="highlight-orange">memory efficient</mark></li></ul><ul id="9ea963c6-e296-498d-9455-4bd3f0936678" class="bulleted-list"><li style="list-style-type:circle">+ve Global = <mark class="highlight-orange">easier programming</mark>,
+simpler to follow, easier to debug</li></ul><ul id="489e1f14-e954-488a-9061-fca6e1d67eae" class="bulleted-list"><li style="list-style-type:circle">-ve Global = <mark class="highlight-orange">memory inefficient</mark>, not
+good programming technique</li></ul><ul id="8eb112bd-fdf3-4689-8920-c59fe12922e3" class="bulleted-list"><li style="list-style-type:circle">-ve Local = <mark class="highlight-orange">more difficult to
+trace</mark>/debug/follow where the values
+are passed</li></ul><ul id="5de06255-5431-40d3-b1c8-0ba7037d5348" class="bulleted-list"><li style="list-style-type:circle">Relatively small program – don’t
+know about overall plan for it, it
+might not be memory intensive,
+unlikely anyone else is going to
+access/amend e.g. use as a library –
+therefore global would not waste
+significant resources</li></ul><p id="5b092705-c075-4327-bb01-e7d171b0cfe4" class="">
+</p></li></ul></details></li></ul><h3 id="a8f2314b-9f5e-451f-b930-3fc3886d4b6f" class="">Archive</h3><ul id="3558be15-2f1e-4f28-85a4-5ead2f8f67e1" class="toggle"><li><details open=""><summary>Discuss the need for <mark class="highlight-orange">concurrent processing</mark> in OCR-Ticket’s system and the benefits and
+drawbacks of using this.</summary><ul id="fac72a05-0e8c-44d4-ade1-e0d7f8cf06b3" class="bulleted-list"><li style="list-style-type:disc">Knowledge<ul id="fa0c804f-85af-4071-af3c-0b3ee2f6bf87" class="bulleted-list"><li style="list-style-type:circle"><mark class="highlight-orange">Processes are happening at the same time</mark>/at overlapping times</li></ul><ul id="b587cba3-9b53-4996-afc4-09403b2c584f" class="bulleted-list"><li style="list-style-type:circle"><mark class="highlight-orange">One process may need to start before a second has finished</mark></li></ul><ul id="48e65891-7eb3-4901-a5e9-a816521ec274" class="bulleted-list"><li style="list-style-type:circle">Individual processes are threads, each thread has a life line</li></ul><ul id="dfd03750-9ab7-4aab-a394-ead0bff97d3e" class="bulleted-list"><li style="list-style-type:circle">One request will be sent to the server, this will have a thread</li></ul><ul id="e7b445aa-836a-410d-9c74-cabd3666b371" class="bulleted-list"><li style="list-style-type:circle">Use of parallel processor or co-processor</li></ul></li></ul><ul id="7f23c65f-7bff-4af7-9d57-71a7ace14604" class="bulleted-list"><li style="list-style-type:disc">Application<ul id="bb66ddd2-78e2-4830-afb4-3dead45fdd08" class="bulleted-list"><li style="list-style-type:circle"><mark class="highlight-orange">Multiple requests to the server can be made at the same time </mark></li></ul><ul id="b20bb3af-5c08-4e46-af13-39be760a2bb8" class="bulleted-list"><li style="list-style-type:circle">Programming on server will need to allow multiple threads to manipulate a list of requests</li></ul><ul id="3964463a-1c1f-4e2a-8d23-4fc32e7baefc" class="bulleted-list"><li style="list-style-type:circle">Programming will need to <mark class="highlight-orange">restrict access to the database of seats</mark>/sales etc.</li></ul><ul id="3ab03031-a6dd-429a-9443-51344f2e964e" class="bulleted-list"><li style="list-style-type:circle">Will allow those <mark class="highlight-orange">reading and writing to manipulate at the same time</mark><ul id="7e487448-5756-4523-8bee-06e8682d7e3b" class="bulleted-list"><li style="list-style-type:square">Can refer into ACID</li></ul><ul id="4730401a-bcc3-4395-935e-1c5187098d1d" class="bulleted-list"><li style="list-style-type:square">Record locking / serialisation</li></ul></li></ul><ul id="f35e514e-4e88-48bb-b540-edcdad3c2a51" class="bulleted-list"><li style="list-style-type:circle"><mark class="highlight-orange">Record locking</mark> will need implementing – more complex programming</li></ul><ul id="c511b828-b870-4559-b82d-28f7a758b963" class="bulleted-list"><li style="list-style-type:circle">May be selling alongside other systems, therefore needs to communicate with external systems that will also use record locking to avoid two different external companies accessing and selling the same tickets.</li></ul></li></ul><ul id="08c4b585-ef21-484d-a2d2-e4384a0d7904" class="bulleted-list"><li style="list-style-type:disc">Evaluation<ul id="3460c728-ef7c-41c3-91e2-cb366eec0081" class="bulleted-list"><li style="list-style-type:circle">Will allow for <mark class="highlight-orange">multiple access to the website at the same time</mark> by different customers – as it would happen in real life</li></ul><ul id="696cd08e-2784-4547-a690-1b60466defeb" class="bulleted-list"><li style="list-style-type:circle">Will allow for <mark class="highlight-orange">multiple ticket sales for the same event without selling the same seat twice</mark></li></ul></li></ul></details></li></ul></div></article></body></html>

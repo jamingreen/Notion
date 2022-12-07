@@ -1,0 +1,669 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Project Analysis</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-opaquegray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="e25f5947-86f9-47d5-87bd-52f35eb6879a" class="page sans"><header><h1 class="page-title">Project Analysis</h1></header><div class="page-body"><h1 id="e0404a1a-d41a-4b37-ad14-ea4ceb256f12" class="">Project Overview</h1><p id="f9a8b411-1715-4590-91c6-2b6f14abe4e8" class="">This a Mario-like platform game. The player will control a character of their choice to pass through a series of obstacles and enemies to reach the final destination for the completion of the level.</p><p id="a19e97a9-78d5-4df1-925f-b46cd890e67f" class="">It will have 3 level with different map and layout. The map will be predetermined and imported locally. There will be a time limit and faster finishing time will have a higher final score. There will be a local database storing all the previous entry and record of the game.</p><h1 id="1b89e7b7-163b-4c54-ac9e-843b90d6c79b" class="">Why is the project needed?</h1><p id="9abdc9f6-2eb6-4418-8646-715d5c479d94" class="">The similar game (Super Mario Bros) is created long time ago. It is needed to create a similar game with higher image quality and more compatible to common modern machines.</p><p id="74fe3146-8c47-48aa-8226-1471e60a2d18" class="">I want to create this game is because I want to recreate one of the most well-known classic game in the history.</p><h1 id="26e9aa86-8fc7-4d46-8c87-d1a681440357" class="">Computational Solution</h1><p id="dbf9bbac-c51a-44c7-a464-1fd0765cb8dd" class="">It is to provide entertainment to the users. A computational solution is required as a similar game in real life is not possible or it is very costly. It is also dangerous to recreate it in real life.</p><p id="095cad90-97e3-42c8-9067-ee2cb365dd3c" class="">Moreover, the original game is a computer game.</p><h1 id="c8184129-ce11-4843-88ed-17660c1449a8" class="">Research</h1><p id="5268de17-3cda-4be8-94aa-5fcb40bba28e" class="">Similar Game: Super Mario Bros</p><p id="f495c39c-0969-4953-bda6-731f7263dd07" class="">They use a moving background map while keeping the player character still in most of the time. It is a predetermined stage with same map layout, enemy movement and reward. There is no randomness in the game. The same series of input in the same time will result in the same outcome in the game.</p><p id="281f6afb-a085-420b-8d8d-1b9f5f1c75c0" class="">I can use the moving background but not character mechanism. The map will be predetermined and loaded locally from a flat file</p><p id="f099e501-255d-44e5-97a1-4bad03c5fbd1" class="">My solution will have a little randomness in the reward and tools drop rate in the game</p><p id="ec2bf1b0-d5fe-483b-8712-0bff0f027e70" class="">This game have a very small initial size of 32kb, so the approximate size of the game result will be less than 100Mb since we use a higher resolution image and map.</p><h1 id="2f8aff2c-caa5-4ffa-9e23-81f1766fdaca" class="">Stakeholder</h1><p id="5ade66f1-24ed-488e-af31-761d49476bb9" class="">The stakeholder of the project is my teacher as it is necessary to grade my A level result based on this.</p><h1 id="b9fc8795-207e-4490-a72c-c8b8c541978d" class="">Requirement - non functional</h1><ul id="d52db014-147e-4ddb-9af2-ee6fd6e925d7" class="bulleted-list"><li style="list-style-type:disc">Hardware<ul id="abf54a09-9f91-44fb-ae7c-a2e49b919495" class="bulleted-list"><li style="list-style-type:circle">Any processor with 1GHz</li></ul><ul id="8ebc1875-87b9-4228-ac4b-36445fadebd1" class="bulleted-list"><li style="list-style-type:circle">Solid state drive for fast loading of the program</li></ul><ul id="75f0a853-2b6e-4ac3-89a0-7f725ed416ac" class="bulleted-list"><li style="list-style-type:circle">RAM for fast data fetching</li></ul><ul id="80a45d33-5716-41de-99fa-2dad92143875" class="bulleted-list"><li style="list-style-type:circle">keyboard</li></ul><ul id="7baede25-c7d8-4598-b121-0b2b04efe9ac" class="bulleted-list"><li style="list-style-type:circle">mouse / mouse pad </li></ul><ul id="a195f22b-d9a6-476c-93a4-a2154a2c9399" class="bulleted-list"><li style="list-style-type:circle">screen</li></ul></li></ul><ul id="13ee5bed-f512-49d0-80b3-0e2d8ff9cc1d" class="bulleted-list"><li style="list-style-type:disc">Software:<ul id="90f133d6-5eb5-45ec-b48f-4914ab6e94b9" class="bulleted-list"><li style="list-style-type:circle">Python interpreter</li></ul><ul id="30bc20ab-876b-429e-9c70-0bf99a287617" class="bulleted-list"><li style="list-style-type:circle">Pygame library</li></ul><ul id="3e296df2-cc53-4e20-93cf-cc504ae8296c" class="bulleted-list"><li style="list-style-type:circle">relevant Python library</li></ul><ul id="5b783ccb-254f-4a55-ac9f-52050eeace2f" class="bulleted-list"><li style="list-style-type:circle">Any operating system that is compatible with Python</li></ul></li></ul><ul id="b6abbeac-e52b-441d-9f04-12a591c6353f" class="bulleted-list"><li style="list-style-type:disc">Performance Requirement: <ul id="fa3448ff-5b28-48b7-8179-77a384947ddb" class="bulleted-list"><li style="list-style-type:circle"> It should have at most 5 seconds load time for the initiation of the game</li></ul></li></ul><h1 id="0f84a1f4-d019-422e-98bf-00bcf9c9203d" class="">Requirement - functional</h1><h2 id="a06751fa-255c-48b3-aafb-a7ffdad845d2" class="">Must have</h2><table id="7c37d697-6f34-4282-b5c9-c53c33bc2bc3" class="simple-table"><tbody><tr id="2810a847-58e8-40db-8596-e322120e656c"><td id="_h;l" class="">Index</td><td id="bq:F" class="">Description</td><td id="Oija" class="" style="width:262px">Justification</td></tr><tr id="07bdc213-ad2d-44b4-a335-c338c13ccf08"><td id="_h;l" class="">1</td><td id="bq:F" class="">Screen of 800 x 500 pixels</td><td id="Oija" class="" style="width:262px">The game works better on a landscape screen and so that it is large enough to see reasonable part of the map at one time</td></tr><tr id="c3d292d1-9c05-4517-b1b6-4183b1ef81da"><td id="_h;l" class="">2</td><td id="bq:F" class="">player: move left / right</td><td id="Oija" class="" style="width:262px">So that the player can move through the map</td></tr><tr id="21edf672-f126-4247-b1c2-fe749edba057"><td id="_h;l" class="">3</td><td id="bq:F" class="">player: jump</td><td id="Oija" class="" style="width:262px">So that the player can jump over obstacles</td></tr><tr id="98a2d2d8-4f9e-4316-b6ba-07024f9c0e7c"><td id="_h;l" class="">4</td><td id="bq:F" class="">Enemy: movement</td><td id="Oija" class="" style="width:262px">Allow the enemy to move in a routine</td></tr><tr id="ed9f656c-3356-49b1-b180-de86b9bae2fe"><td id="_h;l" class="">5</td><td id="bq:F" class="">Enemy: Movement area</td><td id="Oija" class="" style="width:262px">Enemy doesn’t move outside of the design area</td></tr><tr id="a58a01f8-ec2f-42b7-8a23-b8caddc77b37"><td id="_h;l" class="">6</td><td id="bq:F" class="">Scoreboard</td><td id="Oija" class="" style="width:262px">Show the score, time, and life of the player</td></tr><tr id="b23fe3f6-8c37-4520-a7d6-4c1a61e6f3e4"><td id="_h;l" class="">7</td><td id="bq:F" class="">Menu button: </td><td id="Oija" class="" style="width:262px">Open menu</td></tr><tr id="5193b397-ee42-457c-b0dd-b0796eb1eb57"><td id="_h;l" class="">8</td><td id="bq:F" class="">Quit button</td><td id="Oija" class="" style="width:262px">End game</td></tr><tr id="c81a3e76-5701-4fb9-8425-0678f31ed6bb"><td id="_h;l" class="">9</td><td id="bq:F" class="">Resume button</td><td id="Oija" class="" style="width:262px">Resume game from menu</td></tr><tr id="6efee139-5b94-4789-8ec7-51276f8c3715"><td id="_h;l" class="">10</td><td id="bq:F" class="">Instruction</td><td id="Oija" class="" style="width:262px">Allow user to read instruction of the game</td></tr><tr id="b1d3064f-242c-43da-8709-d83b2035441a"><td id="_h;l" class="">11</td><td id="bq:F" class="">Menu screen</td><td id="Oija" class="" style="width:262px">Allow player to navigate through different pages (levels, ranking, history etc)</td></tr><tr id="17ddbe54-8622-44e0-a02d-0730ac43ff04"><td id="_h;l" class="">12</td><td id="bq:F" class="">Quit game button</td><td id="Oija" class="" style="width:262px">Allow player to close the game</td></tr><tr id="89b78e91-b4f2-425c-911c-bdaa828848e3"><td id="_h;l" class="">13</td><td id="bq:F" class="">Floor block</td><td id="Oija" class="" style="width:262px">Allow player and enemy characters to interact with the ground</td></tr><tr id="504a70cb-b516-4ee3-9b51-e56610a3b36e"><td id="_h;l" class="">14</td><td id="bq:F" class="">Neutral object (health block, coin)</td><td id="Oija" class="" style="width:262px">Allow more diverse game play</td></tr><tr id="21c3a20c-a569-4e5a-9810-5312d962cfc5"><td id="_h;l" class="">15</td><td id="bq:F" class="">Ranking board</td><td id="Oija" class="" style="width:262px">Show the top rank of that player previous gameplay according to the time and score</td></tr></tbody></table><h2 id="eaa564b8-a1a6-40c8-ab83-5c4e449c3a06" class="">Should have</h2><table id="53db44f4-cd86-4667-b63d-fdacb8382e5d" class="simple-table"><tbody><tr id="f814a9b6-d623-4c9d-97a8-9f260737211d"><td id="c_CG" class="">Index</td><td id="jG&gt;P" class="">Description</td><td id="KqXJ" class="">Justification</td></tr><tr id="f4fd54f3-3ebb-4af9-8073-f28dee0b7d89"><td id="c_CG" class="">1</td><td id="jG&gt;P" class="">Character screen</td><td id="KqXJ" class="">Show the character</td></tr><tr id="fb67c74a-fecb-4df6-bfa3-895b378dadb3"><td id="c_CG" class="">2</td><td id="jG&gt;P" class="">Character selection</td><td id="KqXJ" class="">Allow player to select different character for playing</td></tr><tr id="fa7ed3d5-9b05-4de7-91b5-2ca74b11b3e1"><td id="c_CG" class="">3</td><td id="jG&gt;P" class=""></td><td id="KqXJ" class=""></td></tr></tbody></table><h2 id="cab50edf-0f10-4eac-92b4-087f3793a7ab" class="">Could have</h2><table id="7f23c731-d6ab-4fda-a74e-ae21bbf33428" class="simple-table"><tbody><tr id="afafdf35-efad-4981-96a9-608f6ed4ba1f"><td id="{NKq" class="">Index</td><td id="uHgj" class="">Description</td><td id="aeZb" class="">Justification</td></tr><tr id="554b0c1d-ca48-4b41-ae6a-2496403b0c26"><td id="{NKq" class="">1</td><td id="uHgj" class="">Different character with different attribute</td><td id="aeZb" class="">Allow a more diversified gameplay</td></tr><tr id="66582766-b9a8-4560-9b52-138495c53914"><td id="{NKq" class="">2</td><td id="uHgj" class="">Guns / shooting projectiles</td><td id="aeZb" class="">Allow player to use different approach to play the game</td></tr><tr id="dc40fcd6-1667-4b59-a4ff-92250cd60829"><td id="{NKq" class="">3</td><td id="uHgj" class="">Allow user to choose difficulty on each level</td><td id="aeZb" class="">Allow player to choose the best difficulty for best gameplay experience</td></tr><tr id="5ebe0b69-e656-4ea7-9f33-2f4aa718fe9c"><td id="{NKq" class="">4</td><td id="uHgj" class="">Artificial Intelligence boss for one of the stage</td><td id="aeZb" class="">Allow more dynamic gameplay experience</td></tr><tr id="7ac5a3cf-1bc4-4341-8494-cec3569b7194"><td id="{NKq" class="">5</td><td id="uHgj" class="">Sound effect</td><td id="aeZb" class="">Allow better player experience</td></tr><tr id="469ad750-7882-4cfe-9140-966b5032b532"><td id="{NKq" class="">6</td><td id="uHgj" class="">Background sound track</td><td id="aeZb" class="">Allow better atmosphere and player experience</td></tr><tr id="75c48c84-e9f8-4dd9-bd37-a7b7d3f1b9d8"><td id="{NKq" class="">7</td><td id="uHgj" class=""></td><td id="aeZb" class=""></td></tr><tr id="f9f2e5f8-12b2-4b7e-be53-86ff2c690c7c"><td id="{NKq" class="">8</td><td id="uHgj" class=""></td><td id="aeZb" class=""></td></tr><tr id="6138b508-c4be-4bce-9c98-8897a6c596b2"><td id="{NKq" class="">9</td><td id="uHgj" class=""></td><td id="aeZb" class=""></td></tr></tbody></table><h2 id="badffb24-04cf-445d-b151-475edea2f80b" class="">Won’t have</h2><table id="2ac728ec-b18c-48bb-8593-f28e437c6f81" class="simple-table"><tbody><tr id="d451b33b-6166-4007-9769-4dab986058c1"><td id="P;Hi" class="" style="width:126px">Index</td><td id="{V&lt;&lt;" class="">Description</td><td id="N&lt;[_" class="">Justification</td></tr><tr id="653942e7-f8c7-4f07-a84f-331d821728b5"><td id="P;Hi" class="" style="width:126px">1</td><td id="{V&lt;&lt;" class="">3D character and enemy</td><td id="N&lt;[_" class="">Too hard to achieve with Pygame and it requires high processing power</td></tr><tr id="57bc36bb-90e8-4601-927a-df174184aaa5"><td id="P;Hi" class="" style="width:126px">2</td><td id="{V&lt;&lt;" class="">Introduction animation</td><td id="N&lt;[_" class="">Too time costly and Pygame is not suitable for complex animations</td></tr><tr id="13296a49-6dea-49f2-aceb-b0572260a722"><td id="P;Hi" class="" style="width:126px">3</td><td id="{V&lt;&lt;" class="">Endgame animation</td><td id="N&lt;[_" class="">Too time costly and Pygame is not suitable for complex animations</td></tr><tr id="d570e860-5dbd-4bd4-8633-3fd06cd1d78f"><td id="P;Hi" class="" style="width:126px">4</td><td id="{V&lt;&lt;" class="">Character level</td><td id="N&lt;[_" class="">Not suitable as it is a stage game</td></tr><tr id="eb9b733c-d0ce-4bff-81a0-91e511101bbb"><td id="P;Hi" class="" style="width:126px">5</td><td id="{V&lt;&lt;" class=""></td><td id="N&lt;[_" class=""></td></tr><tr id="98ad423e-f8d8-4010-80a5-ec95e3e4df99"><td id="P;Hi" class="" style="width:126px">6</td><td id="{V&lt;&lt;" class=""></td><td id="N&lt;[_" class=""></td></tr><tr id="634b4702-e702-410c-93f9-2ab85b7ac3f8"><td id="P;Hi" class="" style="width:126px">7</td><td id="{V&lt;&lt;" class=""></td><td id="N&lt;[_" class=""></td></tr><tr id="5e7b3714-8b47-4d96-b0ad-985644fd9064"><td id="P;Hi" class="" style="width:126px">8</td><td id="{V&lt;&lt;" class=""></td><td id="N&lt;[_" class=""></td></tr></tbody></table><h1 id="acf08ecb-9bf6-4c35-8f03-a3987df9c562" class="">Limitation</h1><ul id="8315429b-7306-4276-ade5-bd0fb09d8199" class="bulleted-list"><li style="list-style-type:disc">It doesn’t have 3D animation for player character and enemies.</li></ul><ul id="bbc55404-35ab-4c77-a8f6-78900f8b5f2c" class="bulleted-list"><li style="list-style-type:disc">It doesn’t have any animation outside of gameplay</li></ul><ul id="a4a99757-f97c-4047-992c-7f8dda610748" class="bulleted-list"><li style="list-style-type:disc">It cannot allow the player to import modification for enemy and player characters outlook</li></ul><h1 id="ee0e8620-a12e-4092-9599-0b5728d46b83" class="">Success Criteria</h1><ol type="1" id="b4484094-2756-45e6-8355-28d0d6a69fc5" class="numbered-list" start="1"><li>Screen</li></ol><ol type="1" id="5afcaa37-e086-4ecd-9728-d70ac1504114" class="numbered-list" start="2"><li>Player object<ol type="a" id="9671c320-bff8-4de3-b004-e43a03aadfd6" class="numbered-list" start="1"><li>Attributes<ol type="i" id="4316e2be-3f72-4297-b0fc-d2cbfe89b631" class="numbered-list" start="1"><li>Color: red / image</li></ol><ol type="i" id="9ed4baf2-98fa-4801-a902-56c77cd81717" class="numbered-list" start="2"><li>Size: 100px * 20px</li></ol><ol type="i" id="88c1e290-5262-47c7-b9b8-095d99933067" class="numbered-list" start="3"><li>Bullet group</li></ol><ol type="i" id="b1291fd2-62c1-4e4f-b8b1-d573d0c5f0b9" class="numbered-list" start="4"><li>health</li></ol><ol type="i" id="6c7bf7cb-e696-4b1c-bddb-f234d3cabb68" class="numbered-list" start="5"><li>facing direction</li></ol></li></ol><ol type="a" id="583de595-caf2-4780-a6d9-3b2654e07651" class="numbered-list" start="2"><li>Get position</li></ol><ol type="a" id="12ea6564-3fac-4529-a85c-84a38a71985e" class="numbered-list" start="3"><li>get health</li></ol><ol type="a" id="0c78eb10-a909-45de-868b-0d1a707a3f76" class="numbered-list" start="4"><li>Movement<ol type="i" id="3dbbfa29-30b9-42e7-8abf-4535dc365561" class="numbered-list" start="1"><li>Always move down if no input</li></ol><ol type="i" id="17eb6e16-e1e5-4baf-8ca1-805db60104f1" class="numbered-list" start="2"><li>Jump</li></ol><ol type="i" id="ee4e33ed-6283-4007-ab00-c754ccdc641f" class="numbered-list" start="3"><li>Move left / right</li></ol></li></ol><ol type="a" id="cb9323e3-42cb-471f-a734-f1847a624162" class="numbered-list" start="5"><li>Shoot</li></ol><ol type="a" id="d45b848e-5d95-4de1-83d4-31c340bd5e73" class="numbered-list" start="6"><li>draw</li></ol><ol type="a" id="5f015087-90c8-4d06-a345-5dc693121ea6" class="numbered-list" start="7"><li>spin</li></ol></li></ol><ol type="1" id="704c2590-6b64-4c96-862a-9b133f6907ff" class="numbered-list" start="3"><li>Bullet object<ol type="a" id="3f86fdc2-ed04-46d7-b3d3-a0bf77674165" class="numbered-list" start="1"><li>attribute<ol type="i" id="7eb53af2-6c56-4830-aa36-6861a3091c92" class="numbered-list" start="1"><li>Damage</li></ol><ol type="i" id="435e8950-419b-4a8f-8cdc-0c5395a75cb4" class="numbered-list" start="2"><li>speed</li></ol><ol type="i" id="677844c6-16a9-4319-94e1-72f30e0ff97d" class="numbered-list" start="3"><li>direction</li></ol></li></ol><ol type="a" id="8b5436e4-1bae-4038-99e8-e6a3219da713" class="numbered-list" start="2"><li>update</li></ol><ol type="a" id="3c512510-f2df-4bd3-a667-a36ac517ebbe" class="numbered-list" start="3"><li>remove</li></ol><ol type="a" id="5b8bf30c-2435-414c-93cf-80fa34da4687" class="numbered-list" start="4"><li>draw</li></ol></li></ol><ol type="1" id="a07ae111-1e37-4254-a189-dddccbcb2947" class="numbered-list" start="4"><li>Gun object<ol type="a" id="bb586d83-4b5e-4feb-b722-0dba740e581b" class="numbered-list" start="1"><li>attribute<ol type="i" id="395f91e7-48e6-4600-822d-90017e6b299d" class="numbered-list" start="1"><li>image</li></ol><ol type="i" id="a1129589-6915-48c7-ae87-c3e6a78e8c0a" class="numbered-list" start="2"><li>magazine size</li></ol><ol type="i" id="4185c120-7182-4278-b8aa-549db29b1b77" class="numbered-list" start="3"><li>number of bullet remain</li></ol></li></ol><ol type="a" id="c1a8e25d-10d3-4a07-9a82-1895200a3c7f" class="numbered-list" start="2"><li>Rotate</li></ol><ol type="a" id="f8453546-2952-4eb4-8454-6370901996f7" class="numbered-list" start="3"><li>move</li></ol><ol type="a" id="c6d41f63-36af-461d-aff9-00fdcf6d52fc" class="numbered-list" start="4"><li>shoot</li></ol></li></ol><ol type="1" id="240b2e73-e410-42ef-9fbd-29bcfa5bf782" class="numbered-list" start="5"><li>Enemy object<ol type="a" id="d7c26a6a-86c2-4ecb-8f32-26bf6f882604" class="numbered-list" start="1"><li>attribute<ol type="i" id="4cfa5307-74c9-43b6-8e10-617aa7c8ceee" class="numbered-list" start="1"><li>Movement type (In different kind of child)</li></ol><ol type="i" id="8b05ece7-05c5-4f03-ac6b-f3d91d318bc4" class="numbered-list" start="2"><li>Health</li></ol></li></ol><ol type="a" id="67b999ff-2894-4115-92d1-ad22754005c8" class="numbered-list" start="2"><li>Movement routine</li></ol><ol type="a" id="d8b0740a-7d32-4fdb-8382-dcc3ced6995d" class="numbered-list" start="3"><li>shoot routine</li></ol><ol type="a" id="458532e4-cfa7-4d44-b0fe-92fda26d0562" class="numbered-list" start="4"><li>get health</li></ol><ol type="a" id="4c5b42af-3297-456e-b42c-4986a1fd7c14" class="numbered-list" start="5"><li>draw</li></ol></li></ol><ol type="1" id="694ba5f9-2a36-48b3-a14b-8685d519324c" class="numbered-list" start="6"><li>Boss object (child of enemy object)<ol type="a" id="2b031cf7-c7a5-4cd3-844e-d8822d305603" class="numbered-list" start="1"><li>Attribute<ol type="i" id="55311a74-5476-46d4-8739-3b36a918096b" class="numbered-list" start="1"><li>Size</li></ol><ol type="i" id="4f7eb84b-d51f-491d-aade-f899a69810ed" class="numbered-list" start="2"><li>Damage</li></ol><ol type="i" id="6d2689d0-1910-4a99-94c9-c28c807483df" class="numbered-list" start="3"><li>Health</li></ol></li></ol><ol type="a" id="5e756479-dca9-45de-b74c-b6d13ce3b878" class="numbered-list" start="2"><li>Movement routine</li></ol><ol type="a" id="c6ab8a8b-b17b-4ee3-bc9c-a30beb0a5f6d" class="numbered-list" start="3"><li>shoot routine</li></ol><ol type="a" id="94d5f1c6-e4fc-43f9-a7b6-32556f85318f" class="numbered-list" start="4"><li>attack routine</li></ol><ol type="a" id="270eeb71-01ec-415a-8eeb-d5d955b46131" class="numbered-list" start="5"><li>draw</li></ol></li></ol><ol type="1" id="f604bc78-9d2b-4bbc-8857-6570aec4ff3d" class="numbered-list" start="7"><li>Scoreboard object<ol type="a" id="b8a29753-b5fd-4064-9c8e-01f146eeae9e" class="numbered-list" start="1"><li>attribute<ol type="i" id="a305b284-2b78-4a13-a415-c0bca4b40a31" class="numbered-list" start="1"><li>Score</li></ol><ol type="i" id="e3dc9702-64a2-4f30-ba48-bdf124fd88ef" class="numbered-list" start="2"><li>time</li></ol><ol type="i" id="cc280eee-deff-45ff-be66-7c08321baed7" class="numbered-list" start="3"><li>health</li></ol></li></ol><ol type="a" id="ab7d4cc4-f7ea-4139-bb34-51aebe9e9136" class="numbered-list" start="2"><li>draw</li></ol></li></ol><ol type="1" id="68e81108-f55b-4446-8179-29f5f16fb4e5" class="numbered-list" start="8"><li>Menu button<ol type="a" id="18475673-23e1-4666-923f-5c1f32b2fa16" class="numbered-list" start="1"><li>Quit button<ol type="i" id="eac95674-c1c7-434d-a946-abdd0a2ee33d" class="numbered-list" start="1"><li>Allow user to quit to the main screen</li></ol></li></ol><ol type="a" id="14ebea0b-44d6-42ab-95af-729a39b53a21" class="numbered-list" start="2"><li>Resume button<ol type="i" id="13e25350-7d57-4548-8589-b104eddba4b4" class="numbered-list" start="1"><li>Allow user to resume the game</li></ol></li></ol><ol type="a" id="9ef4cc95-3379-4738-8bf5-50ff1a5a89c6" class="numbered-list" start="3"><li>Instruction button<ol type="i" id="624950e3-79f4-434a-a057-ae93173c430d" class="numbered-list" start="1"><li>Allow user to read instructions</li></ol></li></ol></li></ol><ol type="1" id="2c621fe5-6583-488c-980a-1f5c70582f56" class="numbered-list" start="9"><li>Menu screen<ol type="a" id="e9bdaa5b-636c-44dd-955c-747218efe3e4" class="numbered-list" start="1"><li>Level button object (In the menu screen that allow player to click to start different level of the game)</li></ol><ol type="a" id="8ca24653-29f6-45d8-8070-2c6d0b91c45a" class="numbered-list" start="2"><li>setting button<ol type="i" id="ef916aea-0212-48e4-a85f-879adb67dee8" class="numbered-list" start="1"><li>Quit</li></ol><ol type="i" id="7229a3d8-90bb-4482-a571-dc1c78d2563d" class="numbered-list" start="2"><li>Dashboard</li></ol></li></ol></li></ol><ol type="1" id="9d0595bd-57a1-4722-b44c-231b6b12bfd9" class="numbered-list" start="10"><li>Floor block object<ol type="a" id="d405f2d4-6152-4361-b452-3e992df10920" class="numbered-list" start="1"><li>number and position import from a csv file</li></ol><ol type="a" id="a857c2a8-cb35-426d-8b83-b2cfc6097e54" class="numbered-list" start="2"><li>draw</li></ol></li></ol><ol type="1" id="31d2b951-e264-4265-b618-e0d58728905a" class="numbered-list" start="11"><li>Background object<ol type="a" id="a0545501-e4da-4020-a93a-87dff50bd295" class="numbered-list" start="1"><li>Change color / image</li></ol></li></ol><ol type="1" id="4e6659c4-9401-489c-9278-4ea12ef259d3" class="numbered-list" start="12"><li>Neutral object<ol type="a" id="353d136e-e26d-4eb7-b8da-6616376b1d08" class="numbered-list" start="1"><li>Health block</li></ol></li></ol><h1 id="376193cf-d1ff-465a-af85-72a94fb32724" class="">Usability</h1><ul id="a9690f50-8c02-452a-abb9-68473474f493" class="bulleted-list"><li style="list-style-type:disc">An instruction menu<ul id="bfb05fc4-b475-4184-98b4-a94d92edfc65" class="bulleted-list"><li style="list-style-type:circle">To teach others the basic control of the character</li></ul></li></ul><ul id="d50b4215-7b90-4e26-961b-3a2509111390" class="bulleted-list"><li style="list-style-type:disc">A README file<ul id="82c72e90-0321-49b6-8862-455cd11e6130" class="bulleted-list"><li style="list-style-type:circle">Guide the user to start the software</li></ul><ul id="68527dc4-6a58-4658-8280-b5316d1ceef3" class="bulleted-list"><li style="list-style-type:circle">A list of required software<ul id="889153a6-90f8-408a-8ee7-93d73f32fb63" class="bulleted-list"><li style="list-style-type:square">Python interpreter</li></ul><ul id="48d823ff-55ec-4f29-ac6a-6d470c2dee5a" class="bulleted-list"><li style="list-style-type:square">Pygame library</li></ul><ul id="f74ceefc-2594-4aca-a957-6dd340f9fad9" class="bulleted-list"><li style="list-style-type:square">Storage size</li></ul></li></ul></li></ul></div></article></body></html>

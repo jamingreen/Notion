@@ -1,0 +1,724 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Long Questions</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-opaquegray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="2e30b8c1-0e6e-49ad-916f-1bd9ddf0c4a9" class="page sans"><header><h1 class="page-title">Long Questions</h1></header><div class="page-body"><p id="cc434b25-4b5f-4ceb-bea0-a77e4e90d51d" class="">
+</p><ul id="51e68b86-1462-4e36-9d65-d792f1d4873e" class="toggle"><li><details open=""><summary>Discuss the different approaches that can be taken to provide increasingly larger amount of <mark class="highlight-orange">computer power </mark>and the types of problem they are suited</summary><ul id="ea6c82d9-a077-42e8-8146-8d5a811e725f" class="bulleted-list"><li style="list-style-type:disc">Knowledge<ul id="0dbe7f5e-bd61-4d56-ab58-6821fdc6037b" class="bulleted-list"><li style="list-style-type:circle"><mark class="highlight-orange">Parallel processor</mark> (multiple core)<ul id="b20f2ab9-b61e-49e2-ba1b-9428940b3255" class="bulleted-list"><li style="list-style-type:square">Parallel processing</li></ul></li></ul><ul id="0c4d81da-38ff-4cb8-9032-c458e92d6055" class="bulleted-list"><li style="list-style-type:circle"><mark class="highlight-orange">Co-processors</mark><ul id="364661e9-4d22-4d7a-8dd0-450195fc9ed7" class="bulleted-list"><li style="list-style-type:square">For specific purpose</li></ul><ul id="d964f43e-87db-47c5-ae4e-43f5125f12d6" class="bulleted-list"><li style="list-style-type:square">GPU</li></ul></li></ul><ul id="abbc52ee-eed6-426c-abdc-02332bb85030" class="bulleted-list"><li style="list-style-type:circle">Faster <mark class="highlight-orange">clock speed</mark> (overclocking)<ul id="44fe2e17-0405-4bd1-82f2-7a10cf5f5abe" class="bulleted-list"><li style="list-style-type:square">More tasks executed per second increase</li></ul></li></ul><ul id="4a57dc8a-ab5b-4105-a3d5-e2cb612464ff" class="bulleted-list"><li style="list-style-type:circle">Increase the <mark class="highlight-orange">cache memory</mark> (increase speed)</li></ul><ul id="fc212e82-0ad9-4985-b494-71f8012a8904" class="bulleted-list"><li style="list-style-type:circle">Problem can be distributed to numbers of computers</li></ul></li></ul><ul id="4ed34772-8fe2-46e4-9636-706aa19462ea" class="bulleted-list"><li style="list-style-type:disc">Application<ul id="8b5a41d9-1ff0-4241-b845-a128a5b29d19" class="bulleted-list"><li style="list-style-type:circle"><mark class="highlight-orange">Divide problem into smaller problem </mark>for parallel processing</li></ul><ul id="181f593a-c1c3-419d-9c82-e8da52e424ee" class="bulleted-list"><li style="list-style-type:circle">The division of problem takes time</li></ul><ul id="1ccb2397-9827-4546-84e4-fe1e84b394c7" class="bulleted-list"><li style="list-style-type:circle">Having multiple cores can <mark class="highlight-orange">speed up
+smaller problems</mark> but this will not be
+enough for larger problems.</li></ul><ul id="e636e914-9fa2-46ca-a78d-24b7b9ad6682" class="bulleted-list"><li style="list-style-type:circle">Supercomputers are prohibitively
+exceptionally expensive to buy and run for
+all but large organisations.</li></ul><ul id="556eeb5d-722c-4d2c-babc-842aca5720d6" class="bulleted-list"><li style="list-style-type:circle">GPUs are becoming a cost efficient way of
+tackling problems. GPUs tend to have
+large number of cores so can run on <mark class="highlight-orange">highly
+parallelisable problems </mark>but only
+where the same instruction is being applied
+to multiple pieces of data (SIMD)</li></ul></li></ul><p id="a7d6ffcb-ece3-4e9e-a844-aa79242ab3bc" class="">
+</p><ul id="cb1a8bab-0e11-4f1e-b29a-63036c99dc7d" class="bulleted-list"><li style="list-style-type:disc">Evaluation<ul id="0ea329c2-fbf6-4ae6-b45d-f4344bd21411" class="bulleted-list"><li style="list-style-type:circle"><mark class="highlight-orange">Increased clock speed is limited to smaller
+problems</mark>. Even doubling the clock speed
+would only halve the time taken.</li></ul><ul id="c7346d43-6cd5-47e6-809d-3b516c760b82" class="bulleted-list"><li style="list-style-type:circle"><mark class="highlight-orange">Parallel processing isn’t suited to all
+problems.</mark> Most problems are only partially
+parallelisable. Writing algorithms for
+parallel processing is more challenging
+</li></ul><ul id="23106030-74b2-405b-8a03-9df2893b7246" class="bulleted-list"><li style="list-style-type:circle"><mark class="highlight-orange">GPUs suited to a subset </mark>of science/
+engineering <mark class="highlight-orange">problems</mark> where the same
+calculation is repeated on multiple data
+sets.</li></ul></li></ul></details></li></ul><p id="10bea2cb-08dd-4334-b76b-c94816123b66" class="">
+</p><p id="511d5e4a-f167-47c1-8ac6-432e4c1db00b" class="">
+</p><ul id="253251a5-3cdc-48a6-881e-e7b74162c870" class="toggle"><li><details open=""><summary>A student, Dan, on a limited budget finds his computer is running slowly. He uses his computer for university work and internet browsing.
+Discuss what measures can be taken to improve Dan’s computer’s performance. You should explain what these measures are, why they <mark class="highlight-orange">improve the performance</mark> and justify whether you would recommend them.</summary><ul id="9ba502e3-7145-42dd-a229-619d4873d8fd" class="bulleted-list"><li style="list-style-type:disc">Knowledge (Methods of improving performance)<ul id="e37c17e9-9ea0-4d83-8734-cda324911a38" class="bulleted-list"><li style="list-style-type:circle">Replace CPU with faster CPU</li></ul><ul id="e7068811-ff88-4bd0-861f-29cf14c96484" class="block-color-orange bulleted-list"><li style="list-style-type:circle">Add more/Faster RAM</li></ul><ul id="fee55e01-fe87-4265-8ffd-9fd3bb0f69bf" class="block-color-orange bulleted-list"><li style="list-style-type:circle">Add a graphics card</li></ul><ul id="77a9d76a-747d-48a3-9af4-fabcb8e2d91d" class="block-color-orange bulleted-list"><li style="list-style-type:circle">Upgrade to faster secondary storage</li></ul><ul id="1352d04a-4abb-4591-8fd5-d518c146d5ed" class="bulleted-list"><li style="list-style-type:circle">Update OS</li></ul><ul id="6fc50315-c9f3-4da0-8bca-c04ffe3279d5" class="bulleted-list"><li style="list-style-type:circle">Install a lighter weight OS</li></ul><ul id="5d02a326-3796-45a5-992f-4742bddbc820" class="bulleted-list"><li style="list-style-type:circle"><mark class="highlight-orange">Defragment the hard disk </mark>(A file is scatter throughout the disk)</li></ul><ul id="6347029f-5d69-44dc-ba6b-5d7d07d64b93" class="bulleted-list"><li style="list-style-type:circle">Check for viruses and spyware.</li></ul></li></ul><ul id="a5d0f6d7-5a55-447b-b549-aff98f258e79" class="bulleted-list"><li style="list-style-type:disc">Application<ul id="c6780b0c-b267-46f2-a996-1b967b7991c6" class="bulleted-list"><li style="list-style-type:circle"><mark class="highlight-orange">More RAM </mark>means more programs can be open simultaneously <mark class="highlight-orange">without the need to use much slower virtual memory</mark>.</li></ul><ul id="437cfe1a-254a-4633-972b-8fa67c1a5537" class="bulleted-list"><li style="list-style-type:circle">Adding a graphics card will <mark class="highlight-orange">speed up the rendering of 3D graphics</mark> as GPU has specialist instructions and can apply the same instruction to multiple pieces of data simultaneously.</li></ul><ul id="92041168-4f5e-45da-9d22-c8ac6b7794ef" class="bulleted-list"><li style="list-style-type:circle">The slower the secondary storage the<mark class="highlight-orange"> longer it takes to load files/program/data</mark>. A <mark class="highlight-orange">faster secondary storage devic</mark>e can improve this. May choose to use flash memory (i.e. SSD)</li></ul><ul id="0d9b73bd-52e5-4cf9-b46d-1c3af4ac7e82" class="bulleted-list"><li style="list-style-type:circle">OS makers often release updates and some of these will improve performance.</li></ul><ul id="e4e70a27-0a37-4b09-9493-7d0713a1ddde" class="bulleted-list"><li style="list-style-type:circle">Some lighter weight operating systems use fewer system resources allowing the system to devote more to running the user’s applications.</li></ul><ul id="43e987b6-e068-46d7-8180-c88921ff16f0" class="bulleted-list"><li style="list-style-type:circle">A fragmented HDD runs slowly as time is spent finding parts of the files. This is reduced by defragmenting and storing the parts of the file contiguously.</li></ul><ul id="1f0d430b-98ab-45d9-801e-e0302352ec38" class="bulleted-list"><li style="list-style-type:circle"><mark class="highlight-orange">Malware</mark> can <mark class="highlight-orange">slow down</mark> a computer. <mark class="highlight-orange">Removing it will improve performance</mark></li></ul></li></ul><ul id="1177e7c3-c82e-4e41-8fb1-5f1753c87f6d" class="bulleted-list"><li style="list-style-type:disc">Evaluate on the effectiveness and feasibility of using above methods</li></ul></details></li></ul><p id="ee1b0526-384c-42f0-a01e-648626487811" class="">
+</p><ul id="74567e08-35a2-4c43-8bb5-0d11f0821ac8" class="toggle"><li><details open=""><summary>Discuss the need for <mark class="highlight-orange">concurrent processing</mark> in OCR-Ticket’s system and the benefits and
+drawbacks of using this.</summary><ul id="d641c452-79a7-4116-868d-180407025c9d" class="bulleted-list"><li style="list-style-type:disc">Knowledge<ul id="3eb9480a-e1f8-4dbb-88ae-69a1a23e7587" class="bulleted-list"><li style="list-style-type:circle"><mark class="highlight-orange">Processes are happening at the same time</mark>/at overlapping times</li></ul><ul id="ef1787ee-2be6-44fb-8bd3-d51344807a03" class="bulleted-list"><li style="list-style-type:circle"><mark class="highlight-orange">One process may need to start before a second has finished</mark></li></ul><ul id="a2bcddff-c447-4a58-9488-23ad0ef9f511" class="bulleted-list"><li style="list-style-type:circle">Individual processes are threads, each thread has a life line</li></ul><ul id="3e03d9cf-eff2-45db-b84c-73ce9610572d" class="bulleted-list"><li style="list-style-type:circle">One request will be sent to the server, this will have a thread</li></ul><ul id="b93bfad0-d341-4f9c-8f77-cf8d001f899f" class="bulleted-list"><li style="list-style-type:circle">Use of parallel processor or co-processor</li></ul></li></ul><ul id="1823e830-0552-44cd-bfbc-65b8c3a3c6f0" class="bulleted-list"><li style="list-style-type:disc">Application<ul id="d702c58a-72a9-455e-abfd-f0d507d018a2" class="bulleted-list"><li style="list-style-type:circle"><mark class="highlight-orange">Multiple requests to the server can be made at the same time </mark></li></ul><ul id="7255749b-f81c-4f6c-b424-2ed6d8f4651f" class="bulleted-list"><li style="list-style-type:circle">Programming on server will need to allow multiple threads to manipulate a list of requests</li></ul><ul id="664a9e31-37ee-4a46-af35-35aa649a809f" class="bulleted-list"><li style="list-style-type:circle">Programming will need to <mark class="highlight-orange">restrict access to the database of seats</mark>/sales etc.</li></ul><ul id="b23d3ce0-e1be-4eb4-b4f5-9e5e600a83fd" class="bulleted-list"><li style="list-style-type:circle">Will allow those <mark class="highlight-orange">reading and writing to manipulate at the same time</mark><ul id="8c004c0c-c680-4644-a921-bfe91920f3e5" class="bulleted-list"><li style="list-style-type:square">Can refer into ACID</li></ul><ul id="54b09b7a-17cd-4682-8479-68759ac841a8" class="bulleted-list"><li style="list-style-type:square">Record locking / serialisation</li></ul></li></ul><ul id="8166252d-4718-4257-a8e9-b441fe3fcc5c" class="bulleted-list"><li style="list-style-type:circle"><mark class="highlight-orange">Record locking</mark> will need implementing – more complex programming</li></ul><ul id="29fd15d2-851a-458b-b453-9a76a263e12e" class="bulleted-list"><li style="list-style-type:circle">May be selling alongside other systems, therefore needs to communicate with external systems that will also use record locking to avoid two different external companies accessing and selling the same tickets.</li></ul></li></ul><ul id="51a83051-db10-4862-a44b-608e6f1ce255" class="bulleted-list"><li style="list-style-type:disc">Evaluation<ul id="537731e4-e3ec-485a-abf0-8dcf41dca143" class="bulleted-list"><li style="list-style-type:circle">Will allow for <mark class="highlight-orange">multiple access to the website at the same time</mark> by different customers – as it would happen in real life</li></ul><ul id="624c39fb-2d35-4f40-9076-ba6849e9f325" class="bulleted-list"><li style="list-style-type:circle">Will allow for <mark class="highlight-orange">multiple ticket sales for the same event without selling the same seat twice</mark></li></ul></li></ul></details></li></ul><p id="3ba14eda-bf77-491e-938f-02528125b8fd" class="">
+</p><ul id="c6be7a1d-7e59-4167-a6af-e61094df1d51" class="toggle"><li><details open=""><summary>Explain how backtracking is used in a depth-first search (post-order) traversal</summary><ul id="345f9fe9-2994-46a4-a09a-0866df1c109b" class="bulleted-list"><li style="list-style-type:disc">Depth first starts at the root (Lily)</li></ul><ul id="b07b3a4e-3fee-48ba-a022-7d27969388d2" class="bulleted-list"><li style="list-style-type:disc">and goes all the way down one
+branch to the bottom (Begonia)</li></ul><ul id="0f22ad51-4c98-417a-bae3-23401bb6ae8c" class="bulleted-list"><li style="list-style-type:disc">It stores which nodes it has
+visited/pushes nodes visited onto a
+stack</li></ul><ul id="e5f12394-a86e-413b-9c57-d44278c3886c" class="bulleted-list"><li style="list-style-type:disc">When it cannot go any further</li></ul><ul id="819b5587-822f-4aa9-b597-368b23ccffe5" class="bulleted-list"><li style="list-style-type:disc">It then backtracks/returns to the
+previous node</li></ul><ul id="d1e2b138-51e3-44c3-b417-82671cd6a970" class="bulleted-list"><li style="list-style-type:disc">And continues to backtrack until a node
+is reached with unvisited children.</li></ul><ul id="b3c2c0a1-baa2-4367-9fd1-6c4d4a0893ab" class="bulleted-list"><li style="list-style-type:disc">and checks down that branch</li></ul><ul id="e95067f6-cf3d-4271-88c7-0c8377bfc6c4" class="bulleted-list"><li style="list-style-type:disc">In the tree shown, after visiting
+Begonia, the algorithm would backtrack
+to Daisy…</li></ul><ul id="9f90cf84-5fb7-48b3-a469-0502f16c5c70" class="bulleted-list"><li style="list-style-type:disc">and would then visit Hosta (Accept
+any other example)</li></ul></details></li></ul><p id="c281b899-3ad0-471c-b988-22d858cbf136" class="">
+</p><ul id="63bd37d4-1649-47d8-b916-fde74240d406" class="toggle"><li><details open=""><summary>Discuss the differences between assembly code and high-level languages. You should refer to:
+The advantages and disadvantages of writing programs in assembly code rather than a high level language
+When each approach might be used
+why the coffee machine was programmed in assembly code</summary><ul id="6d9fb7e5-e6be-41d5-bf88-82e6db4a9ada" class="bulleted-list"><li style="list-style-type:disc">Assembly use mnemonics</li></ul><ul id="519afdf2-80a8-4987-b9de-7c2aa1d40cc8" class="bulleted-list"><li style="list-style-type:disc">High level languages use more natural notations</li></ul><ul id="8aa2879f-7061-47cc-afbf-c8d7942e9376" class="bulleted-list"><li style="list-style-type:disc">Assembly code consist of only simple instructions</li></ul><ul id="f1dfe216-9952-4de2-9060-2516c7acf71b" class="bulleted-list"><li style="list-style-type:disc">Assembly need much more lines of code to do the same task comparing to high level code</li></ul><p id="b683b4f6-1e70-42d9-b472-39ec6ed44adf" class="">
+</p><ul id="1f46d144-8474-4d96-bf5e-068023b1e355" class="bulleted-list"><li style="list-style-type:disc">Assembly allow programmer to choose the exact instruction</li></ul><ul id="c6c0de82-f523-4522-af24-19c90bbbcfe3" class="bulleted-list"><li style="list-style-type:disc">It allow them to have direct control on memory usage</li></ul><ul id="ae50cbcc-4c1b-4059-a7c2-ebe3ce3a0624" class="bulleted-list"><li style="list-style-type:disc">Direct control of hardware</li></ul><ul id="e19e935e-4698-43b5-a60c-8ef566f27cea" class="bulleted-list"><li style="list-style-type:disc">High level code is more intuitive and easier to debug</li></ul><ul id="5f5b7678-0b8c-427f-bf5b-63d5cc0d077b" class="bulleted-list"><li style="list-style-type:disc">High level code is quicker to code</li></ul><p id="ee369a59-7bc7-44b4-98ad-2e75c46e9b4a" class="">
+</p><ul id="f1f204cc-7b8b-4062-83c8-a067b4003b57" class="bulleted-list"><li style="list-style-type:disc">Assembly is used when<ul id="a93e6cbb-19fa-4bdf-b4c9-4cd0d18c11c3" class="bulleted-list"><li style="list-style-type:circle">the CPU doesn’t have compiler or interpreter</li></ul><ul id="3c83d1f7-6371-49f9-90ac-bf3fccd1f029" class="bulleted-list"><li style="list-style-type:circle">Highest performance is critical</li></ul><ul id="21ef49e1-7b1f-48b9-919a-5b79746e05f6" class="bulleted-list"><li style="list-style-type:circle">Memory is very limited</li></ul></li></ul><ul id="ebd182c5-e12e-49bb-b0b0-144fc78ec41c" class="bulleted-list"><li style="list-style-type:disc">Other should use high level languages</li></ul><figure id="7b6dfa41-50b6-48a6-b343-fc55e8be16f0" class="image"><a href="Questions%20(No%20specific%20Topic)%20b9cc721b7f4445eea4a407ab11384b53/Untitled.png"><img style="width:240px" src="Questions%20(No%20specific%20Topic)%20b9cc721b7f4445eea4a407ab11384b53/Untitled.png"/></a></figure><figure id="79ddde57-8f66-4551-bc4f-8fbd7e952839" class="image"><a href="Questions%20(No%20specific%20Topic)%20b9cc721b7f4445eea4a407ab11384b53/Untitled%201.png"><img style="width:240px" src="Questions%20(No%20specific%20Topic)%20b9cc721b7f4445eea4a407ab11384b53/Untitled%201.png"/></a></figure><p id="8b33c8db-cb28-4de3-89ec-5a4a00c76836" class="">
+</p><p id="ddceee74-cb97-4b6d-b5e3-63c1fadabdde" class="">
+</p></details></li></ul><p id="d3e1294f-a3cf-4d17-9adb-446edeb377ed" class="">
+</p><ul id="66370f5e-307c-4345-8c4c-11462216082b" class="toggle"><li><details open=""><summary>Discuss the impact of modern encryption on society:
+The importance of asymmetric encryption and how it differs from symmetric encryption
+Different circumstances in which symmetric and asymmetric encryption may be used</summary><ul id="0fb3a97b-4b4e-45dd-8386-733ea6f3cfa8" class="bulleted-list"><li style="list-style-type:disc">Modern encryption is much stronger than pre-computer era</li></ul><ul id="fb7fdd53-2029-41b1-a4d8-ec88a8923881" class="bulleted-list"><li style="list-style-type:disc">Asymmetric encryption use different key for encryption and decryption</li></ul><ul id="07ddea11-66b0-4b5a-9fd8-4aa69518e6e1" class="bulleted-list"><li style="list-style-type:disc">Symmetric encryption use the same key for encryption and decryption</li></ul><ul id="a63c6b50-b244-4934-8beb-5094c0f784a3" class="bulleted-list"><li style="list-style-type:disc">Asymmetric encryption usually takes more processing</li></ul><p id="f4999b5b-ab8e-4f4d-9ccc-cafb081239ca" class="">
+</p><ul id="18920166-f196-49e9-bfcb-778709e508c5" class="bulleted-list"><li style="list-style-type:disc">Asymmetric is used in exchanging data<ul id="6e864f2d-9094-4751-857e-43813fce54a7" class="bulleted-list"><li style="list-style-type:circle">Emailing</li></ul></li></ul><ul id="5f9e711e-1612-414c-b1f3-892df9b38894" class="bulleted-list"><li style="list-style-type:disc">Symmetric is best used when the same person is encrypting and decrypting data<ul id="2bd1f6b4-636b-4ac0-aeb4-9cfd38a045a3" class="bulleted-list"><li style="list-style-type:circle">Backing up data</li></ul></li></ul><p id="6894e95a-6de4-40ca-b2ce-3545544068e0" class="">
+</p><ul id="d0b5cb23-b502-48e5-9aac-1c0ddf29fd1c" class="bulleted-list"><li style="list-style-type:disc">The strength and ease has made it popular on the internet</li></ul><ul id="e6181205-3d92-4b16-9fb1-6dce6fe34a75" class="bulleted-list"><li style="list-style-type:disc">E-commerce would not be possible without it</li></ul><ul id="313ca37d-70f1-4855-8e33-a8d83a9e8185" class="bulleted-list"><li style="list-style-type:disc">This give individual more privacy</li></ul><p id="6e380f3a-4622-474f-ac1f-1198dd941745" class="">
+</p></details></li></ul><p id="97c22cb6-ef08-4c52-85f3-52965a597808" class="">
+</p><ul id="2bb68140-5bf1-4646-867c-302b0043fd27" class="toggle"><li><details open=""><summary>Discuss whether magnetic storage or solid state storage would be most suitable, taking account, taking account into the advantages and disadvantages of both. (Server, client machine, backup)</summary><ul id="a2243b2b-c1f3-475c-adc8-901249698545" class="bulleted-list"><li style="list-style-type:disc">knowledge<p id="b6ef37a3-3b97-4750-9775-05a627c9a81f" class="">Magnetic device include magnetic hard disk drive and magnetic tape and floppy disk</p><ul id="94a49b32-c00a-4d1d-9923-f2d95ecf1c23" class="bulleted-list"><li style="list-style-type:circle">The binary information is represented by the 2 magnetic state of the disk.</li></ul><ul id="4e022771-b7c7-4801-af31-bb44cf77059c" class="bulleted-list"><li style="list-style-type:circle">It can be written to and read from using read and write hand</li></ul><p id="bd75737a-8269-4323-8647-50dca2a7a746" class="">
+</p><ul id="e98e0510-42f3-42e0-ac26-e6eae79471b0" class="bulleted-list"><li style="list-style-type:circle">Solid state drive use semiconductor to form logic gate to store electric charge in 2 state, representing the binary information (1 and 0)</li></ul><ul id="77e01406-0b7d-4f0d-80bd-1d899324c8d7" class="bulleted-list"><li style="list-style-type:circle">Can be rewritten using electricity</li></ul></li></ul><p id="6c79fa25-3671-47e3-9ccf-c93866ce9907" class="">
+</p><ul id="ad03e0e5-aa9c-4317-8ecd-23d3fed74b01" class="bulleted-list"><li style="list-style-type:disc">Application<ul id="1ae01ebd-a556-414f-a846-fae36989fbc5" class="bulleted-list"><li style="list-style-type:circle">Hard disk drive is used for storing software, database and other that requires a large amount of storage. It is relatively cheaper per storage than solid state drive.</li></ul><ul id="98be55a8-ae78-4bfd-97a7-a545f54c9593" class="bulleted-list"><li style="list-style-type:circle">Solid state drive is used for program files than requires faster access. Solid state drive have a higher data transfer rate than magnetic drives. It uses less power as there is no moving part. It is suitable for portable devices as it is lighter and not vulnerable to damage by movement.</li></ul><p id="2d913e35-fbd9-4930-a4d8-8711a38e0e34" class="">
+</p><ul id="f82e9b0f-efe0-4351-a04a-78eca738ec87" class="bulleted-list"><li style="list-style-type:circle">Server will require quick access to programs, software and data</li></ul><ul id="ee603c3e-e063-44af-a4ca-354466481faa" class="bulleted-list"><li style="list-style-type:circle">Client machine might be carried here and there</li></ul><ul id="719cddd8-ce1f-4f5f-a00e-d4eb7bc9ae34" class="bulleted-list"><li style="list-style-type:circle">Backup server requires a large amount of storage and is not moved</li></ul></li></ul><ul id="0ae4cbac-392b-45f9-920f-f7c278b4d2cd" class="bulleted-list"><li style="list-style-type:disc">Evaluation<ul id="9988517e-7bbb-45f5-b3c4-39b627b9ec45" class="bulleted-list"><li style="list-style-type:circle">Solid state drive will be most suitable for server and client machine as it consume less power and have a higher data transfer speed, allowing the server to have higher processor speed.</li></ul><ul id="cf54ffbd-b1d1-4e85-bcc0-d5c4c4c5ebc8" class="bulleted-list"><li style="list-style-type:circle">It is suitable for client machine as it might be moved while magnetic hard disk drive is vulnerable to damage by movement due to its moving parts and brittle platter</li></ul><ul id="62f99aaa-cc08-41d2-9189-67376590ca43" class="bulleted-list"><li style="list-style-type:circle">Magnetic hard disk drive is most suitable for backup server as large amount of data is likely to be stored. It is cheaper than solid state drive and thus can reduce the cost of storage. It is also seldom accessed so the power usage will not be a problem</li></ul></li></ul></details></li></ul><p id="6c603a66-2507-4d0a-8bab-ddd6479ed3aa" class="">
+</p><ul id="66f54206-ec6d-49c1-ba2f-f3224e01b3ac" class="toggle"><li><details open=""><summary>Compare the use of merge sort, quick sort and insertion sort on an array with a small number of elements, and
+on an array with a very large number of elements.
+You should make reference to the time complexities of each algorithm using the Big O notation in your answer.</summary><ul id="86585971-f603-4f54-b558-fac99e5a35f6" class="bulleted-list"><li style="list-style-type:disc">Knowledge<ul id="5fe6802d-a392-49e9-a8d7-469f1fe1bf77" class="bulleted-list"><li style="list-style-type:circle">O(1) — Constant time or space doesn’t change</li></ul><ul id="46961cc6-27e5-4036-b223-3294d917d5e9" class="bulleted-list"><li style="list-style-type:circle">O(n)<ul id="d8497118-bace-4f2f-843b-b31eef60372f" class="bulleted-list"><li style="list-style-type:square">Linear</li></ul><ul id="70983254-014b-4f17-b437-b45714d24406" class="bulleted-list"><li style="list-style-type:square">Same as number of element</li></ul><ul id="75829655-4603-4677-ae7e-7437364e18e6" class="bulleted-list"><li style="list-style-type:square">As the number of element increase, the space or time increase in proportion</li></ul></li></ul><ul id="1e35f1a3-3854-4304-bb3e-71c35d8ac183" class="bulleted-list"><li style="list-style-type:circle">O(<style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>n</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">n^2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span></span><span>﻿</span></span>)<ul id="84df2e6d-68f7-48a6-9f08-0c572470c525" class="bulleted-list"><li style="list-style-type:square">polynomial</li></ul><ul id="3cc7eee5-50e1-4362-8a12-633f50f4b156" class="bulleted-list"><li style="list-style-type:square">As the number of element increase, time or space increase n^2</li></ul></li></ul><ul id="3755e85f-eaeb-4616-a39e-8a569889da82" class="bulleted-list"><li style="list-style-type:circle">O(<style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mi>log</mi><mo>⁡</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">n\log n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal">n</span></span></span></span></span><span>﻿</span></span>)<ul id="295c9767-2c41-4abf-ae50-72bfaa7f8b3a" class="bulleted-list"><li style="list-style-type:square">Linearithmic</li></ul></li></ul></li></ul><ul id="94333b17-24fb-4116-95cd-f398f7d77930" class="bulleted-list"><li style="list-style-type:disc">Application<ul id="44efa61b-c1db-4d71-a87e-a8b207985bab" class="bulleted-list"><li style="list-style-type:circle">Space (compare 3 sort)</li></ul><ul id="7514cf9b-579c-4f12-b450-f52ef2253001" class="bulleted-list"><li style="list-style-type:circle">Compare:<ul id="b89980c1-6086-4a43-9b3c-d2ba1b7f312c" class="bulleted-list"><li style="list-style-type:square">Best time</li></ul><ul id="4349e34b-b29f-4462-aa11-c0f1874bc631" class="bulleted-list"><li style="list-style-type:square">Average time</li></ul><ul id="531dd7b2-c289-406f-961c-078168564917" class="bulleted-list"><li style="list-style-type:square">Worst time</li></ul></li></ul></li></ul><ul id="cf7b8daf-ee5b-472a-982b-c167baa7f74c" class="bulleted-list"><li style="list-style-type:disc">Evaluation<ul id="7a103363-4b2d-4aa9-a006-b12e02c7041c" class="bulleted-list"><li style="list-style-type:circle">Small array can use all of them</li></ul><ul id="e62ca586-6c1a-40ec-9d80-d4a3deba943e" class="bulleted-list"><li style="list-style-type:circle">Large array can use merge and quick</li></ul><ul id="c0883c2b-013f-4509-bb01-14664e466e28" class="bulleted-list"><li style="list-style-type:circle">Large array cannot use merge if there is limited space as it has a high space complexity</li></ul></li></ul></details></li></ul><h3 id="9546ef29-1871-4782-83de-6d8ce9b84df5" class="">Archives </h3><ul id="1bd2b8ba-3525-4632-af1e-037aac1191b4" class="toggle"><li><details open=""><summary>State three different <mark class="highlight-orange">storage devices</mark> that the finance manager would use and describe what each device would be used for.</summary><figure id="c0af8217-7472-40f9-b71b-1283865fc739" class="image"><a href="Long%20Questions%202e30b8c10e6e49ad916f1bd9ddf0c4a9/Untitled.png"><img style="width:926px" src="Long%20Questions%202e30b8c10e6e49ad916f1bd9ddf0c4a9/Untitled.png"/></a></figure></details></li></ul></div></article></body></html>

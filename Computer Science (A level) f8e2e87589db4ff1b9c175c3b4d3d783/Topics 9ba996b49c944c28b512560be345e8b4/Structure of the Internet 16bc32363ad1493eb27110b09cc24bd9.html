@@ -1,0 +1,671 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Structure of the Internet</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-opaquegray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="16bc3236-3ad1-493e-b271-10b09cc24bd9" class="page sans"><header><h1 class="page-title">Structure of the Internet</h1><table class="properties"><tbody><tr class="property-row property-row-multi_select"><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesMultipleSelect"><path d="M1.91602 4.83789C2.44238 4.83789 2.87305 4.40723 2.87305 3.87402C2.87305 3.34766 2.44238 2.91699 1.91602 2.91699C1.38281 2.91699 0.952148 3.34766 0.952148 3.87402C0.952148 4.40723 1.38281 4.83789 1.91602 4.83789ZM5.1084 4.52344H14.3984C14.7607 4.52344 15.0479 4.23633 15.0479 3.87402C15.0479 3.51172 14.7607 3.22461 14.3984 3.22461H5.1084C4.74609 3.22461 4.45898 3.51172 4.45898 3.87402C4.45898 4.23633 4.74609 4.52344 5.1084 4.52344ZM1.91602 9.03516C2.44238 9.03516 2.87305 8.60449 2.87305 8.07129C2.87305 7.54492 2.44238 7.11426 1.91602 7.11426C1.38281 7.11426 0.952148 7.54492 0.952148 8.07129C0.952148 8.60449 1.38281 9.03516 1.91602 9.03516ZM5.1084 8.7207H14.3984C14.7607 8.7207 15.0479 8.43359 15.0479 8.07129C15.0479 7.70898 14.7607 7.42188 14.3984 7.42188H5.1084C4.74609 7.42188 4.45898 7.70898 4.45898 8.07129C4.45898 8.43359 4.74609 8.7207 5.1084 8.7207ZM1.91602 13.2324C2.44238 13.2324 2.87305 12.8018 2.87305 12.2686C2.87305 11.7422 2.44238 11.3115 1.91602 11.3115C1.38281 11.3115 0.952148 11.7422 0.952148 12.2686C0.952148 12.8018 1.38281 13.2324 1.91602 13.2324ZM5.1084 12.918H14.3984C14.7607 12.918 15.0479 12.6309 15.0479 12.2686C15.0479 11.9062 14.7607 11.6191 14.3984 11.6191H5.1084C4.74609 11.6191 4.45898 11.9062 4.45898 12.2686C4.45898 12.6309 4.74609 12.918 5.1084 12.918Z"></path></svg></span>Tags</th><td><span class="selected-value select-value-color-gray">4 Exchanging data</span><span class="selected-value select-value-color-red">Archieve</span></td></tr><tr class="property-row property-row-select"><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesSelect"><path d="M8 15.126C11.8623 15.126 15.0615 11.9336 15.0615 8.06445C15.0615 4.20215 11.8623 1.00293 7.99316 1.00293C4.13086 1.00293 0.938477 4.20215 0.938477 8.06445C0.938477 11.9336 4.1377 15.126 8 15.126ZM8 13.7383C4.85547 13.7383 2.33301 11.209 2.33301 8.06445C2.33301 4.91992 4.84863 2.39746 7.99316 2.39746C11.1377 2.39746 13.6738 4.91992 13.6738 8.06445C13.6738 11.209 11.1445 13.7383 8 13.7383ZM7.62402 10.6348C7.79492 10.915 8.20508 10.9287 8.37598 10.6348L10.666 6.73145C10.8574 6.41016 10.7002 6.04102 10.3652 6.04102H5.62793C5.29297 6.04102 5.14941 6.43066 5.32031 6.73145L7.62402 10.6348Z"></path></svg></span>Difficulty</th><td><span class="selected-value select-value-color-gray">⭐️⭐️⭐️</span></td></tr><tr class="property-row property-row-checkbox"><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesCheckbox"><path d="M3.85742 14.4561H12.1357C13.6123 14.4561 14.3779 13.6904 14.3779 12.2344V3.91504C14.3779 2.45215 13.6123 1.69336 12.1357 1.69336H3.85742C2.38086 1.69336 1.61523 2.45215 1.61523 3.91504V12.2344C1.61523 13.6973 2.38086 14.4561 3.85742 14.4561ZM3.93945 13.1162C3.30371 13.1162 2.95508 12.7812 2.95508 12.1182V4.02441C2.95508 3.36133 3.30371 3.0332 3.93945 3.0332H12.0537C12.6826 3.0332 13.0381 3.36133 13.0381 4.02441V12.1182C13.0381 12.7812 12.6826 13.1162 12.0537 13.1162H3.93945ZM7.26855 11.3115C7.51465 11.3115 7.72656 11.1885 7.87012 10.9697L10.9258 6.19141C11.0146 6.04785 11.0967 5.88379 11.0967 5.72656C11.0967 5.3916 10.7959 5.16602 10.4746 5.16602C10.2695 5.16602 10.085 5.27539 9.94141 5.50781L7.24121 9.8418L5.96973 8.22168C5.80566 8.00977 5.6416 7.93457 5.43652 7.93457C5.10156 7.93457 4.8418 8.20117 4.8418 8.54297C4.8418 8.70703 4.90332 8.85742 5.01953 9.00098L6.63281 10.9697C6.81738 11.209 7.01562 11.3115 7.26855 11.3115Z"></path></svg></span>Finished Notes</th><td><div class="checkbox checkbox-off"></div></td></tr><tr class="property-row property-row-checkbox"><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesCheckbox"><path d="M3.85742 14.4561H12.1357C13.6123 14.4561 14.3779 13.6904 14.3779 12.2344V3.91504C14.3779 2.45215 13.6123 1.69336 12.1357 1.69336H3.85742C2.38086 1.69336 1.61523 2.45215 1.61523 3.91504V12.2344C1.61523 13.6973 2.38086 14.4561 3.85742 14.4561ZM3.93945 13.1162C3.30371 13.1162 2.95508 12.7812 2.95508 12.1182V4.02441C2.95508 3.36133 3.30371 3.0332 3.93945 3.0332H12.0537C12.6826 3.0332 13.0381 3.36133 13.0381 4.02441V12.1182C13.0381 12.7812 12.6826 13.1162 12.0537 13.1162H3.93945ZM7.26855 11.3115C7.51465 11.3115 7.72656 11.1885 7.87012 10.9697L10.9258 6.19141C11.0146 6.04785 11.0967 5.88379 11.0967 5.72656C11.0967 5.3916 10.7959 5.16602 10.4746 5.16602C10.2695 5.16602 10.085 5.27539 9.94141 5.50781L7.24121 9.8418L5.96973 8.22168C5.80566 8.00977 5.6416 7.93457 5.43652 7.93457C5.10156 7.93457 4.8418 8.20117 4.8418 8.54297C4.8418 8.70703 4.90332 8.85742 5.01953 9.00098L6.63281 10.9697C6.81738 11.209 7.01562 11.3115 7.26855 11.3115Z"></path></svg></span>Progress</th><td><div class="checkbox checkbox-off"></div></td></tr><tr class="property-row property-row-checkbox"><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesCheckbox"><path d="M3.85742 14.4561H12.1357C13.6123 14.4561 14.3779 13.6904 14.3779 12.2344V3.91504C14.3779 2.45215 13.6123 1.69336 12.1357 1.69336H3.85742C2.38086 1.69336 1.61523 2.45215 1.61523 3.91504V12.2344C1.61523 13.6973 2.38086 14.4561 3.85742 14.4561ZM3.93945 13.1162C3.30371 13.1162 2.95508 12.7812 2.95508 12.1182V4.02441C2.95508 3.36133 3.30371 3.0332 3.93945 3.0332H12.0537C12.6826 3.0332 13.0381 3.36133 13.0381 4.02441V12.1182C13.0381 12.7812 12.6826 13.1162 12.0537 13.1162H3.93945ZM7.26855 11.3115C7.51465 11.3115 7.72656 11.1885 7.87012 10.9697L10.9258 6.19141C11.0146 6.04785 11.0967 5.88379 11.0967 5.72656C11.0967 5.3916 10.7959 5.16602 10.4746 5.16602C10.2695 5.16602 10.085 5.27539 9.94141 5.50781L7.24121 9.8418L5.96973 8.22168C5.80566 8.00977 5.6416 7.93457 5.43652 7.93457C5.10156 7.93457 4.8418 8.20117 4.8418 8.54297C4.8418 8.70703 4.90332 8.85742 5.01953 9.00098L6.63281 10.9697C6.81738 11.209 7.01562 11.3115 7.26855 11.3115Z"></path></svg></span>Y12EOYE</th><td><div class="checkbox checkbox-off"></div></td></tr></tbody></table></header><div class="page-body"><h2 id="10717522-ecbc-42a9-a0c7-f897777cb067" class="">Definitions</h2><h3 id="a252cbe5-8893-4751-8429-88c78ff26bd4" class="">Internet</h3><p id="c48d3817-73a3-4fa4-99ca-d96dad9b34a0" class="">A public <mark class="highlight-orange">interconnection </mark>of<mark class="highlight-orange"> computer networks</mark> allow data to be send globally to any connected device</p><h3 id="7cb3a169-a87f-4f26-ae82-b18f6facd6be" class="">World Wide Web</h3><p id="eee8707c-b0fd-4ffb-b355-7f077a1bbb8f" class="">A <mark class="highlight-orange">collection of hyperlinked documents</mark> accessible via the internet</p><h3 id="7f96ebc5-61a0-4587-be67-224b5acc50b8" class="">WWW vs internet</h3><ul id="16839284-f843-4e78-a846-2736cb045485" class="bulleted-list"><li style="list-style-type:disc">Internet is the connections between computers</li></ul><ul id="6c0477f8-1f49-4600-8000-6d038ea2b3bf" class="bulleted-list"><li style="list-style-type:disc">Internet use ICP/IP communications protocols</li></ul><ul id="4effd589-900b-4a59-b207-1a905f9c7475" class="bulleted-list"><li style="list-style-type:disc">The WWW is a system of hyperlinked documents</li></ul><ul id="d3fff148-3b92-458f-809b-12a00d333db1" class="bulleted-list"><li style="list-style-type:disc">WWW is accessed using the Internet</li></ul><ul id="6d9464f3-d0df-4543-a19f-859486c6ea96" class="bulleted-list"><li style="list-style-type:disc">WWW use the HTTP protocol to transfer documents</li></ul><h3 id="18809b33-a65e-4f56-9bdb-80d27ecc52a9" class="">Backbone</h3><p id="7bce0b8c-5dbf-4fe1-80a0-80c2591d836c" class="">A set of <mark class="highlight-orange">dedicated connections</mark> that <mark class="highlight-orange">connect regional networks</mark>, usually controlled by Internet Service Providers (ISPs)</p><figure id="0b2f9471-647f-4a6c-9462-c33758ff565e" class="image"><a href="Structure%20of%20the%20Internet%2016bc32363ad1493eb27110b09cc24bd9/Untitled.png"><img style="width:447px" src="Structure%20of%20the%20Internet%2016bc32363ad1493eb27110b09cc24bd9/Untitled.png"/></a></figure><h3 id="4b2939e1-ebf5-42b3-a48a-bb6a3ff64993" class="">IP address (Internet Protocol)</h3><p id="3d4d8807-549d-4908-aa7d-ae685c3d309e" class="">Set of four numbers <mark class="highlight-orange">identifying</mark> a resource on a network</p><h3 id="8022e43b-4487-49e9-9ae7-943b1afe8000" class="">URL (Uniform Resource Locator)</h3><p id="a646d1b0-3c67-4bf8-bb70-eb71faa77607" class="">The combination of the protocol and fully qualified domain name of a resource</p><p id="6b111a17-67e0-4b41-b3a3-63a5f6ad05a6" class="">Used to specified the means of accessing a resource across a network and its location</p><ul id="886d03f9-87ff-483c-ba60-6b4cb336cf9d" class="bulleted-list"><li style="list-style-type:disc">Structure</li></ul><figure id="82dc1cad-18b2-429a-bb13-95e8a23d5edf" class="image"><a href="Structure%20of%20the%20Internet%2016bc32363ad1493eb27110b09cc24bd9/Untitled%201.png"><img style="width:780px" src="Structure%20of%20the%20Internet%2016bc32363ad1493eb27110b09cc24bd9/Untitled%201.png"/></a></figure><h2 id="211c9beb-8085-43c0-9e8f-6b79b6c29799" class="">Domain Names System (DNS)</h2><p id="abad866e-8569-49c5-b163-518a80005656" class="">Dedicated Computers with an index of domain names and the corresponding IP address</p><p id="8381266d-e6e7-47ce-b722-ce375a17bf1e" class="">Domain names must be unique</p><h3 id="b479f135-6b02-4c65-b62c-f8257c0ec721" class="">Structure</h3><figure id="467f7b75-80fe-4c07-a82d-30d3ea313730" class="image"><a href="Structure%20of%20the%20Internet%2016bc32363ad1493eb27110b09cc24bd9/Untitled%202.png"><img style="width:598px" src="Structure%20of%20the%20Internet%2016bc32363ad1493eb27110b09cc24bd9/Untitled%202.png"/></a></figure><p id="4ede1d25-63c7-42d4-af31-d9856d96a70d" class="">
+</p><p id="a5657f49-0f03-4d9f-9d2f-1fda42fba6d4" class="">When the IP address of a given domain is not known, it is referred to a related domain server that may know</p><ul id="da2847ab-ee91-48d4-8963-6a0a580caec1" class="toggle"><li><details open=""><summary>Resolving IP address</summary><figure id="c7433ef0-37c5-42c4-bfdb-98240bbe1f3e" class="image"><a href="Structure%20of%20the%20Internet%2016bc32363ad1493eb27110b09cc24bd9/Untitled%203.png"><img style="width:996px" src="Structure%20of%20the%20Internet%2016bc32363ad1493eb27110b09cc24bd9/Untitled%203.png"/></a></figure><ul id="25bcbf91-39a8-4deb-8a3c-cc160ab503b3" class="bulleted-list"><li style="list-style-type:disc">Domain names used instead of IP address to reference a resource on a network</li></ul><ul id="91bcde35-f1de-423d-8776-522dc082336f" class="bulleted-list"><li style="list-style-type:disc">Local DNS serve contacted for IP address</li></ul><ul id="9f8d83ad-2874-4990-aa7c-c7c96044d754" class="bulleted-list"><li style="list-style-type:disc">If cannot supply one, send a request to another authoritative DNS</li></ul></details></li></ul><ul id="0a20958e-189b-4a3f-90f3-97cbd5d2b0a4" class="toggle"><li><details open=""><summary> How do local DNS servers know when new top-level domains are added</summary><p id="c3d49f11-60ff-4686-b8a2-3bdaf92a7a3e" class="">DNS names are hierarchical starting with the root servers</p><p id="a8159b68-a633-4b04-9f2e-e67829f51aed" class="">These root servers know the location of all top-level domains</p><p id="1bcb7b96-978c-4e82-86aa-082b8bfdc7aa" class="">As top level domains are added, the root server are updated</p><p id="cd28795f-06a0-4dcc-85f8-adda2e21f383" class="">If local DNS server doesn’t have a record of an top-level domain, it contacts a root server, so it can be informed directly about any domain names in existence</p></details></li></ul><h3 id="b943ed2b-9257-4e3e-9402-830cbc410a61" class="">Internet registry</h3><p id="1b56313a-ab87-41e7-b6e8-bfecfe1ee641" class="">Organization that control the allocation of domain names and IP address</p><h2 id="e6856917-181d-412d-85be-aa5ee9dda5bf" class="">Local Area Networks (LANs)</h2><p id="202ab027-4403-45a2-9488-a5b4bf201743" class="">two ore more computers connected together within a small geographical area</p><ul id="e58d4f60-22f5-4706-86f2-c93b5620c64b" class="bulleted-list"><li style="list-style-type:disc">Another network: Wide Area Networks (WANs)</li></ul><h2 id="1c4df826-c0fb-48a5-9082-1a56d582de49" class="">Network Topologies</h2><h3 id="fe08e900-ea1e-4271-bdc4-849ba78cb3a2" class="">Bus Network</h3><p id="0b5a1c35-9e4e-44b2-95ae-127c0e6b0b44" class="">An arrangement where nodes are connected in a daisy chain by a single central communications channel</p><ul id="2edd1fea-d8e4-4eca-9842-d01f33f893e8" class="bulleted-list"><li style="list-style-type:disc">All node is connected to a single backbone cable</li></ul><ul id="9248cf00-83fa-4ec7-ae64-550760c09741" class="bulleted-list"><li style="list-style-type:disc">Each node is passive</li></ul><ul id="2164f3b9-ac00-4893-bc24-181966857368" class="bulleted-list"><li style="list-style-type:disc">The end of the backbone is connected to a terminator or a computer to stop rebound the signals</li></ul><ul id="23042439-f175-42d5-b89b-4a1fd8e8a5a9" class="bulleted-list"><li style="list-style-type:disc">Data is sent one in a time</li></ul><ul id="c86f10d1-86af-467f-b1a5-5a1d0e778c75" class="bulleted-list"><li style="list-style-type:disc">One direction only</li></ul><ul id="604e820d-1561-4b49-9c06-13b261f41d08" class="toggle"><li><details open=""><summary>Advantages </summary><ol type="1" id="f4617b19-4923-46fd-9732-c4769dc30699" class="numbered-list" start="1"><li>Inexpensive to set up</li></ol><ol type="1" id="8252f454-a5bb-4bd4-a549-cd4ba33b648d" class="numbered-list" start="2"><li>Device can easily be added</li></ol><ol type="1" id="f694e42c-7961-47d1-843a-46cd898b3b8d" class="numbered-list" start="3"><li>Good for small network</li></ol></details></li></ul><ul id="089ed213-1437-438f-b651-c666633f0189" class="toggle"><li><details open=""><summary>Disadvantages</summary><ol type="1" id="580717a3-fd0e-4740-8f97-ef438391c75a" class="numbered-list" start="1"><li>Main cable is a point of failure</li></ol><ol type="1" id="e25217d8-098a-453c-9be0-8e39e3c76646" class="numbered-list" start="2"><li>limited cable length</li></ol><ol type="1" id="841f3e6b-cbd5-4272-8e68-2dec42d7e868" class="numbered-list" start="3"><li>Performance degrades with heavy use, owning to data “collision”</li></ol><ol type="1" id="142ecf3c-5661-4830-8f83-705c31096d59" class="numbered-list" start="4"><li>no security</li></ol></details></li></ul><ul id="7e3f63c0-5943-4fb3-aa43-0fdedbc4b2e0" class="toggle"><li><details open=""><summary>Diagram</summary><figure id="d3ac0a1f-842c-4e64-a66e-2cf76d741da9" class="image"><a href="Structure%20of%20the%20Internet%2016bc32363ad1493eb27110b09cc24bd9/Untitled%204.png"><img style="width:1062px" src="Structure%20of%20the%20Internet%2016bc32363ad1493eb27110b09cc24bd9/Untitled%204.png"/></a></figure></details></li></ul><h3 id="f382cd98-420b-4160-857a-58621c66a639" class="">Star Network</h3><p id="ad2d4c8d-1ab1-4c76-bf03-14ab47ad55de" class="">An arrangement where a central node or hub provide a common connect point for all device</p><p id="7d62e0f8-9088-4886-bea4-40e75b7d8904" class="">The central node is often a switch</p><p id="a91a29a0-469f-4f2c-974e-5807c9d30806" class="">A switch sends each communication to computer it is specify for</p><ul id="bf9b0512-53a1-47c7-ba92-65db3eb89df5" class="toggle"><li><details open=""><summary>Advantages</summary><ol type="1" id="bd347615-1da4-4b27-93f6-a507a55c03b0" class="numbered-list" start="1"><li>Easy to isolate problems</li></ol><ol type="1" id="a4676e16-822b-4b98-9137-3e11193ce682" class="numbered-list" start="2"><li>Good performance, due to each computer having its won dedicated connection</li></ol><ol type="1" id="c804bcab-d757-4d88-ad0f-7b1a2df46963" class="numbered-list" start="3"><li>More secure if a switch is used as data is sent only to the recipient</li></ol><ul id="f452c9d0-17e5-4fc5-ad7f-c49cb915384f" class="bulleted-list"><li style="list-style-type:disc">Easy to isolate problems, as each device has its own cable</li></ul><ul id="cf0d7bc2-108f-401a-9ce4-5f753e1b010c" class="bulleted-list"><li style="list-style-type:disc">Devices can easily be added as the network does not have to be shut down</li></ul></details></li></ul><ul id="101b03e0-f3bd-448b-9c43-044e488335b2" class="toggle"><li><details open=""><summary>disadvantages</summary><ol type="1" id="b4b8a81a-cfb2-462f-8e03-621cbb5309e2" class="numbered-list" start="1"><li>Can be expensive as more wires is required</li></ol><ol type="1" id="1cb25ba0-576e-400a-abcd-086c825f9480" class="numbered-list" start="2"><li>Central device is point of failure</li></ol></details></li></ul><ul id="78f90fd9-0a9d-4a58-9ecb-64255f65b8cd" class="toggle"><li><details open=""><summary>Diagram</summary><figure id="f4120349-7f7e-4235-ae37-2169e75608ca" class="image"><a href="Structure%20of%20the%20Internet%2016bc32363ad1493eb27110b09cc24bd9/Untitled%205.png"><img style="width:912px" src="Structure%20of%20the%20Internet%2016bc32363ad1493eb27110b09cc24bd9/Untitled%205.png"/></a></figure></details></li></ul><p id="8b817d2d-0d58-4e97-b52f-d6648a60ab53" class="">
+</p><h2 id="29f4785c-345b-40cb-8273-69a9d44e92df" class="">Topologies</h2><h3 id="c47e6b61-1899-4fa8-a1a3-cf0c673029ff" class="">Physical topology</h3><p id="3777d837-aea1-422b-9144-09f10d65c8ee" class="">How computer are physically interconnected with wires</p><h3 id="41cd71f7-8d73-4ca8-9d0e-a16c095bca08" class="">Logical Topology</h3><p id="3e8837fe-fe67-4171-b26a-e401cf347019" class="">How devices appears connected to the user</p></div></article></body></html>

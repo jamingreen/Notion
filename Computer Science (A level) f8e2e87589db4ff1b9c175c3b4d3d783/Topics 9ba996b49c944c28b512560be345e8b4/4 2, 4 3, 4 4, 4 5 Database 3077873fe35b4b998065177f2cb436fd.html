@@ -1,0 +1,673 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>4.2, 4.3, 4.4, 4.5 Database</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-opaquegray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="3077873f-e35b-4b99-8065-177f2cb436fd" class="page sans"><header><h1 class="page-title">4.2, 4.3, 4.4, 4.5 Database</h1><table class="properties"><tbody><tr class="property-row property-row-multi_select"><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesMultipleSelect"><path d="M1.91602 4.83789C2.44238 4.83789 2.87305 4.40723 2.87305 3.87402C2.87305 3.34766 2.44238 2.91699 1.91602 2.91699C1.38281 2.91699 0.952148 3.34766 0.952148 3.87402C0.952148 4.40723 1.38281 4.83789 1.91602 4.83789ZM5.1084 4.52344H14.3984C14.7607 4.52344 15.0479 4.23633 15.0479 3.87402C15.0479 3.51172 14.7607 3.22461 14.3984 3.22461H5.1084C4.74609 3.22461 4.45898 3.51172 4.45898 3.87402C4.45898 4.23633 4.74609 4.52344 5.1084 4.52344ZM1.91602 9.03516C2.44238 9.03516 2.87305 8.60449 2.87305 8.07129C2.87305 7.54492 2.44238 7.11426 1.91602 7.11426C1.38281 7.11426 0.952148 7.54492 0.952148 8.07129C0.952148 8.60449 1.38281 9.03516 1.91602 9.03516ZM5.1084 8.7207H14.3984C14.7607 8.7207 15.0479 8.43359 15.0479 8.07129C15.0479 7.70898 14.7607 7.42188 14.3984 7.42188H5.1084C4.74609 7.42188 4.45898 7.70898 4.45898 8.07129C4.45898 8.43359 4.74609 8.7207 5.1084 8.7207ZM1.91602 13.2324C2.44238 13.2324 2.87305 12.8018 2.87305 12.2686C2.87305 11.7422 2.44238 11.3115 1.91602 11.3115C1.38281 11.3115 0.952148 11.7422 0.952148 12.2686C0.952148 12.8018 1.38281 13.2324 1.91602 13.2324ZM5.1084 12.918H14.3984C14.7607 12.918 15.0479 12.6309 15.0479 12.2686C15.0479 11.9062 14.7607 11.6191 14.3984 11.6191H5.1084C4.74609 11.6191 4.45898 11.9062 4.45898 12.2686C4.45898 12.6309 4.74609 12.918 5.1084 12.918Z"></path></svg></span>Tags</th><td><span class="selected-value select-value-color-gray">4 Exchanging data</span></td></tr><tr class="property-row property-row-select"><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesSelect"><path d="M8 15.126C11.8623 15.126 15.0615 11.9336 15.0615 8.06445C15.0615 4.20215 11.8623 1.00293 7.99316 1.00293C4.13086 1.00293 0.938477 4.20215 0.938477 8.06445C0.938477 11.9336 4.1377 15.126 8 15.126ZM8 13.7383C4.85547 13.7383 2.33301 11.209 2.33301 8.06445C2.33301 4.91992 4.84863 2.39746 7.99316 2.39746C11.1377 2.39746 13.6738 4.91992 13.6738 8.06445C13.6738 11.209 11.1445 13.7383 8 13.7383ZM7.62402 10.6348C7.79492 10.915 8.20508 10.9287 8.37598 10.6348L10.666 6.73145C10.8574 6.41016 10.7002 6.04102 10.3652 6.04102H5.62793C5.29297 6.04102 5.14941 6.43066 5.32031 6.73145L7.62402 10.6348Z"></path></svg></span>Difficulty</th><td><span class="selected-value select-value-color-default">⭐️⭐️⭐️⭐️</span></td></tr><tr class="property-row property-row-checkbox"><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesCheckbox"><path d="M3.85742 14.4561H12.1357C13.6123 14.4561 14.3779 13.6904 14.3779 12.2344V3.91504C14.3779 2.45215 13.6123 1.69336 12.1357 1.69336H3.85742C2.38086 1.69336 1.61523 2.45215 1.61523 3.91504V12.2344C1.61523 13.6973 2.38086 14.4561 3.85742 14.4561ZM3.93945 13.1162C3.30371 13.1162 2.95508 12.7812 2.95508 12.1182V4.02441C2.95508 3.36133 3.30371 3.0332 3.93945 3.0332H12.0537C12.6826 3.0332 13.0381 3.36133 13.0381 4.02441V12.1182C13.0381 12.7812 12.6826 13.1162 12.0537 13.1162H3.93945ZM7.26855 11.3115C7.51465 11.3115 7.72656 11.1885 7.87012 10.9697L10.9258 6.19141C11.0146 6.04785 11.0967 5.88379 11.0967 5.72656C11.0967 5.3916 10.7959 5.16602 10.4746 5.16602C10.2695 5.16602 10.085 5.27539 9.94141 5.50781L7.24121 9.8418L5.96973 8.22168C5.80566 8.00977 5.6416 7.93457 5.43652 7.93457C5.10156 7.93457 4.8418 8.20117 4.8418 8.54297C4.8418 8.70703 4.90332 8.85742 5.01953 9.00098L6.63281 10.9697C6.81738 11.209 7.01562 11.3115 7.26855 11.3115Z"></path></svg></span>Finished Notes</th><td><div class="checkbox checkbox-on"></div></td></tr><tr class="property-row property-row-checkbox"><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesCheckbox"><path d="M3.85742 14.4561H12.1357C13.6123 14.4561 14.3779 13.6904 14.3779 12.2344V3.91504C14.3779 2.45215 13.6123 1.69336 12.1357 1.69336H3.85742C2.38086 1.69336 1.61523 2.45215 1.61523 3.91504V12.2344C1.61523 13.6973 2.38086 14.4561 3.85742 14.4561ZM3.93945 13.1162C3.30371 13.1162 2.95508 12.7812 2.95508 12.1182V4.02441C2.95508 3.36133 3.30371 3.0332 3.93945 3.0332H12.0537C12.6826 3.0332 13.0381 3.36133 13.0381 4.02441V12.1182C13.0381 12.7812 12.6826 13.1162 12.0537 13.1162H3.93945ZM7.26855 11.3115C7.51465 11.3115 7.72656 11.1885 7.87012 10.9697L10.9258 6.19141C11.0146 6.04785 11.0967 5.88379 11.0967 5.72656C11.0967 5.3916 10.7959 5.16602 10.4746 5.16602C10.2695 5.16602 10.085 5.27539 9.94141 5.50781L7.24121 9.8418L5.96973 8.22168C5.80566 8.00977 5.6416 7.93457 5.43652 7.93457C5.10156 7.93457 4.8418 8.20117 4.8418 8.54297C4.8418 8.70703 4.90332 8.85742 5.01953 9.00098L6.63281 10.9697C6.81738 11.209 7.01562 11.3115 7.26855 11.3115Z"></path></svg></span>Progress</th><td><div class="checkbox checkbox-on"></div></td></tr><tr class="property-row property-row-checkbox"><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesCheckbox"><path d="M3.85742 14.4561H12.1357C13.6123 14.4561 14.3779 13.6904 14.3779 12.2344V3.91504C14.3779 2.45215 13.6123 1.69336 12.1357 1.69336H3.85742C2.38086 1.69336 1.61523 2.45215 1.61523 3.91504V12.2344C1.61523 13.6973 2.38086 14.4561 3.85742 14.4561ZM3.93945 13.1162C3.30371 13.1162 2.95508 12.7812 2.95508 12.1182V4.02441C2.95508 3.36133 3.30371 3.0332 3.93945 3.0332H12.0537C12.6826 3.0332 13.0381 3.36133 13.0381 4.02441V12.1182C13.0381 12.7812 12.6826 13.1162 12.0537 13.1162H3.93945ZM7.26855 11.3115C7.51465 11.3115 7.72656 11.1885 7.87012 10.9697L10.9258 6.19141C11.0146 6.04785 11.0967 5.88379 11.0967 5.72656C11.0967 5.3916 10.7959 5.16602 10.4746 5.16602C10.2695 5.16602 10.085 5.27539 9.94141 5.50781L7.24121 9.8418L5.96973 8.22168C5.80566 8.00977 5.6416 7.93457 5.43652 7.93457C5.10156 7.93457 4.8418 8.20117 4.8418 8.54297C4.8418 8.70703 4.90332 8.85742 5.01953 9.00098L6.63281 10.9697C6.81738 11.209 7.01562 11.3115 7.26855 11.3115Z"></path></svg></span>Y12EOYE</th><td><div class="checkbox checkbox-on"></div></td></tr></tbody></table></header><div class="page-body"><h3 id="afa2165f-4b91-498c-8b8e-ae32530ebb06" class="">Entity</h3><p id="0fa83882-b4d1-4ac1-8033-69f69d72ff26" class="">An entity is an item of interest about which information is stored</p><h3 id="8214b1c2-1dba-48af-bea9-2ef28ddf17eb" class="">Flat file</h3><p id="7fa90a54-6b91-46be-8ba5-cab48566dd1e" class="">A flat file is a database that consists of a single file. The flat file will most likely be based
+around a single entity and its attributes.</p><ul id="3176fe49-9066-4af4-acca-5fa72a432e73" class="toggle"><li><details open=""><summary>What problem might it arise?</summary><ul id="f6841efa-fd74-4141-8111-be5b931ee672" class="bulleted-list"><li style="list-style-type:disc">Data might be inconsistent<ul id="2a10d23c-e197-473a-bbfb-4175127e26af" class="bulleted-list"><li style="list-style-type:circle">For example the amount of cartridge in one printer might be changed in one record but not changed in another</li></ul></li></ul></details></li></ul><h3 id="26614dd7-1ac3-4b7b-8d1f-3bea76dce902" class="">Relational database</h3><p id="332024a0-00b5-4566-a288-48b0286e9a9c" class="">A relational database is a database which recognises the differences between entities by creating different tables for each entity.</p><p id="5fa5fd69-bd72-4eef-a5c5-7f99b6641cca" class="">
+</p><ul id="ff6f565c-dcc6-4e3f-a417-37d59078df8b" class="toggle"><li><details open=""><summary>Different in relational database and flat file</summary><ul id="fda110ed-a3d8-419b-818c-961e11a658d9" class="bulleted-list"><li style="list-style-type:disc">In flat file, all record are stored in one table<ul id="7daf83cb-844a-415e-8256-06d0b87d79f7" class="bulleted-list"><li style="list-style-type:circle">In relational database, multiple table is used</li></ul></li></ul><ul id="79fb5822-2f1e-4650-8070-5496a65fcee7" class="bulleted-list"><li style="list-style-type:disc">Data redundancy<ul id="184da3a1-ec0b-4da2-bb94-0534fe33f8c7" class="bulleted-list"><li style="list-style-type:circle">Space wasted</li></ul></li></ul></details></li></ul><h1 id="2ea22bce-9ab2-4557-8a6c-dd927045600f" class="">Relational Database</h1><h2 id="bdb668c8-8b6a-42da-9f3d-2c96fa993f35" class="">Primary Key</h2><p id="57d1e12d-a4dc-4e2c-ad22-0b9597f1344d" class="">It is a unique identifier for each record in the table.</p><p id="9becbf0f-84d5-43ab-9c13-2ca13e3e57de" class="">Should be shown by <span style="border-bottom:0.05em solid">underlining</span></p><h2 id="922be31c-f8c1-45ed-abd5-71ae59f6bd4f" class="">Foreign Key</h2><p id="bf6343fa-14f4-41c6-8af6-3d1c1d98433c" class="">It is the attribute that links two tables. </p><p id="ab5948fe-7b45-4fe9-b653-85b5dabb628e" class="">A primary key from one table used as an foreign key in another table.</p><p id="c57f738f-fa5e-40b9-a08d-39b06993601f" class="">Should be should by asterisk (*)</p><h2 id="ab1affac-e0c9-4886-a71a-e31e49661653" class="">Secondary Key</h2><p id="06e57b20-4471-4fe2-9387-fab015b00441" class="">An non-unique attribute which is indexed for fast lookup
+It is used in search and ordering</p><h3 id="f2be0496-73cf-44f4-926f-13fed7c3fba4" class="">Composite Key</h3><p id="f7db2b58-2cc1-493d-a3e0-8ce2f442cb57" class="">A combination of keys that is unique</p><p id="a6ce26ca-994b-429c-9df0-c85dd6a6b894" class="">A key that consist of 2 attributes</p><h2 id="992528d1-45b5-4602-bc53-e7df8518db61" class="">Entity Relationship Modeling</h2><h3 id="2ce4712d-edb2-4d40-93ff-2444510c0fa6" class="">One-to-one</h3><p id="87b15d8e-4d4a-44fd-b515-627089b1d0bb" class="">Each entity will only link to one other entity in another table</p><h3 id="1d7b3960-6b11-4367-b477-7411c72ae32c" class="">One-to-many</h3><p id="507ba128-1892-44aa-95e7-ea5502f37521" class="">One entity can be associated with multiple entities</p><h3 id="15b1e52c-e45d-4295-9e19-93add5f62de2" class="">Many-to-many</h3><p id="d8cd2dba-0036-45b9-81a5-fcd3b8836c2c" class="">One entity in table A can related to multiple entities in table B, while one entity in table B can also relate to multiple entities in table B</p><h3 id="9669d834-7a68-4be2-bd54-6bef884c0e20" class="">Relation graphs</h3><figure id="037a1b77-551a-4ab6-9eb9-aaefb098c155" class="image"><a href="Database%20SQL%201e47b24050f8401d848b5ab733c08812/Untitled.png"><img style="width:1060px" src="Database%20SQL%201e47b24050f8401d848b5ab733c08812/Untitled.png"/></a></figure><h2 id="d7dd1a93-a8cb-4707-b5e2-0525077a9259" class="">Normalisation</h2><p id="129c859e-94b0-4480-a383-3bf53bc7d7a7" class="">The process of coming up with the best possible layout for a relational database</p><ul id="946b1104-27df-48f8-a203-74648e6e6fce" class="bulleted-list"><li style="list-style-type:disc">No redundancy</li></ul><ul id="c76a32c5-129b-4d84-bdce-395b1e900727" class="bulleted-list"><li style="list-style-type:disc">Consistent data</li></ul><ul id="0bae6e0f-5e82-4514-8532-1f7615a65b87" class="bulleted-list"><li style="list-style-type:disc">Records can be added and removed without issues</li></ul><ul id="73c505f2-7e3d-493e-8cc4-642af4e07d30" class="bulleted-list"><li style="list-style-type:disc">Complex query can be carried out</li></ul><h3 id="4a4d9968-3477-4dab-9747-de25a32f71bf" class="">Zero Normal Form (0NF)</h3><p id="2b578ca9-ed72-445e-a0e5-50545769e9c7" class="">Have repeating group that have merge rows</p><p id="76d09347-2de9-4992-9a70-3ad30c37121d" class="">Multiple observation / variable in a column</p><h3 id="61437058-4bc4-4acb-9176-30fa7cd73826" class="">First Normal Form (1NF)</h3><p id="2b36145c-3a72-4cdc-8ef0-2db3e9dee739" class="">Have duplication of data (divide the merge rows from 0NF)</p><ul id="a55ef52a-509e-431b-b40d-20d69a606496" class="bulleted-list"><li style="list-style-type:disc">No repeat attribute</li></ul><ul id="98280578-309a-4a91-b500-3e6dd6b5cac8" class="bulleted-list"><li style="list-style-type:disc">All attribute are atomic (Cannot be further broken down)</li></ul><ul id="fb0600fe-521a-40ac-99ae-20fe15c1ac6d" class="bulleted-list"><li style="list-style-type:disc">All attribute has a unique name</li></ul><ul id="58563aed-0782-49b7-9528-35c9c77e6d76" class="bulleted-list"><li style="list-style-type:disc">Each row has a unique primary key</li></ul><h3 id="b6b01d9a-6bd6-4323-8790-7498480d6953" class="">Second Normal Form (2NF)</h3><ul id="07f571fa-544d-4781-9246-258d539df1da" class="bulleted-list"><li style="list-style-type:disc">First Normal Form</li></ul><ul id="8de48656-3d27-44fe-a052-ef4bb9922fba" class="bulleted-list"><li style="list-style-type:disc">no partial dependency<ul id="7ba7bd79-a714-430c-b86f-15acded23f03" class="bulleted-list"><li style="list-style-type:circle">Partial dependency — A attribute depends on part of a composite key</li></ul></li></ul><h3 id="d5b7f768-b289-46fd-a690-fd5810e6b984" class="">Third Normal Form (3NF)</h3><ul id="95729fe9-7add-4938-aa7a-314cf19fe2cb" class="bulleted-list"><li style="list-style-type:disc">Second Normal Form</li></ul><ul id="af2df089-53d9-4988-99e2-66c2e67b3904" class="bulleted-list"><li style="list-style-type:disc">no non-key dependency<ul id="90a243c9-2271-4379-a1a8-7533e56f5b4d" class="bulleted-list"><li style="list-style-type:circle">Non-key dependency — A attribute depends on a attribute that is not a key</li></ul></li></ul><ul id="a32560ad-e08d-4b82-bf31-68c71aac542a" class="bulleted-list"><li style="list-style-type:disc">no transitive key dependency<ul id="7a0cf721-e0de-4057-a294-458bebe8ff59" class="bulleted-list"><li style="list-style-type:circle">Transitive dependency —  A attribute depends on a key (through composite key) that has no relation in reality</li></ul></li></ul><h3 id="d8c24979-0553-41e7-8326-9993a65746c7" class="">Dependencies</h3><figure id="a3e1bee7-a732-4b05-894a-757b4f30920d" class="image"><a href="4%202,%204%203,%204%204,%204%205%20Database%203077873fe35b4b998065177f2cb436fd/Untitled.png"><img style="width:1710px" src="4%202,%204%203,%204%204,%204%205%20Database%203077873fe35b4b998065177f2cb436fd/Untitled.png"/></a><figcaption>Primary key: propertyNo, iDate</figcaption></figure><ul id="c6766343-eb60-474f-a0e3-af2ed2aeb6f5" class="bulleted-list"><li style="list-style-type:disc">Partial Dependency<p id="472dd531-5fe3-416f-8c5d-cd4154b58db8" class="">pAddress only depends on propertyNo but no iDate</p></li></ul><ul id="1f78d6cc-ca3b-4fca-bca2-3053a206d97b" class="bulleted-list"><li style="list-style-type:disc">Non-key Dependency<p id="5f085e74-e10a-4520-ad44-7b93d57af984" class="">sName (Staff name) depends on staffNo (which is not a key)</p></li></ul><ul id="9fdcc012-7bb0-4d8d-a573-cda98ca62696" class="bulleted-list"><li style="list-style-type:disc">Transitive Dependency<p id="e6050442-24ef-470f-9060-e99f7fdb61fe" class="">sName (Staff name) depends on iDate (iDate doesn’t directly imply the staff’s name)</p></li></ul><h2 id="6ce8d94b-440c-4660-a42c-2c440895ffb0" class="">Handling Data</h2><h3 id="21d173f3-506c-41ad-9c60-2ab848261468" class="">Capturing Data</h3><p id="548c1694-05ad-47f7-8fe5-2360a953d58e" class="">Data needs to be input into the database.</p><ul id="7a835e4d-f27c-4aa4-9412-bc8416e83901" class="bulleted-list"><li style="list-style-type:disc">Manually enter method</li></ul><ul id="2c9bc24a-782b-4cce-b17b-8c369544d064" class="bulleted-list"><li style="list-style-type:disc">Automatically enter method<ul id="7d9e6a26-c6fb-4b25-a215-a9f6ce8f568c" class="bulleted-list"><li style="list-style-type:circle">Magnetic Ink Character Recognition (MICR) — Used in back cheques</li></ul><ul id="aaad6ebc-ab7d-4610-99cc-b0c53451677c" class="bulleted-list"><li style="list-style-type:circle">Optical Mark Recognition (OMR) — Used in multiple choice question</li></ul><ul id="cecf73f2-f094-4694-9e4f-9617b9055958" class="bulleted-list"><li style="list-style-type:circle">Optical Character Recognition (OCR)</li></ul></li></ul><h3 id="cae1e73a-8224-4cd9-9d99-057e51c821f7" class="">Selecting and Managing Data</h3><h3 id="2cf642fe-a6b9-4d76-b219-6b729439cdfa" class="">Exchanging Data</h3><p id="fb5288b4-5bda-4de1-863a-2615862000a2" class="">Transferring collected data</p><p id="20a28a37-9261-4eca-941d-ea7f4c34f425" class="">Can use Electronic Data Interchange (EDI)</p><h1 id="e32f2a65-7923-49b7-b890-a8c78b6a3872" class="">SQL (Structured Query Language)</h1><h2 id="28709137-7373-4b38-b62b-9372afb69517" class="">Datatype</h2><ul id="61877366-be2d-4e1f-b9b0-8d15bb0e30e9" class="bulleted-list"><li style="list-style-type:disc">CHAR(n) — fixed length of n</li></ul><ul id="3eb1a215-7ec4-464b-b30d-25822f640d24" class="bulleted-list"><li style="list-style-type:disc">VARCHAR(n) — max. length of n</li></ul><ul id="a2c90df1-3520-4362-a8bb-bf9f46cf0a94" class="bulleted-list"><li style="list-style-type:disc">BOOLEAN</li></ul><ul id="c78f8afe-51ab-40e5-9132-84ddff1c581c" class="bulleted-list"><li style="list-style-type:disc">INTEGER  / INT</li></ul><ul id="3e7324f6-9e18-4028-997d-18dba3fb4375" class="bulleted-list"><li style="list-style-type:disc">FLOAT</li></ul><ul id="7f22ad33-4890-4775-ae1e-da8efc997669" class="bulleted-list"><li style="list-style-type:disc">DATE — day, month, year</li></ul><ul id="f9ca535c-d2f9-41e3-8c26-c4d0ba5b6fb8" class="bulleted-list"><li style="list-style-type:disc">TIME — hour, minute, second</li></ul><ul id="6a4623b6-e5c6-48a1-a6d0-bf5ad639a157" class="bulleted-list"><li style="list-style-type:disc">CURRENCY</li></ul><h2 id="8034f605-91b3-46c5-ab4a-6b712a7a4a5e" class="">Functions</h2><ul id="e343fb23-c9a5-4a7e-acb7-db0e420db8d3" class="bulleted-list"><li style="list-style-type:disc">ALTER TABLE table ADD col1 DATATYPE</li></ul><ul id="6f0b6d26-29d1-4b90-ba74-f17fbdbbcf5a" class="bulleted-list"><li style="list-style-type:disc">ALTER TABLE table DROP col1</li></ul><ul id="91572183-7cd7-44ec-a25c-825129bdd3cb" class="bulleted-list"><li style="list-style-type:disc">ALTER TABLE table MODIFY COLUMN Description DATATYPE</li></ul><ul id="d54d07b5-6b4b-4120-a3f7-7c5c997123f4" class="bulleted-list"><li style="list-style-type:disc">UPDATE TABLE table SET col1 = val1 WHERE condition</li></ul><ul id="2a88cfcb-a5d7-47fb-8b6a-ba60097b143b" class="bulleted-list"><li style="list-style-type:disc">DELETE FROM table WHERE condition</li></ul><h3 id="5980ddf3-4683-4f2a-9903-eed7df43755d" class="">Foreign key when creating table</h3><p id="493038db-a623-4631-8511-a4368b0e03c4" class="">FOREIGN KEY key REFERENCE table(key)</p><h1 id="76680b45-e327-43f3-bfef-7397d4f4a090" class="">Referential Integrity (changed)</h1><p id="5605b531-b01e-4a4e-845d-0a6b1a59c43b" class="">A table is linked to another table using <mark class="highlight-orange">primary key</mark> and <mark class="highlight-orange">foreign key</mark>. The foreign key value must have a <mark class="highlight-orange">corresponding record </mark>with that as primary key in another table.</p><p id="332f3217-6b78-4e01-9f95-5806e0edc685" class="">When the record with a primary key is deleted, the records in another table with that as foreign key must also be deleted.</p><p id="9df23992-c447-4539-baa4-fc07c9eeec6b" class="">Ensure consistency</p><p id="a2ea2381-a8da-4f78-932c-79e16b65474c" class="">
+</p><p id="834a223e-b706-4249-9118-7a208e5bcfaf" class="">This ensure that information is not removed if it is required elsewhere in a linked database</p><p id="d4106a20-f4bf-49f1-a2df-dfa6e3cdd271" class="">A table cannot be deleted if it has primary key that is linked to another table</p><h2 id="a8e4a94a-f497-402b-8d46-86c6b21f881f" class="">Transaction Processing</h2><p id="365746ba-5131-4e23-933c-8c06dda0c922" class="">It is a single or a series of operations executed on data</p><h2 id="613f168d-11b2-4b62-9dc5-98c0ef4ad227" class="">ACID (Atomicity, Consistency, Isolation, Durability)</h2><p id="4a071fdc-d052-4668-8aeb-3077b6170374" class="">Criteria of the database</p><ul id="8d42a135-044d-4356-afd3-1fab1a2b2c1e" class="bulleted-list"><li style="list-style-type:disc">Atomicity<ul id="bfdb4e30-ad6d-4d53-bd5d-a465e05c3b72" class="bulleted-list"><li style="list-style-type:circle">A transaction is processed in its entirety or not at all</li></ul><ul id="3b7b5def-1779-44ad-9829-4a37db227a80" class="bulleted-list"><li style="list-style-type:circle">No incomplete transaction</li></ul></li></ul><ul id="7c164190-b4d9-4ffc-8cd3-2dde75e0fdd0" class="bulleted-list"><li style="list-style-type:disc">Consistency<ul id="33448a3a-62a5-4a28-8c7c-2217cc4bb732" class="bulleted-list"><li style="list-style-type:circle">No transaction can violate any of the defined validation rules</li></ul><ul id="92cbebf0-ac9e-4ded-92af-a487919ae3c0" class="bulleted-list"><li style="list-style-type:circle">Referential integrity (specified in the set up of the database) must be upheld<ul id="bbe738a4-cae1-4149-a0d5-d3869bd692f8" class="bulleted-list"><li style="list-style-type:square">If the primary key record is deleted, any record with that foreign key must be deleted</li></ul></li></ul><ul id="e07df3fd-8499-41f6-9481-3b86cc980360" class="bulleted-list"><li style="list-style-type:circle">Table must joined by the primary and foreign key as indicated in the set up</li></ul></li></ul><ul id="db4beea0-e884-4ce2-b0be-478b967f4238" class="bulleted-list"><li style="list-style-type:disc">Isolation<ul id="2ecee59e-3b94-47ed-9706-592e22c39b3b" class="bulleted-list"><li style="list-style-type:circle">It ensures concurrent execution of transaction leads to the same result as if there were processed one after the other</li></ul></li></ul><ul id="0abaf564-070e-4333-8a25-a734024c594b" class="bulleted-list"><li style="list-style-type:disc">Durability<ul id="defdc339-685b-4b2a-9e1a-7a657a6be2f3" class="bulleted-list"><li style="list-style-type:circle">Once a transaction has been committed, it will remain so, even in the event of a power cut</li></ul><ul id="3abee07e-fd4e-4a61-9048-d7e0e2980392" class="bulleted-list"><li style="list-style-type:circle">After each part of the transaction is complete, it is held in a buffer until all elements of the transaction is executed</li></ul><ul id="8dd5ce58-5c25-48d0-829e-9ac12c91b689" class="bulleted-list"><li style="list-style-type:circle">Only then will the real database be change</li></ul></li></ul><h2 id="148d266e-9a98-41f0-9d48-881eaf360704" class="">Record Locking</h2><p id="bd6d2b79-3723-4ae1-a7b3-3615d1868dd8" class="">It forbidden simultaneous access to records.</p><p id="2007b6ad-c115-4721-8500-1aba9e459148" class="">It is used to prevent inconsistency or loss of updates</p><h3 id="9bf70de5-4cf4-4c66-bf0c-46577e34b541" class="">Deadlock</h3><p id="60b30ed1-d4af-4187-8128-d794d78e113b" class="">When 2 user request access to the other table (but since tables are accessed, both cannot finish their transaction until the table is unlocked)</p><h2 id="84fb0966-2a8d-4bd3-b1f2-1102abf0ef78" class="">Serialisation</h2><p id="6dcab245-2e1e-4c08-905e-def97698a91c" class="">Ensures transactions do not overlap in time and thus cannot interfere with each other</p><h3 id="617a251f-7772-4b78-a853-e854de68600a" class="">Timestamp ordering</h3><p id="c0593ef8-5c45-49b7-a846-92b1989a00a5" class="">Read timestamp, write timestamp (There are global for all users)</p><p id="c990ad26-f2de-454a-b9cc-238e69b82189" class="">If the read timestamp is not the same as the one when they start the transaction, the DBMS knows that another transaction is done, notify the user and block the transaction</p><h3 id="6fd9d517-7a35-4bd4-ac0b-160fdf348ff9" class="">Commitment ordering</h3><p id="d7c83dd5-adff-41c5-ae42-82527f0e38c6" class="">The transactions are ordered in terms of their dependency on one another</p><ul id="9b0a2b0f-6c83-4950-82cd-2c06024fb1b1" class="bulleted-list"><li style="list-style-type:disc">No transaction will be lost</li></ul><h2 id="0ec78a52-ada0-4a40-b442-85af82e21f60" class="">Redundancy</h2><p id="7605ed6b-86d7-4129-8fba-f81cb440864a" class="">Duplicate hardware with same information located in different geographical / physical location.</p><p id="4c1db395-9b46-4038-bc00-2ce28e8465ba" class="">It act as a backup</p><p id="a46c9048-d76d-4b60-82c5-50a306c2b4a9" class="">It mirrors every transaction on the main server</p><p id="ee1b8aca-55af-41c3-9d5b-d79af368808a" class="">It can automatically take over in the event of hardware failure</p></div></article></body></html>
